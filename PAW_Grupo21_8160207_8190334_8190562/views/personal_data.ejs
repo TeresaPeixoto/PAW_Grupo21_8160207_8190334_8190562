@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <h1>Adicionar Informações Pessoais</h1>
+  <form action="" method="POST" onsubmit="return validateData()">
+    <div>
+      <label for="birthDate">Data de Nascimento:</label><br />
+      <input type="date" name="birthDate" id="birthDate" />
+    </div>
+
+    <div>
+      <label for="cellphone">Telefone:</label><br />
+      <input type="text" name="cellphone" id="cellphone" />
+    </div>
+
+    <div>
+      <label for="cc">Nº de C.C:</label><br />
+      <input type="text" name="cc" id="cc" />
+    </div>
+
+    <div>
+      <h4>Morada:</h4>
+      <label for="street">Rua:</label><br />
+      <input type="text" name="street" id="street" /><br />
+      <label for="doorNumber">Nº da Porta:</label><br />
+      <input type="text" name="doorNumber" id="doorNumber" /><br />
+      <label for="district">Distrito:</label><br />
+      <input type="text" name="district" id="district" /><br />
+      <label for="locality">Localidade:</label><br />
+      <input type="text" name="locality" id="locality" /><br />
+      <label for="postalCode">Código-Postal:</label><br />
+      <input type="text" name="postalCode1" id="postalCode1" />-<input type="text" name="postalCode2"
+        id="postalCode2" /><br />
+    </div>
+
+    <div class="registrationInputs">
+      <button type="submit">Finalizar</button>
+    </div>
+  </form>
+  <script src="/javascripts/sPersonalData.js"></script>
+</body>
+
+</html>
