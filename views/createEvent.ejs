@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+    <h1>Criar Evento</h1>
+    <form method="POST" onsubmit="return validateDataEvent()">
+        <div>
+            <label for="eventName">Nome:</label><br />
+            <input type="text" name="eventName" id="eventName" />
+        </div>
+
+        <div>
+            <label for="local">Local:</label><br />
+            <input type="text" name="local" id="local" />
+        </div>
+
+        <div>
+            <label for="eventDate">Data do Evento:</label><br />
+            <input type="datetime-local" name="eventDate" id="eventDate" />
+        </div>
+
+        <div>
+            <label for="price">Preço por bilhete:</label><br />
+            <input type="number" name="price" id="price"/>
+        </div>
+        <div>
+            <label for="lugares">Número de lugares::</label><br />
+            <input type="number" name="lugares" id="lugares"/>
+        </div>
+        <div>
+            <label for="description">Descrição:</label><br />
+            <input type="text" name="description" id="description" />
+        </div>
+        <input type="submit">
+    </form>
+    <script src="/javascripts/sCreateEvent.js"></script>
+</body>
+
+</html>
