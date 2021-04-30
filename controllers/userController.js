@@ -30,7 +30,7 @@ userController.createAccount = function (req, res) {
     res.status(400).json({ message: "You must identify your district" });
   } else if (!req.body.locality) {
     res.status(400).json({ message: "You must identify your locality" });
-  } else if (!req.body.postalCode) {
+  } else if (!req.body.postalCode1 || !req.body.postalCode2) {
     res.status(400).json({ message: "You must identify your postal code" });
   } else {
     user.save((err, room) => {

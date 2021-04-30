@@ -11,7 +11,8 @@ var UserSchema = new mongoose.Schema({
     doorNumber: Number,
     district: String,
     locality: String,
-    postalcode: String
+    postalCode1: Number,
+    postalCode2: Number
 });
 
 module.exports = mongoose.model('User', UserSchema);
