@@ -65,7 +65,7 @@ function validateData() {
         return false;
     }
     if (!(document.getElementById("cc").value.length == 8)) {
-        alert("C.C. number must be exactly 9 characters.");
+        alert("C.C. number must be exactly 8 characters.");
         return false;
     }
     if (!(document.getElementById("cc").value.match(numberCCPattern))) {

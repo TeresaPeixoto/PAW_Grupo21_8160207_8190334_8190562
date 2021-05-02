@@ -10,41 +10,59 @@ userController.formCreate = function (req, res) {
 
 userController.createAccount = function (req, res) {
   var user = new User(req.body);
-  if (!req.body.userName || req.body.userName.length < 6) {
-    res.status(400).json({ message: "Name must contain 6 characters" });
-  } else if (!req.body.pass || req.body.pass.length < 6) {
-    res.status(400).json({ message: "Password must contain 6 characters" });
-  } else if (!req.body.email) {
-    res.status(400).json({ message: "Email is required" });
-  } else if (!req.body.birthDate) {
-    res.status(400).json({ message: "You must identify your birth date" });
-  } else if (!req.body.cellphone) {
-    res.status(400).json({ message: "You must identify your cellphone" });
-  } else if (!req.body.cc) {
-    res.status(400).json({ message: "You must identify your cc" });
-  } else if (!req.body.street) {
-    res.status(400).json({ message: "You must identify your street" });
-  } else if (!req.body.doorNumber) {
-    res.status(400).json({ message: "You must identify your door number" });
-  } else if (!req.body.district) {
-    res.status(400).json({ message: "You must identify your district" });
-  } else if (!req.body.locality) {
-    res.status(400).json({ message: "You must identify your locality" });
-  } else if (!req.body.postalCode1 || !req.body.postalCode2) {
-    res.status(400).json({ message: "You must identify your postal code" });
-  } else {
-    user.save((err, room) => {
-      if (err) {
-        console.log("Erro a gravar");
-        res.redirect("/error");
-      } else {
-        res
+/*
+  User.findOne({cc: req.body.cc}, function(err, result) {
+    if (err) throw err;
+    console.log(result.userName);
+  });
+*/
+  /*User.findOne({},{cc: req.body.cc}), function (err, caughtUser){
+    console.log("\n entrou aqui 001!");
+    if(!err && caughtUser.cc==req.body.cc){
+      console.log("\n entrou aqui 002!");
+      res.status(400).json({ message: "User is already registered." });
+    }else{ 
+      console.log("\n entrou aqui 003!");
+      res.status(200).json({ message: "Sucess." });
+        }
+  }*/
+
+  User.findOne({cc: req.body.cc}, function(err, result) {
+    
+/*     if (err) throw err;
+     */
+    if( result!= null){    
+      if(!err && result.cc==req.body.cc){
+      console.log("\n entrou aqui 002!");
+      res.status(400).json({ message: "User is already registered." });
+      //throw err; 
+      console.log("\n entrou aqui 003!");
+     
+    }
+  }else{
+  console.log("\n entrou aqui 007!");
+   
+    user.save(() => {
+      {
+        console.log(" entrou aqui !");
+        res 
           .status(200)
           .render("", { title: "" });
       }
     });
   }
-};
+  })};
+
+/*
+function isUserRegistered(let paramEmail){
+  User.findOne({'email': paramEmail}), function (err, caughtUser){
+    if(!err && caughtUser.email==paramEmail){
+      return true;
+    }else{
+      return false;
+    }
+  }
+}*/
 
 //update an employee
 userController.addPersonalData = function (req, res) {
@@ -70,5 +88,7 @@ userController.addPersonalData = function (req, res) {
     }
   );
 };
+
+
 
 module.exports = userController;
