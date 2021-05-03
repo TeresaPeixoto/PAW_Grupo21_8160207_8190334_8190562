@@ -34,4 +34,15 @@ eventController.createEvent = function (req, res){
 
 };
 
+ 
+eventController.getAllEvents = function (req, res) {
+    Event.find({}, (err, result) =>{
+      if(err){
+        console.log(err)
+      } else {
+        res.json(result)
+      }
+    })
+};
+
 module.exports = eventController;

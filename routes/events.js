@@ -11,6 +11,9 @@ router.get('/create', function(req, res, next) {
   res.render('createEvent', { title: 'Criar evento' });
 });
 
+router.get("/allEvents", eventController.getAllEvents);
+  
+
 
 
 module.exports = router;

@@ -10,22 +10,7 @@ userController.formCreate = function (req, res) {
 
 userController.createAccount = function (req, res) {
   var user = new User(req.body);
-/*
-  User.findOne({cc: req.body.cc}, function(err, result) {
-    if (err) throw err;
-    console.log(result.userName);
-  });
-*/
-  /*User.findOne({},{cc: req.body.cc}), function (err, caughtUser){
-    console.log("\n entrou aqui 001!");
-    if(!err && caughtUser.cc==req.body.cc){
-      console.log("\n entrou aqui 002!");
-      res.status(400).json({ message: "User is already registered." });
-    }else{ 
-      console.log("\n entrou aqui 003!");
-      res.status(200).json({ message: "Sucess." });
-        }
-  }*/
+
 
   User.findOne({cc: req.body.cc}, function(err, result) {
     
@@ -53,16 +38,7 @@ userController.createAccount = function (req, res) {
   }
   })};
 
-/*
-function isUserRegistered(let paramEmail){
-  User.findOne({'email': paramEmail}), function (err, caughtUser){
-    if(!err && caughtUser.email==paramEmail){
-      return true;
-    }else{
-      return false;
-    }
-  }
-}*/
+
 
 //update an employee
 userController.addPersonalData = function (req, res) {

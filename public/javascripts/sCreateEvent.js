@@ -18,25 +18,7 @@ function validateDataEvent() {
   if (!document.getElementById("local").value.match(namePattern)) {
     alert("Local must consist only of words.");
     return false;
-  }/*
-  if (document.getElementById("dayMonthYear").value == "") {
-    alert("Date must exist.");
-    return false;
   }
-  var dateAndTime = new Date(
-    document.getElementById("dayMonthYear").value +
-      "T" +
-      document.getElementById("eventHour").value
-  );
-  var dateInMilli = dateAndTime.getTime();
-
-  var dateAndTimeNow = Date.now();
-  var one = 1;
-
-  if (dateAndTimeNow + 259200000 > dateInMilli) {
-    alert("Date must be superior.");
-    return false;
-  }*/
   if (!(document.getElementById("price").value.length >=0)) {
     alert("Price must be exist.");
     return false;
