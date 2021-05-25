@@ -12,8 +12,5 @@ router.get('/create', function(req, res, next) {
 });
 
 router.get("/allEvents", eventController.getAllEvents);
-  
-
-
 
 module.exports = router;

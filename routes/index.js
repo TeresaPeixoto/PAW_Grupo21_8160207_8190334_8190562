@@ -1,14 +1,10 @@
 var express = require('express');
+var fs = require('fs');
+var path = require('path');
 var router = express.Router();
 
-const {
-  existingUsers,
-  findUser
-}=require("../existingUsers");
+var indexController = require('../controllers/indexController');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Review' });
-});
+router.get("/", indexController.showHomepage);
 
 module.exports = router;

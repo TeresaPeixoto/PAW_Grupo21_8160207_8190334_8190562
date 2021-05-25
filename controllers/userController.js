@@ -3,68 +3,24 @@ var User = require("../models/user");
 
 var userController = {};
 
-// form para criar 1 user
-userController.formCreate = function (req, res) {
-  res.render("users/createForm");
-};
-
 userController.createAccount = function (req, res) {
   var user = new User(req.body);
+  let params = {title: "Created User",
+                ...req.body};
 
-
-  User.findOne({cc: req.body.cc}, function(err, result) {
-    
-/*     if (err) throw err;
-     */
-    if( result!= null){    
-      if(!err && result.cc==req.body.cc){
-      console.log("\n entrou aqui 002!");
-      res.status(400).json({ message: "User is already registered." });
-      //throw err; 
-      console.log("\n entrou aqui 003!");
-     
-    }
-  }else{
-  console.log("\n entrou aqui 007!");
-   
-    user.save(() => {
-      {
-        console.log(" entrou aqui !");
-        res 
-          .status(200)
-          .render("", { title: "" });
+  User.findOne({ cc: req.body.cc }, function (err, result) {
+    if (result != null) {
+      if (!err && result.cc == req.body.cc) {
+        res.status(400).json({ message: "User is already registered." });
       }
-    });
-  }
-  })};
-
-
-
-//update an employee
-userController.addPersonalData = function (req, res) {
-  User.findByIdAndUpdate(
-    req.params.email,
-    {
-      $set: {
-        birthDate: req.body.birthDate,
-        cellphone: req.body.cellphone,
-        cc: req.body.cc,
-        street: req.body.stress,
-        doorNumber: req.body.doorNumber,
-        district: req.body.district,
-        locality: req.body.locality,
-      },
-    },
-    { new: true },
-    function (err, employee) {
-      if (err) {
-        console.log(err);
-        res.render("../");
-      }
+    } else {
+      user.save(() => {
+        {
+          res.status(200).render("viewUser", params);
+        }
+      });
     }
-  );
+  });
 };
-
-
 
 module.exports = userController;
