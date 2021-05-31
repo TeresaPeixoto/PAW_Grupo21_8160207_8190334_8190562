@@ -4,15 +4,6 @@ var Event = require("../models/event");
 var eventController = {};
 
 eventController.createEvent = function (req, res, next) {
-  var numberOfEvents;
-  Event.count({}, function (err, numOfEvents){
-    numberOfEvents = numOfEvents;
-  });
-  var id = "EE" + numberOfEvents;
-  req.body = {
-    _id: id,
-    ...req.body
-  };
   var event = new Event(req.body);
 
   if (!req.body.eventName || req.body.eventName.length < 6) {
@@ -51,10 +42,10 @@ eventController.getAllEvents = function (req, res, next) {
   });
 };
 
-eventController.deleteEvent = function (req, res, next) {
-  Event.remove({ _id: req.params.id }).exec((err, deletedEvent) => {
+eventController.deleteByID = function (req, res, next) {
+  Event.remove({ _id: req.params._id }).exec((err, deletedEvent) => {
     if (err) {
-      next(err);
+      console.log(err);
     } else {
       res.json(deletedEvent)
     }
