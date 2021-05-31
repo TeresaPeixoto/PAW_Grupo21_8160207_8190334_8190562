@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Eventos Culturais</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <button onclick="location.href='http://localhost:3000/register';" value="Registar uma conta">Register</button>
+    <h1>Eventos Existentes</h1>
+    <table class="allEvents">
+      <tr>
+        <th class="allEvents">Name</th>
+        <th class="allEvents">Local</th>
+        <th class="allEvents">Date</th>
+        <th class="allEvents">Price</th>
+        <th class="allEvents">Lugares</th>
+        <th class="allEvents">Descrição</th>
+      </tr>
+      <% for(var i=0; i < result.length; i++) { %>
+         <tr>
+          <td class="allEvents"><%= result[i].eventName %></td>
+          <td class="allEvents"><%= result[i].local %></td>
+          <td class="allEvents"><%= result[i].eventDate %></td>
+          <td class="allEvents"><%= result[i].price %></td>
+          <td class="allEvents"><%= result[i].lugares %></td>
+          <td class="allEvents"><%= result[i].description %></td>
+        </tr>
+      <% } %>
+      </table>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <h1>Criar Conta</h1>
+  <form action="/register/created_user" method="POST" onsubmit="return validateData()">
+    <div class="registrationInputs">
+      <label for="userName">Nome:</label><br />
+      <input type="text" name="userName" id="userName" minlength="6" required />
+    </div>
+
+    <div class="registrationInputs">
+      <label for="email">E-mail:</label><br />
+      <input type="text" name="email" id="email" required />
+    </div>
+
+    <div class="registrationInputs">
+      <label for="pass">Password:</label><br />
+      <input type="password" name="pass" id="pass" minlength="6" required /><br />
+      <input type="checkbox" onclick=showPassword()> Show Password</input> <br /><br />
+    </div>
+
+
+    <div>
+      <label for="birthDate">Data de Nascimento:</label><br />
+      <input type="date" name="birthDate" id="birthDate" />
+    </div>
+
+    <div>
+      <label for="cellphone">Telefone:</label><br />
+      <input type="number" name="cellphone" id="cellphone" minlength="9" maxlength="9"/>
+    </div>
+
+    <div>
+      <label for="cc">Nº de C.C:</label><br />
+      <input type="number" name="cc" id="cc" minlength="8" maxlength="8"/>
+    </div>
+
+
+    <div>
+      <label for="morada">Morada:</label><br />
+      <input type="text" name="morada" id="morada"/>
+    </div>
+    
+
+    <div class="registrationInputs">
+      <button type="submit">Submeter</button>
+    </div>
+  </form>
+
+  <script src="/javascripts/sRegister.js"></script>
+</body>
+
+</html>
