@@ -34,6 +34,7 @@ export class AuthRestServiceService {
     console.log("no serviço");
     console.log(user);
       return this.http.post<any>('http://localhost:3000/api/v1/register',user);
+    
   }
 }
 

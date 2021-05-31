@@ -13,13 +13,17 @@ userController.createAccount = function (req, res) {
   User.findOne({ email: req.body.email }, function (err, result) {
     if (result != null) {
       if (!err && result.email == req.body.email) {
-        res.status(400).json({ message: "User is already registered." });
+        res.json({ message: "User is already registered." });
       }
     } else {
-      user.save(() => {
+      user.save((err) => {
         {
-          res.status(200).send({registo:true});
-        }
+          if(err){
+            console.log(err);
+            
+          }else{
+          res.json({registo:true});
+        }}
       });
     }
   });
