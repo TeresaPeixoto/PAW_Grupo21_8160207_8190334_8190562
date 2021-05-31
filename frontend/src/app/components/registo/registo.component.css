@@ -1,23 +1,49 @@
-.registo-form>label, .registo-form>input {
-    display: block;
-    width: 100%;
-    border-top: 0;
-    border-right: 0px;
-    border-left: 0px;
-    padding: 10px 0px 10px 0px;
+.registo-form > label,
+.registo-form > input {
+  display: block;
+  width: 25%;
+  border-top: 0;
+  border-right: 0px;
+  border-left: 0px;
+  padding: 10px 0px 10px 0px;
 }
 
-.registo-form>input:focus {
-    outline: none;
+.registo-form > input:focus {
+  outline: none;
 }
 
 .registo-button {
-    display: block;
-    margin: 30px auto;
-    height: 3em;
-    width: 7em;
+
+  margin: 30px auto;
+  height: 3em;
+  width: 7em;
+
+  padding: 20px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
+}
+
+#btn1 {
+    position: absolute;
+    left: 600px;
+    display: inline;
+    height: 4em;
+    width: 8em;
+    color: rgb(91, 202, 17);
+}
+
+#btn2 {
+    position: absolute;
+    left: 780px;
+    display: inline;
+    height: 4em;
+    width: 8em;
+    color: rgb(202, 45, 17);
 }
