@@ -14,15 +14,14 @@ export class RegistoComponent implements OnInit {
     email: new FormControl(null, [Validators.required]),
     userName: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [
-      Validators.required,
-      Validators.minLength(7),
+      Validators.required
     ]),
     birthDate: new FormControl(null, [Validators.required]),
     cellphone: new FormControl(null, [
-      Validators.required,
-      Validators.minLength(9),
+      Validators.required
     ]),
-    morada: new FormControl(null, [Validators.required]),
+    address: new FormControl(null, [Validators.required]),
+    nif: new FormControl(null, Validators.required),
   });
 
   constructor(

@@ -8,7 +8,7 @@ var userController = {};
 
 userController.createAccount = function (req, res) {
   var user = new User(req.body);
-
+  console.log(user);
   User.findOne({ email: req.body.email }, function (err, result) {
     if (result != null) {
       if (!err && result.email == req.body.email) {

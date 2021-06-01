@@ -71,12 +71,12 @@
             <div class="form-group">
               <div class="col-xs-6">
                 <label for="email"><h4>Email</h4></label>
-                <input
+                <input disabled
                   type="email"
                   class="form-control"
                   name="email"
                   id="email"
-                  placeholder="email"
+                  placeholder="Email" [(ngModel)] = "email"
                 />
               </div>
             </div>
@@ -89,7 +89,19 @@
                   class="form-control"
                   name="cellphone"
                   id="cellphone"
-                  placeholder="Telemovel "
+                  placeholder="Telemovel" [(ngModel)] = "cellphone"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-6">
+                <label for="nif"><h4>NIF</h4></label>
+                <input disabled
+                  type="number"
+                  class="form-control"
+                  name="nif"
+                  id="nif"
+                  placeholder="nif" [(ngModel)] = "nif"
                 />
               </div>
             </div>
@@ -97,24 +109,24 @@
             <div class="form-group">
               <div class="col-xs-6">
                 <label for="birthDate"><h4>Data de Aniversário</h4></label>
-                <input
+                <input disabled
                   type="date"
                   class="form-control"
                   name="birthDate"
                   id="birthDate"
-                  placeholder="Data de nascimento"
+                  placeholder="Data de nascimento" [(ngModel)] = "birthDate"
                 />
               </div>
             </div>
             <div class="form-group">
               <div class="col-xs-12">
-                <label for="morada"><h4>Morada</h4></label>
+                <label for="address"><h4>Morada</h4></label>
                 <input
                   type="text"
                   class="form-control"
-                  name="morada"
-                  id="morada"
-                  placeholder="morada"
+                  name="address"
+                  id="address"
+                  placeholder="address" [(ngModel)] = "address"
                 />
               </div>
             </div>

@@ -38,7 +38,7 @@ export class AuthRestServiceService {
   }
 
   getUser(email:string): Observable<any>{
-    return this.http.get<any>('http://localhost:3000/api/v1/clientProfile/'+email );
+    return this.http.get<any>('http://localhost:3000/api/v1/users/clientProfile/'+email );
   }
 }
 
