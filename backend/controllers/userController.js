@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 var User = require("../models/user");
 const jwt = require('jsonwebtoken');
 var authconfig = require('../config/authconfig');
+const user = require("../models/user");
 
 
 var userController = {};
@@ -29,21 +30,21 @@ userController.createAccount = function (req, res) {
 };
 
 userController.showById = function (req, res) {
-  User.findOne({ _id: req.params._id }).exec((err, dbuser) => {
+  User.findById(req.body._id, req.body, (err, dbUser) => {
     if (err) {
       console.log(err);
     } else {
-      res.json(dbuser);
+      res.json(dbUser);
     }
   })
 }
 
 userController.showByEmail = function (req, res) {
-  User.findOne({ email: req.params.email }).exec((err, dbuser) => {
+  User.findOne({ email: req.params.email }).exec((err, dbUser) => {
     if (err) {
       console.log(err);
     } else {
-      res.json(dbuser);
+      res.json(dbUser);
     }
   })
 }
@@ -58,8 +59,18 @@ userController.editById = function (req, res) {
   })
 }
 
+userController.editByEmail = function (req, res) {
+  User.findOneAndUpdate(req.body.email, req.body, (err, editedUser) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(editedUser);
+    }
+  })
+}
+
 userController.deleteById = function (req, res) {
-  User.remove({ _id: req.params._id }).exec((err, deletedUser) => {
+  User.findByIdAndDelete(req.body._id, req.body, (err, deletedUser) => {
     if (err) {
       console.log(err);
     } else {
@@ -74,6 +85,36 @@ userController.deleteByEmail = function (req, res) {
       console.log(err);
     } else {
       res.json(deletedUser);
+    }
+  })
+}
+
+userController.changeRole = function (req, res) {
+  User.findOneAndUpdate(req.body.email, { role: req.body.role }, (err, editedUser) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(editedUser);
+    }
+  })
+}
+
+userController.changeRoleToPromotor = function(req, res){
+  User.findOneAndUpdate(req.body.email, {role: 'promotor'}, (err, editedUser)=>{
+    if(err){
+      console.log(err);
+    }else{
+      res.json(editedUser);
+    }
+  })
+}
+
+userController.changeRoleToAdmin = function(req, res){
+  User.findOneAndUpdate(req.body.email, {role: 'admin'}, (err, editedUser)=>{
+    if(err){
+      console.log(err);
+    }else{
+      res.json(editedUser);
     }
   })
 }

@@ -7,6 +7,4 @@ var userController = require("../controllers/userController");
 
 router.post("/", userController.createAccount);
 
-
-
 module.exports = router;
