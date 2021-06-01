@@ -29,51 +29,51 @@ userController.createAccount = function (req, res) {
 };
 
 userController.showById = function (req, res) {
-  User.findOne({ _id: req.params._id }).exec((err, dbitem) => {
+  User.findOne({ _id: req.params._id }).exec((err, dbuser) => {
     if (err) {
       console.log(err);
     } else {
-      res.json(dbitem);
+      res.json(dbuser);
     }
   })
 }
 
 userController.showByEmail = function (req, res) {
-  User.findOne({ email: req.params.email }).exec((err, dbitem) => {
+  User.findOne({ email: req.params.email }).exec((err, dbuser) => {
     if (err) {
       console.log(err);
     } else {
-      res.json(dbitem);
+      res.json(dbuser);
     }
   })
 }
 
 userController.editById = function (req, res) {
-  User.findByIdAndUpdate(req.body._id, req.body, (err, editedItem) => {
+  User.findByIdAndUpdate(req.body._id, req.body, (err, editedUser) => {
     if (err) {
       console.log(err);
     } else {
-      res.json(editedItem);
+      res.json(editedUser);
     }
   })
 }
 
 userController.deleteById = function (req, res) {
-  User.remove({ _id: req.params._id }).exec((err, deletedItems) => {
+  User.remove({ _id: req.params._id }).exec((err, deletedUser) => {
     if (err) {
       console.log(err);
     } else {
-      res.json(deletedItem);
+      res.json(deletedUser);
     }
   })
 }
 
 userController.deleteByEmail = function (req, res) {
-  User.remove({ email: req.params.email }).exec((err, deletedItems) => {
+  User.remove({ email: req.params.email }).exec((err, deletedUser) => {
     if (err) {
       console.log(err);
     } else {
-      res.json(deletedItem);
+      res.json(deletedUser);
     }
   })
 }

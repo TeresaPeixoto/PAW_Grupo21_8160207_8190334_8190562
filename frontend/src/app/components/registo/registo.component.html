@@ -74,28 +74,22 @@
           </h4>
         </div>
 
-        <div class="registo-button" >
-            <button id="btn1"
-              href=""
-              type="submit"
-              class="btn btn-lg btn-success btn-block"
-              [disabled]="!formulario.valid"
-              
-            >
-              Registar
-            </button>
-
-
-            <button id="btn2"
-              href=""
-              type="submit"
-              class="btn btn-lg btn-primary btn-block"
-              routerLink="/login"
-                         
-            >
-              Cancel
-            </button>
-          </div>
+        <div class="registo-button">
+          <button
+            id="btn1"
+            href=""
+            type="submit"
+            class="btn btn-lg btn-success btn-block"
+            [disabled]="!formulario.valid"
+          >Registar</button>
+          <button
+            id="btn2"
+            href=""
+            type="submit"
+            class="btn btn-lg btn-primary btn-block"
+            routerLink="/login"
+          >Cancel</button>
+        </div>
       </div>
     </fieldset>
   </form>

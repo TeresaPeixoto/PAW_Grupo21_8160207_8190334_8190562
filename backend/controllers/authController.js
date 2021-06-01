@@ -13,6 +13,7 @@ authController.login = function(req,res){
         if(err) return res.status(500).send('Erro no servidor');
         if(!user) return res.status(404).send('Useer não encontrado');
         console.log(user);
+        console.log(user.userName);
         console.log(req.body);
         //var passwordIsValid = bcrypt.compareSync(req.body.password, user.pass);
         if(req.body.password!=user.password) return res.status(401).send({auth:false , token: null});
@@ -21,7 +22,7 @@ authController.login = function(req,res){
             expiresIn:86400 // expira em 24 horas
         });
 
-        res.status(200).send({auth:true, token:token,userName:user.userName});
+        res.json({auth:true, token:token,userName:user.userName, email:user.email});
 
     });
 }
