@@ -3,7 +3,7 @@ var Event = require("../models/event");
 
 var eventController = {};
 
-eventController.createEvent = function (req, res, next) {
+eventController.createEvent = function (req, res) {
   var event = new Event(req.body);
 
   if (!req.body.eventName || req.body.eventName.length < 6) {
@@ -21,8 +21,7 @@ eventController.createEvent = function (req, res, next) {
   } else {
     event.save((err) => {
       if (err) {
-        console.log("Erro a gravar");
-        next(err);
+        console.log(err);
       } else {
         res.json(event);
       }
@@ -30,24 +29,42 @@ eventController.createEvent = function (req, res, next) {
   }
 };
 
-eventController.getAllEvents = function (req, res, next) {
-  Event.find({}, (err, dbevents) => {
+eventController.getAllEvents = function (req, res) {
+  Event.find({}, (err, allEvents) => {
     if (err) {
       console.log(err);
-      next(err);
     } else {
-      console.log(dbevents);
-      res.json(dbevents);
+      res.json(allEvents);
     }
   });
 };
 
-eventController.deleteByID = function (req, res, next) {
-  Event.remove({ _id: req.params._id }).exec((err, deletedEvent) => {
+eventController.deleteByID = function (req, res) {
+  Event.findByIdAndDelete(req.body._id, (err, deletedEvent) => {
     if (err) {
       console.log(err);
     } else {
-      res.json(deletedEvent)
+      res.json(deletedEvent);
+    }
+  })
+}
+
+eventController.showByID = function (req, res) {
+  Event.findById(req.body._id, (err, dbEvent) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(dbEvent);
+    }
+  })
+}
+
+eventController.editByID = function (req, res) {
+  Event.findByIdAndUpdate(req.body._id, req.body, (err, updatedEvent) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(updatedEvent);
     }
   })
 }

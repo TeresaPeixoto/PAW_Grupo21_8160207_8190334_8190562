@@ -7,10 +7,8 @@ var eventController = require('../controllers/eventController');
 
 router.post("/create", eventController.createEvent);
 
-router.get('/create', function(req, res, next) {
-  res.render('createEvent', { title: 'Criar evento' });
-});
-
 router.get("/allEvents", eventController.getAllEvents);
+
+router.get("")
 
 module.exports = router;
