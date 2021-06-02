@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var registerRouter = require('./routes/register');
 var eventRouter = require('./routes/events');
 var authRouter = require('./routes/auth');
+var adminRouter = require('./routes/administrator.js');
 
 mongoose.Promise = global.Promise
 
@@ -36,6 +37,7 @@ app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/register', registerRouter);
 app.use('/api/v1/event', eventRouter);
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/adminsaywhat', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

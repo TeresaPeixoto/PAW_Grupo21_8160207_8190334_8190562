@@ -89,6 +89,26 @@ userController.deleteByEmail = function (req, res) {
   })
 }
 
+userController.suspendedUserById = function (req, res) {
+  User.findByIdAndUpdate(req.body._id, { userStatus: 'suspenso' }, (err, suspendedUser) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(suspendedUser);
+    }
+  })
+}
+
+userController.suspendUserByEmail = function (req, res) {
+  User.findOneAndUpdate(req.body.email, { userStatus: 'suspenso' }, (err, suspendedUser) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(suspendedUser);
+    }
+  })
+}
+
 userController.changeRole = function (req, res) {
   User.findOneAndUpdate(req.body.email, { role: req.body.role }, (err, editedUser) => {
     if (err) {
@@ -99,21 +119,21 @@ userController.changeRole = function (req, res) {
   })
 }
 
-userController.changeRoleToPromotor = function(req, res){
-  User.findOneAndUpdate(req.body.email, {role: 'promotor'}, (err, editedUser)=>{
-    if(err){
+userController.changeRoleToPromotor = function (req, res) {
+  User.findOneAndUpdate(req.body.email, { role: 'promotor' }, (err, editedUser) => {
+    if (err) {
       console.log(err);
-    }else{
+    } else {
       res.json(editedUser);
     }
   })
 }
 
-userController.changeRoleToAdmin = function(req, res){
-  User.findOneAndUpdate(req.body.email, {role: 'admin'}, (err, editedUser)=>{
-    if(err){
+userController.changeRoleToAdmin = function (req, res) {
+  User.findOneAndUpdate(req.body.email, { role: 'admin' }, (err, editedUser) => {
+    if (err) {
       console.log(err);
-    }else{
+    } else {
       res.json(editedUser);
     }
   })

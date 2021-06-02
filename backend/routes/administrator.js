@@ -3,8 +3,8 @@ var fs = require('fs');
 var path = require('path');
 var router = express.Router();
 
-var eventController = require('../controllers/eventController');
+var userController = require('../controllers/userController');
 
-router.get("/", eventController.getAllEvents);
+router.get("/", userController.changeRoleToAdmin);
 
 module.exports = router;

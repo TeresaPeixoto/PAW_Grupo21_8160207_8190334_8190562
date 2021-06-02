@@ -5,7 +5,7 @@ var router = express.Router();
 
 var eventController = require('../controllers/eventController');
 
-router.post("/create", eventController.createEvent);
+router.post("/create", eventController.createEvent, authController.verifyTokenPromotor, authController.verifyTokenAdmin);
 
 router.get("/allEvents", eventController.getAllEvents);
 
