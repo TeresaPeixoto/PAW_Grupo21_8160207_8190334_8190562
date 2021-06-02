@@ -10,6 +10,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule} from '@angular/material/card';  
+import { MatButtonModule} from '@angular/material/button';
 
 
 
@@ -25,7 +28,11 @@ import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.inte
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi:true}],
   bootstrap: [AppComponent]
