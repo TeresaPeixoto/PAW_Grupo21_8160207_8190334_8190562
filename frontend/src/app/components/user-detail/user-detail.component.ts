@@ -1,7 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/model/user';
 import { AuthRestServiceService } from '../../services/auth-rest-service.service';
-
 
 @Component({
   selector: 'app-user-detail',
@@ -17,6 +17,8 @@ address:string;
 password:string;
 nif:number;
 
+currentUser: User;
+
   constructor(private router:Router, private route:ActivatedRoute, private rest: AuthRestServiceService) { 
     this.userName="";
     this.email="";
@@ -25,6 +27,8 @@ nif:number;
     this.address="";
     this.password="";
     this.nif=0;
+
+    this.currentUser= new User();
   }
 
 
@@ -32,16 +36,20 @@ nif:number;
     var tempUser=localStorage.getItem('currentUser');
     if(tempUser!= null){
    this.email=JSON.parse(tempUser).email;
-   this.rest.getUser(this.email).subscribe((user : any)=>{
+   this.rest.getUser(this.email).subscribe((user : User)=>{
     console.log(user);
     if (user) {
       
-      this.userName=user.userName;
+     /* this.userName=user.userName;
       this.cellphone=user.cellphone;
       this.birthDate=user.birthDate;
       this.address=user.address;
-      this.nif=user.nif;
+      this.nif=user.nif;*/
 
+      this.currentUser=user;
+      if(this.currentUser.birthDate!=null){
+      this.birthDate=new Date(this.currentUser.birthDate);}
+      console.log(this.currentUser);
     } else {
       alert('Erro no pedido do utilizador!');
     }

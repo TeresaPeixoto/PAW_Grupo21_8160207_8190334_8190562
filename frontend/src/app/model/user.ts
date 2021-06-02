@@ -1,4 +1,6 @@
 export class User {
-  constructor(public email?: string, public pass?: string) {
+  constructor(public userName?: string, public email?: string, public birthDate? : Date,
+    public cellphone?: number, public nif?: number, public address?: string) {
   }
+  
 }
