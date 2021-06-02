@@ -6,6 +6,6 @@ router.get('/clientProfile/:email', userController.showByEmail);
 
 router.get('/clientProfile/delete/:email', userController.deleteByEmail);
 
-router.get('/clientProfile/edit/:email', userController.editByEmail);
+router.put('/clientProfile/edit/:email', userController.editByEmail);
 
 module.exports = router;
