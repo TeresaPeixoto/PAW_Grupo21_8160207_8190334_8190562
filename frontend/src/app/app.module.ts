@@ -13,6 +13,8 @@ import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.inte
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule} from '@angular/material/card';  
 import { MatButtonModule} from '@angular/material/button';
+import { AddEventoComponent } from './components/add-evento/add-evento.component';
+import { ListEventoComponent } from './components/list-evento/list-evento.component';
 
 
 
@@ -21,7 +23,9 @@ import { MatButtonModule} from '@angular/material/button';
     AppComponent,
     RegistoComponent,
     UserDetailComponent,
-    LoginComponent
+    LoginComponent,
+    AddEventoComponent,
+    ListEventoComponent
   ],
   imports: [
     BrowserModule,

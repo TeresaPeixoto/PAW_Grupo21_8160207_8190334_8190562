@@ -9,14 +9,9 @@ import { AuthRestServiceService } from '../../services/auth-rest-service.service
   styleUrls: ['./user-detail.component.css'],
 })
 export class UserDetailComponent implements OnInit {
-  userName: string;
-  email: string;
-  cellphone: number;
-  birthDate: Date;
-  address: string;
   password: string;
-  nif: number;
-
+  email: string;
+  passwordV: string;
   currentUser: User;
 
   constructor(
@@ -24,13 +19,9 @@ export class UserDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private rest: AuthRestServiceService
   ) {
-    this.userName = '';
     this.email = '';
-    this.cellphone = 0;
-    this.birthDate = new Date();
-    this.address = '';
     this.password = '';
-    this.nif = 0;
+    this.passwordV = '';
 
     this.currentUser = new User();
   }
@@ -41,12 +32,6 @@ export class UserDetailComponent implements OnInit {
       this.email = JSON.parse(tempUser).email;
       this.rest.getUser(this.email).subscribe((user: User) => {
         if (user) {
-          console.log(this.birthDate);
-          /* this.userName=user.userName;
-      this.cellphone=user.cellphone;
-      this.birthDate=user.birthDate;
-      this.address=user.address;
-      this.nif=user.nif;*/
 
           this.currentUser = user;
           console.log(this.currentUser);
@@ -54,21 +39,23 @@ export class UserDetailComponent implements OnInit {
           alert('Erro no pedido do utilizador!');
         }
       });
-      //this.userName=JSON.parse(tempUser).email;
     }
   }
 
   updateUser(): void {
-   this.rest
-   .save(this.currentUser)
-   .subscribe((currentUser:any)=> {
-  
-    if (this.currentUser) {
-      this.router.navigate(['/']);
-    } else {
-      alert('Erro no update!');
+    console.log(this.currentUser);
+
+    if (this.password != '' && this.passwordV != '') {
+      if (this.password == this.passwordV) {
+        this.currentUser.password=this.password;
+      }
     }
-  });
-  
-}
+    this.rest.save(this.currentUser).subscribe((currentUser: any) => {
+      if (this.currentUser) {
+        this.router.navigate(['/list']);
+      } else {
+        alert('Erro no update!');
+      }
+    });
+  }
 }

@@ -1,0 +1,180 @@
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<hr />
+<div class="container bootstrap snippet">
+  <div class="row">
+    <div class="col-sm-10"><h1>Evento </h1></div>
+    <div class="col-sm-2">
+      <a href="/event" class="pull-right"
+        ><img
+          title="profile image"
+          class="img-circle img-responsive"
+          src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"
+      /></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="col-sm-9">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab">Evento</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="home">
+            <hr />
+            <form
+              class="form"
+              action="##"
+              method="post"
+              id="Form"
+              (ngSubmit)="updateEvent()"
+            >
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="eventName"><h4>Nome do Evento</h4></label>
+                  <input
+                    disabled
+                    type="text"
+                    class="form-control"
+                    name="eventName"
+                    id="eventName"
+                    placeholder="Nome do Evento"
+                    [(ngModel)]="currentUser.eventName"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="local"><h4>Local</h4></label>
+                  <input
+                    disabled
+                    type="text"
+                    class="form-control"
+                    name="local"
+                    id="local"
+                    placeholder="Local"
+                    [(ngModel)]="currentUser.local"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="cellphone"><h4>Telemovel</h4></label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="cellphone"
+                    id="cellphone"
+                    placeholder="Telemovel"
+                    [(ngModel)]="currentUser.cellphone"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="nif"><h4>NIF</h4></label>
+                  <input
+                    disabled
+                    type="number"
+                    class="form-control"
+                    name="nif"
+                    id="nif"
+                    placeholder="nif"
+                    [(ngModel)]="currentUser.nif"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="birthDate"><h4>Data de Aniversário</h4></label>
+                  <input
+                    disabled
+                    type="Date"
+                    class="form-control"
+                    name="birthDate"
+                    id="birthDate"
+                    placeholder="Data de nascimento"
+                    [(ngModel)]="currentUser.birthDate"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <label for="address"><h4>Morada</h4></label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="address"
+                    id="address"
+                    placeholder="address"
+                    [(ngModel)]="currentUser.address"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="password"><h4>Password</h4></label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    id="password"
+                    placeholder="password"
+                    title="enter your password."
+                    [(ngModel)]="password"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="passwordV"><h4>Verify</h4></label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="passwordV"
+                    id="passwordV"
+                    placeholder="passwordV"
+                    title="enter your passwordV."
+                    [(ngModel)]="passwordV"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <br />
+                  <button
+                    id="btn1"
+                    class="btn btn-lg btn-success btn-block"
+                    type="submit"
+                  >
+                    Salvar
+                  </button>
+                  <button class="btn btn-lg" routerLink="/">Cancelar</button>
+                </div>
+              </div>
+            </form>
+
+            <hr />
+          </div>
+        </div>
+
+        <!--/col-9-->
+      </div>
+      <!--/row-->
+    </div>
+  </div>
+</div>
