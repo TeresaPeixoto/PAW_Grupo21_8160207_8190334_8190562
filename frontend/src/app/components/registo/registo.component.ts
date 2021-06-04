@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../../model/user';
 import { Router } from '@angular/router';
 import { AuthRestServiceService } from 'src/app/services/auth-rest-service.service';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl, MinLengthValidator, MinValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-registo',
@@ -9,17 +10,15 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
   styleUrls: ['./registo.component.css'],
 })
 export class RegistoComponent implements OnInit {
+  user: User = new User();
+  error: any;
 
   public formulario: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required]),
     userName: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [
-      Validators.required
-    ]),
+    password: new FormControl(null, [Validators.required]),
     birthDate: new FormControl(null, [Validators.required]),
-    cellphone: new FormControl(null, [
-      Validators.required
-    ]),
+    cellphone: new FormControl(null, [ Validators.required]),
     address: new FormControl(null, [Validators.required]),
     nif: new FormControl(null, Validators.required),
   });
