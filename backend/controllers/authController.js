@@ -50,7 +50,7 @@ authController.verifyToken = function (req, res, next) {
 
 }
 
-authController.verifyTokenPromotor = function (req, res, next) {
+authController.verifyTokenHigherPermissions = function (req, res, next) {
 
     // check header or url parameters or post parameters for token
     var token = req.headers['x-access-token'];
@@ -59,7 +59,7 @@ authController.verifyTokenPromotor = function (req, res, next) {
 
     // verifies secret and checks exp
     jwt.verify(token, config.secret, function (err, decoded) {
-        if (err || decoded.role !== 'promotor')
+        if (err || decoded.role !== 'promotor' && decoded.role !== 'admin')
             return res.status(500).send({ auth: false, message: 'Failed to authenticate token or not Promotor' });
         // if everything is good, save to request for use in other routes
         req.userId = decoded.id;
