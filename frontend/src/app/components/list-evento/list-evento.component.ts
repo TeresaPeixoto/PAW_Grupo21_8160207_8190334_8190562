@@ -30,8 +30,19 @@ export class ListEventoComponent implements OnInit {
     }
   }
 
+  
+    this.rest.save(this.currentUser).subscribe((currentUser: any) => {
+      if (this.currentUser) {
+        this.router.navigate(['/list']);
+      } else {
+        alert('Erro no update!');
+      }
+    });
+  }
+
   updateEvent(): void {
-    
+    console.log(this.currentEvent);
+    this.rest.save
   }
 
 }

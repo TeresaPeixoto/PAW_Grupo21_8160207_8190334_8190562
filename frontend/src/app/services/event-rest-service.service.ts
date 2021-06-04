@@ -16,8 +16,11 @@ const httpOptions = {
 })
 export class EventRestServiceService {
   constructor(private http: HttpClient) {}
+
   addEvento(evento: Evento): Observable<any> {
     console.log(evento);
     return this.http.post<Evento>(endpoint + '/create', evento);
   }
+
+ 
 }

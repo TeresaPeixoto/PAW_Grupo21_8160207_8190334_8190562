@@ -1,4 +1,4 @@
-<!--<head>
+<head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,7 +13,7 @@
 <hr />
 <div class="container bootstrap snippet">
   <div class="row">
-    <div class="col-sm-10"><h1>Evento </h1></div>
+    <div class="col-sm-10"><h1>Evento</h1></div>
     <div class="col-sm-2">
       <a href="/event" class="pull-right"
         ><img
@@ -50,7 +50,7 @@
                     name="eventName"
                     id="eventName"
                     placeholder="Nome do Evento"
-                    [(ngModel)]="currentUser.eventName"
+                    [(ngModel)]="currentEvent.eventName"
                   />
                 </div>
               </div>
@@ -64,95 +64,79 @@
                     name="local"
                     id="local"
                     placeholder="Local"
-                    [(ngModel)]="currentUser.local"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="col-xs-6">
-                  <label for="cellphone"><h4>Telemovel</h4></label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="cellphone"
-                    id="cellphone"
-                    placeholder="Telemovel"
-                    [(ngModel)]="currentUser.cellphone"
+                    [(ngModel)]="currentEvent.local"
                   />
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-6">
-                  <label for="nif"><h4>NIF</h4></label>
-                  <input
-                    disabled
-                    type="number"
-                    class="form-control"
-                    name="nif"
-                    id="nif"
-                    placeholder="nif"
-                    [(ngModel)]="currentUser.nif"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="col-xs-6">
-                  <label for="birthDate"><h4>Data de Aniversário</h4></label>
+                  <label for="eventDate"><h4>Data do Evento</h4></label>
                   <input
                     disabled
                     type="Date"
                     class="form-control"
-                    name="birthDate"
-                    id="birthDate"
-                    placeholder="Data de nascimento"
-                    [(ngModel)]="currentUser.birthDate"
+                    name="eventDate"
+                    id="eventDate"
+                    placeholder="Data do Evento"
+                    [(ngModel)]="currentEvent.eventDate"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="price"><h4>Preço do bilhete</h4></label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="price"
+                    id="price"
+                    placeholder="Preço do bilhete"
+                    [(ngModel)]="currentEvent.price"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="lugares"><h4>Lugares</h4></label>
+                  <input
+                    disabled
+                    type="number"
+                    class="form-control"
+                    name="lugares"
+                    id="lugares"
+                    placeholder="lugares"
+                    [(ngModel)]="currentEvent.lugares"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="description"><h4>Descriçao</h4></label>
+                  <input
+                    disabled
+                    type="text"
+                    class="form-control"
+                    name="description"
+                    id="description"
+                    placeholder="Descriçao"
+                    [(ngModel)]="currentEvent.description"
                   />
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-12">
-                  <label for="address"><h4>Morada</h4></label>
+                  <label for="lotacao"><h4>Lotação</h4></label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
-                    name="address"
-                    id="address"
-                    placeholder="address"
-                    [(ngModel)]="currentUser.address"
+                    name="lotacao"
+                    id="lotacao"
+                    placeholder="lotacao"
+                    [(ngModel)]="currentEvent.lotacao"
                   />
                 </div>
               </div>
 
-              <div class="form-group">
-                <div class="col-xs-6">
-                  <label for="password"><h4>Password</h4></label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    name="password"
-                    id="password"
-                    placeholder="password"
-                    title="enter your password."
-                    [(ngModel)]="password"
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-xs-6">
-                  <label for="passwordV"><h4>Verify</h4></label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    name="passwordV"
-                    id="passwordV"
-                    placeholder="passwordV"
-                    title="enter your passwordV."
-                    [(ngModel)]="passwordV"
-                  />
-                </div>
-              </div>
               <div class="form-group">
                 <div class="col-xs-12">
                   <br />
@@ -167,14 +151,10 @@
                 </div>
               </div>
             </form>
-
             <hr />
           </div>
         </div>
-
       </div>
-    
     </div>
   </div>
 </div>
--->
