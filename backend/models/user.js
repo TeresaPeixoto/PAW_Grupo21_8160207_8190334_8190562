@@ -20,6 +20,10 @@ var UserSchema = new mongoose.Schema({
   role: { 
     type: String, 
     default: 'cliente' 
+  },
+  userStatus: {
+    type: String,
+    default: 'ativo'
   }
 });
 

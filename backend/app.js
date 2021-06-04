@@ -12,10 +12,11 @@ var usersRouter = require('./routes/users');
 var registerRouter = require('./routes/register');
 var eventRouter = require('./routes/events');
 var authRouter = require('./routes/auth');
+var adminRouter = require('./routes/administrator.js');
 
 mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb://127.0.0.1:27017/paw_db', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://admin:admin123@cluster0.wgdbt.mongodb.net/paw_db', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(()=> console.log(' connected to DB!'))
   .catch(()=> console.log(' error connecting to DB!'))
 
@@ -36,6 +37,7 @@ app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/register', registerRouter);
 app.use('/api/v1/event', eventRouter);
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/adminsaywhat', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
