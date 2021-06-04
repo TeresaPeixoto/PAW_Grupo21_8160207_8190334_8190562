@@ -10,8 +10,8 @@ router.put('/clientProfile/suspend/:email', function (rep, res) {
     userController.suspendUser;
 });
 
+router.delete('/clientProfile/delete/:email', authController.verifyTokenAdmin, userController.deleteByEmail);
 
-router.delete('/clientProfile/delete/:email', userController.deleteByEmail, authController.verifyTokenAdmin);
 
 router.put('/clientProfile/edit/:email', userController.editByEmail, authController.verifyToken);
 

@@ -5,12 +5,14 @@ import { RegistoComponent } from './components/registo/registo.component';
 import {UserDetailComponent} from './components/user-detail/user-detail.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import {AddEventoComponent} from './components/add-evento/add-evento.component';
+import { ListEventoComponent} from './components/list-evento/list-evento.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registo', component: RegistoComponent },
   {path :'list', component: UserDetailComponent, canActivate: [AuthGuardGuard] },
-  {path : 'creatEvent', component: AddEventoComponent}
+  {path : 'creatEvent', component: AddEventoComponent, canActivate: [AuthGuardGuard]},
+  {path : 'listEvent/:_id' , component:ListEventoComponent, canActivate: [AuthGuardGuard]}
 ];
 
 @NgModule({

@@ -22,5 +22,12 @@ export class EventRestServiceService {
     return this.http.post<Evento>(endpoint + '/create', evento);
   }
 
+  listAllEvento(): Observable<any> {
+    return this.http.get<Evento[]>(endpoint + '/allEvents');
+  }
+  
+  editEvento(evento:Evento){
+    return this.http.put<Evento>(endpoint + '/edit/' + evento._id, evento);
  
+  }
 }
