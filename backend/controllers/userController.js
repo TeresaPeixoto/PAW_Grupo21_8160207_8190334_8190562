@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 var authconfig = require('../config/authconfig');
 const user = require("../models/user");
 
-
 var userController = {};
 
 userController.createAccount = function (req, res) {

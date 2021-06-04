@@ -5,7 +5,10 @@ var router = express.Router();
 
 router.get('/clientProfile/:email', userController.showByEmail);
 
-router.put('/clientProfile/suspend/:email', userController.suspendUser, authController.verifyToken);
+router.put('/clientProfile/suspend/:email', function (rep, res) {
+    authController.verifyToken;
+    userController.suspendUser;
+});
 
 router.delete('/clientProfile/delete/:email', userController.deleteByEmail, authController.verifyTokenAdmin);
 

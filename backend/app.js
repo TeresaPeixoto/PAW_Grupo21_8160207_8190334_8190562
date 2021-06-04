@@ -16,7 +16,7 @@ var adminRouter = require('./routes/administrator.js');
 
 mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb://127.0.0.1:27017/paw_db', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://admin:admin123@cluster0.wgdbt.mongodb.net/paw_db', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(()=> console.log(' connected to DB!'))
   .catch(()=> console.log(' error connecting to DB!'))
 
