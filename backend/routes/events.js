@@ -13,6 +13,14 @@ router.post("/create", function (rep, res) {
 
 router.get("/allEvents", eventController.getAllEvents);
 
-router.put("/edit/:id", eventController.editByID);
+router.put("/edit/:id", function (rep, res) {
+    authController.verifyTokenHigherPermissions;
+    eventController.editByID;
+});
+
+router.get("/search/:promotorid", function (rep, res) {
+    authController.verifyTokenHigherPermissions;
+    eventController.eventsBySpecificPromotor;
+});
 
 module.exports = router;

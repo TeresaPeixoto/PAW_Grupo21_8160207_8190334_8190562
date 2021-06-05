@@ -69,4 +69,14 @@ eventController.editByID = function (req, res) {
   })
 }
 
+eventController.eventsBySpecificPromotor = function (req, res){
+  Event.find({ promotorID: req.body.promotorID}, (err, eventsByPromotor) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(eventsByPromotor);
+    }
+  });
+}
+
 module.exports = eventController;
