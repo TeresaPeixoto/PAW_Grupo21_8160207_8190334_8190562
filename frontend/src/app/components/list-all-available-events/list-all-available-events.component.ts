@@ -24,19 +24,28 @@ evento: Evento;
     this.rest.listAllAvailableEvento().subscribe((eventos: Array<Evento>) => {
       console.log(eventos);
       for (let i = 0; i < eventos.length; i++) {
-          var data1= eventos[i].eventDate;
+        if(typeof eventos[i].eventDate !== "undefined"){
+            let data1 =typeof eventos[i].eventDate;
+           
+            console.log(data1);
+       
+            let today = new Date();
           
-          var data2 = new Date(data1);
-          
-          let today = new Date();
-         
-          
-        if (eventos[i]._id != null || data2<today) {
+        if (eventos[i]._id != null && typeof data1> typeof today) {
           this.eventos.push(eventos[i]);
           console.log(eventos[i]);
 
         }
       }
+    }
+   
+      
     });
   }
+  verMais(){
+    this.rest.editEvento(this.evento)
+    .subscribe((evento: any) => {
+      
+    });
+}
 }
