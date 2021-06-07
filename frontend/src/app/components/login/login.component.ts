@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       console.log(user);
       if (user && user.token) {
         localStorage.setItem('currentUser', JSON.stringify(user));
-        this.router.navigate(['/']);
+        this.router.navigate(['/listAllEvent']);
       } else {
         alert('Erro no login!');
       }

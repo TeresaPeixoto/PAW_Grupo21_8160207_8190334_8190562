@@ -8,7 +8,8 @@
   <br />
 
   <h1>Eventos</h1>
-  <hr />
+  <div align="end"><a id:link href="http://localhost:4200/list">{{currentUser.userName}}</a>
+  </div><hr />
   <div *ngFor="let evento of eventos">
     <div>
       <div class="container" style="margin-top: 30px">
@@ -22,26 +23,10 @@
                     {{ evento.eventName }}
                   </mat-list-item>
 
-                  <mat-list-item>
-                    <strong> Data do Evento :</strong>
-                    &nbsp;&nbsp;&nbsp;&nbsp;{{
-                      evento.eventDate
-                    }}</mat-list-item
-                  >
-                  <mat-list-item>
-                    <strong> Preço :</strong> &nbsp;&nbsp;&nbsp;&nbsp;{{
-                      evento.price
-                    }}</mat-list-item
-                  >
-                </mat-list>
-                &nbsp;&nbsp;
-                <button
-                  mat-raised-button
-                  routerLink="//listEvent/{{ evento._id }}"
-                  id="btn1"
-                >
-                  Ver mais ->
-                </button>
+                  <mat-list-item><strong> Data do Evento :</strong>&nbsp;&nbsp;&nbsp;&nbsp;{{evento.eventDate}}</mat-list-item>
+                  <mat-list-item><strong> Preço :</strong> &nbsp;&nbsp;&nbsp;&nbsp;{{evento.price}}</mat-list-item>
+                </mat-list>&nbsp;&nbsp;
+                <button mat-raised-button routerLink="//listEvent/{{ evento._id }}" id="btn1">Ver mais -></button>
               </div>
             </div>
           </div>
