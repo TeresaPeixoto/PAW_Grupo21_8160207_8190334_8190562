@@ -3,6 +3,7 @@ import { Evento } from '../../model/evento';
 import { Router , ActivatedRoute} from '@angular/router';
 import { EventRestServiceService } from 'src/app/services/event-rest-service.service';
 
+
 @Component({
   selector: 'app-list-evento',
   templateUrl: './list-evento.component.html',

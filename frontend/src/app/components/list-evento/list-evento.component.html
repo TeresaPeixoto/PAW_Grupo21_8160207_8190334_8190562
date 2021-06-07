@@ -39,64 +39,49 @@
               id="Form"
               (ngSubmit)="updateEvent()"
             >
-              
-                <div class="col-xs-6">
-                  <label for="eventName"><h4>Nome do Evento</h4></label>
-
-                  <p>{{ currentEvent.eventName }}</p>
-                </div>
-
-                <div class="form-group">
-                  <div class="col-xs-6">
-                    <label for="local"><h4>Local</h4></label>
-                    <p>{{ currentEvent.local }}</p>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-xs-6">
-                    <label for="eventDate"><h4>Data do Evento</h4></label>
-                    <p>{{ currentEvent.eventDate }}</p>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-xs-6">
-                    <label for="price"><h4>Preço do bilhete</h4></label>
-                    <p>{{ currentEvent.price }}</p>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-xs-6">
-                    <label for="lugares"><h4>Lugares</h4></label>
-                    <p>{{ currentEvent.lugares }}</p>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-xs-6">
-                    <label for="description"><h4>Descriçao</h4></label>
-                    <p>{{ currentEvent.description }}</p>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-xs-12">
-                    <label for="lotacao"><h4>Lotação</h4></label>
-                    <p>{{ currentEvent.lotacao }}</p>
-                  </div>
-                </div>
-              <div class="form-group">
-                <div class="col-xs-3">
-                  <br />
-                  <button
-                    id="btn1"
-                    class="btn btn-lg btn-success btn-block"
-                    type="submit"
-                  >
-                    Salvar
-                  </button>
-                  <button class="btn btn-lg" routerLink="/">Cancelar</button>
-                </div>
+              <mat-list>
+                <mat-list-item>
+                  Nome do Evento : &nbsp;&nbsp;&nbsp;{{
+                    currentEvent.eventName
+                  }}</mat-list-item
+                >
+                <mat-list-item>
+                  Local : &nbsp;&nbsp;&nbsp;&nbsp;{{
+                    currentEvent.local
+                  }}</mat-list-item
+                >
+                <mat-list-item>
+                  Data do Evento : &nbsp;&nbsp;&nbsp;&nbsp;{{
+                    currentEvent.eventDate
+                  }}</mat-list-item
+                >
+                <mat-list-item>
+                  Preço : &nbsp;&nbsp;&nbsp;&nbsp;{{
+                    currentEvent.price
+                  }}</mat-list-item
+                >
+                <mat-list-item>
+                  Lugares disponíveis :
+                  {{ currentEvent.lugares }}</mat-list-item
+                >
+                <mat-list-item>
+                  Descrição : {{ currentEvent.description }}</mat-list-item
+                >
+                <mat-list-item>
+                  Lotação : {{ currentEvent.lotacao }}</mat-list-item
+                >
+              </mat-list>
+              <br /><br />
+              <div class="example-button-row">
+                <button mat-raised-button routerLink="/" id="btn1">
+                  Adquirir um bilhete</button
+                >&nbsp;&nbsp;&nbsp;&nbsp;
+                <button mat-raised-button routerLink="/listAllEvent" id="btn1">
+                  Voltar para trás
+                </button>
               </div>
+              <hr />
             </form>
-            <hr />
           </div>
         </div>
       </div>
