@@ -15,7 +15,7 @@ const routes: Routes = [
   {path : 'creatEvent', component: AddEventoComponent, canActivate: [AuthGuardGuard]},
   {path : 'listEvent/:id' , component:ListEventoComponent, canActivate: [AuthGuardGuard]},
   
-  {path : 'listAllEvent' , component:ListAllEventsComponent}
+  {path : 'listAllEvent' , component:ListAllEventsComponent, canActivate: [AuthGuardGuard]}
 ];
 
 @NgModule({

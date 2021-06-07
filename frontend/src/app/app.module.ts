@@ -11,12 +11,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule} from '@angular/material/card';  
-import { MatButtonModule} from '@angular/material/button';
+import { MatSliderModule } from '@angular/material/slider';
 import { AddEventoComponent } from './components/add-evento/add-evento.component';
 import { ListEventoComponent } from './components/list-evento/list-evento.component';
 import { ListAllEventsComponent } from './components/list-all-events/list-all-events.component';
-
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -36,9 +35,8 @@ import { ListAllEventsComponent } from './components/list-all-events/list-all-ev
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    
-    MatCardModule,
-    MatButtonModule
+    MatSliderModule,
+    MatListModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi:true}],
   bootstrap: [AppComponent]
