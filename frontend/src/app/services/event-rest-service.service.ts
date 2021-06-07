@@ -30,4 +30,7 @@ export class EventRestServiceService {
     return this.http.put<Evento>(endpoint + '/edit/' + evento._id, evento);
  
   }
+
+  
+
 }

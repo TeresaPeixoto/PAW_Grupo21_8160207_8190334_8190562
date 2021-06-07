@@ -19,14 +19,7 @@ export class ListEventoComponent implements OnInit {
     var tempEvent = localStorage.getItem('currentEvent');
     if (tempEvent != null) {
     }
-/*
-    this.rest.listAllEvento().subscribe((currentEvent: any) => {
-      console.log(currentEvent);
-      currentEvent[0].eventName="teste";
-      this.rest.editEvento(currentEvent[0]).subscribe((currentEvent2:any)=>{
-          console.log(currentEvent2);
-      });
-    });*/
+
   }
 
   updateEvent(): void {

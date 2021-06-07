@@ -9,10 +9,11 @@ import { EventRestServiceService } from 'src/app/services/event-rest-service.ser
   styleUrls: ['./list-all-events.component.css'],
 })
 export class ListAllEventsComponent implements OnInit {
-
+evento: Evento;
   eventos: Array<Evento> = [];
 
   constructor(private router: Router, private rest: EventRestServiceService) {
+  this.evento= new Evento;
   }
 
   ngOnInit(): void {
@@ -31,4 +32,13 @@ export class ListAllEventsComponent implements OnInit {
       }
     });
   }
+
+
+  verMais(){
+    this.rest.editEvento(this.evento)
+    .subscribe((evento: any) => {
+      
+    });
+  }
+
 }
