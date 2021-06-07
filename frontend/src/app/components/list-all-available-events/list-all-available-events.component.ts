@@ -6,7 +6,7 @@ import { EventRestServiceService } from 'src/app/services/event-rest-service.ser
 @Component({
   selector: 'app-list-all-available-events',
   templateUrl: './list-all-available-events.component.html',
-  styleUrls: ['./list-all-available-events.component.css'],
+  styleUrls: ['./list-all-available-events.components.css'],
 })
 export class ListAllAvailableEventsComponent implements OnInit {
 evento: Evento;
