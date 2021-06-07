@@ -25,10 +25,10 @@
   </div>
   <div class="row">
     <div class="col-sm-9">
-        <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab">Evento</a></li>
-        </ul>
-
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab">Evento</a></li>
+      </ul>
+      <div *ngIf="currentEvent">
         <div class="tab-content">
           <div class="tab-pane active">
             <hr />
@@ -39,98 +39,49 @@
               id="Form"
               (ngSubmit)="updateEvent()"
             >
-              <div class="form-group">
+              
                 <div class="col-xs-6">
                   <label for="eventName"><h4>Nome do Evento</h4></label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="eventName"
-                    id="eventName"
-                    placeholder="Nome do Evento"
-                    [(ngModel)]="currentEvent.eventName"
-                  />
-                </div>
-              </div> <br>
-              <div class="form-group">
-                <div class="col-xs-6">
-                  <label for="local"><h4>Local</h4></label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="local"
-                    id="local"
-                    placeholder="Local"
-                    [(ngModel)]="currentEvent.local"
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-xs-6">
-                  <label for="eventDate"><h4>Data do Evento</h4></label>
-                  <input
-                    type="Date"
-                    class="form-control"
-                    name="eventDate"
-                    id="eventDate"
-                    placeholder="Data do Evento"
-                    [(ngModel)]="currentEvent.eventDate"
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-xs-6">
-                  <label for="price"><h4>Preço do bilhete</h4></label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="price"
-                    id="price"
-                    placeholder="Preço do bilhete"
-                    [(ngModel)]="currentEvent.price"
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-xs-6">
-                  <label for="lugares"><h4>Lugares</h4></label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="lugares"
-                    id="lugares"
-                    placeholder="lugares"
-                    [(ngModel)]="currentEvent.lugares"
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-xs-6">
-                  <label for="description"><h4>Descriçao</h4></label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="description"
-                    id="description"
-                    placeholder="Descriçao"
-                    [(ngModel)]="currentEvent.description"
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-xs-12">
-                  <label for="lotacao"><h4>Lotação</h4></label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="lotacao"
-                    id="lotacao"
-                    placeholder="lotacao"
-                    [(ngModel)]="currentEvent.lotacao"
-                  />
-                </div>
-              </div>
 
+                  <p>{{ currentEvent.eventName }}</p>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-6">
+                    <label for="local"><h4>Local</h4></label>
+                    <p>{{ currentEvent.local }}</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-6">
+                    <label for="eventDate"><h4>Data do Evento</h4></label>
+                    <p>{{ currentEvent.eventDate }}</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-6">
+                    <label for="price"><h4>Preço do bilhete</h4></label>
+                    <p>{{ currentEvent.price }}</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-6">
+                    <label for="lugares"><h4>Lugares</h4></label>
+                    <p>{{ currentEvent.lugares }}</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-6">
+                    <label for="description"><h4>Descriçao</h4></label>
+                    <p>{{ currentEvent.description }}</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="lotacao"><h4>Lotação</h4></label>
+                    <p>{{ currentEvent.lotacao }}</p>
+                  </div>
+                </div>
               <div class="form-group">
                 <div class="col-xs-3">
                   <br />
@@ -147,7 +98,7 @@
             </form>
             <hr />
           </div>
-        
+        </div>
       </div>
     </div>
   </div>

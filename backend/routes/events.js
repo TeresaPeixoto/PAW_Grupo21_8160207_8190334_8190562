@@ -10,10 +10,9 @@ router.post("/create", eventController.createEvent);
 
 router.get("/allEvents", eventController.getAllEvents);
 
-router.put("/edit/:id", function (rep, res) {
-    authController.verifyTokenHigherPermissions;
-    eventController.editByID;
-});
+router.put("/edit/:_id", eventController.editByID);
+
+router.get("/getEvento/:id",eventController.showByID);
 
 router.get("/search/:promotorid", function (rep, res) {
     authController.verifyTokenHigherPermissions;
