@@ -15,6 +15,7 @@ import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
 import { AddEventoComponent } from './components/add-evento/add-evento.component';
 import { ListEventoComponent } from './components/list-evento/list-evento.component';
+import { ListAllEventsComponent } from './components/list-all-events/list-all-events.component';
 
 
 
@@ -25,7 +26,8 @@ import { ListEventoComponent } from './components/list-evento/list-evento.compon
     UserDetailComponent,
     LoginComponent,
     AddEventoComponent,
-    ListEventoComponent
+    ListEventoComponent,
+    ListAllEventsComponent
   ],
   imports: [
     BrowserModule,

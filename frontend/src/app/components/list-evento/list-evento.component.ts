@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Evento } from '../../model/evento';
 import { Router } from '@angular/router';
 import { EventRestServiceService } from 'src/app/services/event-rest-service.service';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-list-evento',
@@ -21,7 +20,6 @@ export class ListEventoComponent implements OnInit {
     if (tempEvent != null) {
     }
 /*
-
     this.rest.listAllEvento().subscribe((currentEvent: any) => {
       console.log(currentEvent);
       currentEvent[0].eventName="teste";
@@ -32,8 +30,9 @@ export class ListEventoComponent implements OnInit {
   }
 
   updateEvent(): void {
-    console.log(this.currentEvent);
-    this.rest.editEvento(this.currentEvent).subscribe((currentEvent: any) => {
+    console.log("chegou aqui");
+    this.rest.editEvento(this.currentEvent)
+    .subscribe((currentEvent: any) => {
       if (this.currentEvent) {
         this.router.navigate(['/']);
       } else {

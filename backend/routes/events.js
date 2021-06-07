@@ -6,10 +6,7 @@ var router = express.Router();
 var eventController = require('../controllers/eventController');
 var authController = require('../controllers/authController');
 
-router.post("/create", function (rep, res) {
-    authController.verifyTokenHigherPermissions;
-    ventController.createEvent;
-});
+router.post("/create", eventController.createEvent);
 
 router.get("/allEvents", eventController.getAllEvents);
 

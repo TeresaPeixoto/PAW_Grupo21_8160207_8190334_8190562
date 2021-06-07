@@ -33,8 +33,12 @@ eventController.getAllEvents = function (req, res) {
   Event.find({}, (err, allEvents) => {
     if (err) {
       console.log(err);
-    } else {
+    } 
+    
+    else {
+    console.log(allEvents)  ;
       res.json(allEvents);
+
     }
   });
 };

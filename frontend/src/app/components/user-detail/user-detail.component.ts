@@ -32,7 +32,6 @@ export class UserDetailComponent implements OnInit {
       this.email = JSON.parse(tempUser).email;
       this.rest.getUser(this.email).subscribe((user: User) => {
         if (user) {
-
           this.currentUser = user;
           console.log(this.currentUser);
         } else {
@@ -50,7 +49,8 @@ export class UserDetailComponent implements OnInit {
         this.currentUser.password=this.password;
       }
     }
-    this.rest.save(this.currentUser).subscribe((currentUser: any) => {
+    this.rest.save(this.currentUser)
+    .subscribe((currentUser: any) => {
       if (this.currentUser) {
         this.router.navigate(['/list']);
       } else {

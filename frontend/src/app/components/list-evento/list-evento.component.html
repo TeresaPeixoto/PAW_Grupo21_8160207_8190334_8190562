@@ -25,7 +25,6 @@
   </div>
   <div class="row">
     <div class="col-sm-9">
-      <div class="col-sm-9">
         <ul class="nav nav-tabs">
           <li class="active"><a data-toggle="tab">Evento</a></li>
         </ul>
@@ -36,7 +35,7 @@
             <form
               class="form"
               action="##"
-              method="post"
+              method="get"
               id="Form"
               (ngSubmit)="updateEvent()"
             >
@@ -44,7 +43,6 @@
                 <div class="col-xs-6">
                   <label for="eventName"><h4>Nome do Evento</h4></label>
                   <input
-                    disabled
                     type="text"
                     class="form-control"
                     name="eventName"
@@ -53,12 +51,11 @@
                     [(ngModel)]="currentEvent.eventName"
                   />
                 </div>
-              </div>
+              </div> <br>
               <div class="form-group">
                 <div class="col-xs-6">
                   <label for="local"><h4>Local</h4></label>
                   <input
-                    disabled
                     type="text"
                     class="form-control"
                     name="local"
@@ -72,7 +69,6 @@
                 <div class="col-xs-6">
                   <label for="eventDate"><h4>Data do Evento</h4></label>
                   <input
-                    disabled
                     type="Date"
                     class="form-control"
                     name="eventDate"
@@ -99,7 +95,6 @@
                 <div class="col-xs-6">
                   <label for="lugares"><h4>Lugares</h4></label>
                   <input
-                    disabled
                     type="number"
                     class="form-control"
                     name="lugares"
@@ -113,7 +108,6 @@
                 <div class="col-xs-6">
                   <label for="description"><h4>Descriçao</h4></label>
                   <input
-                    disabled
                     type="text"
                     class="form-control"
                     name="description"
@@ -138,7 +132,7 @@
               </div>
 
               <div class="form-group">
-                <div class="col-xs-12">
+                <div class="col-xs-3">
                   <br />
                   <button
                     id="btn1"
@@ -153,7 +147,7 @@
             </form>
             <hr />
           </div>
-        </div>
+        
       </div>
     </div>
   </div>
