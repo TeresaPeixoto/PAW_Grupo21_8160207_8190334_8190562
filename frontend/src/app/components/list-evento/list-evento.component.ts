@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Evento } from '../../model/evento';
-import { Router } from '@angular/router';
+import { Router , ActivatedRoute} from '@angular/router';
 import { EventRestServiceService } from 'src/app/services/event-rest-service.service';
 
 @Component({
@@ -9,16 +9,24 @@ import { EventRestServiceService } from 'src/app/services/event-rest-service.ser
   styleUrls: ['./list-evento.component.css'],
 })
 export class ListEventoComponent implements OnInit {
-  currentEvent: Evento;
+  currentEvent: Evento;  
 
-  constructor(private router: Router, private rest: EventRestServiceService) {
+  constructor(private router: Router, private route: ActivatedRoute, private rest: EventRestServiceService) {
     this.currentEvent = new Evento();
-  }
+    
+}
 
   ngOnInit(): void {
-    var tempEvent = localStorage.getItem('currentEvent');
-    if (tempEvent != null) {
-    }
+    console.log(this.currentEvent);
+    this.route.params.subscribe(params =>{
+      console.log(params);
+      this.rest.getEvento(params.id).subscribe((evento: any)=>{
+          this.currentEvent=evento;
+
+    });
+
+    })
+    
 
   }
 

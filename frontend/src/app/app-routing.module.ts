@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'registo', component: RegistoComponent },
   {path :'list', component: UserDetailComponent, canActivate: [AuthGuardGuard] },
   {path : 'creatEvent', component: AddEventoComponent, canActivate: [AuthGuardGuard]},
-  {path : 'listEvent/:_id' , component:ListEventoComponent, canActivate: [AuthGuardGuard]},
+  {path : 'listEvent/:id' , component:ListEventoComponent, canActivate: [AuthGuardGuard]},
   
   {path : 'listAllEvent' , component:ListAllEventsComponent}
 ];
