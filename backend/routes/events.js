@@ -8,19 +8,15 @@ var authController = require('../controllers/authController');
 
 router.post("/create", function (rep, res) {
     authController.verifyTokenHigherPermissions;
-    ventController.createEvent;
+    eventController.createEvent;
 });
 
 router.get("/allEvents", eventController.getAllEvents);
 
-router.put("/edit/:id", function (rep, res) {
-    authController.verifyTokenHigherPermissions;
-    eventController.editByID;
-});
+router.put("/edit/:id", eventController.editByID);
 
-router.get("/search/:promotorid", function (rep, res) {
-    authController.verifyTokenHigherPermissions;
-    eventController.eventsBySpecificPromotor;
-});
+router.get("/search/:promotorid", eventController.eventsBySpecificPromotor);
+
+router.get("/allAvailableEvents", eventController.getAllAvailableEvents);
 
 module.exports = router;

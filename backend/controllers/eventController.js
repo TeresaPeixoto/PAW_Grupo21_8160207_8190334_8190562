@@ -39,6 +39,17 @@ eventController.getAllEvents = function (req, res) {
   });
 };
 
+eventController.getAllAvailableEvents = function (req, res) {
+  Event.find({eventStatus: "Por decorrer"}).sort({eventDate: 1}), ((err, allAvailableEvents) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(allAvailableEvents);
+    }
+  });
+};
+
+
 eventController.deleteByID = function (req, res) {
   Event.findByIdAndDelete(req.body._id, (err, deletedEvent) => {
     if (err) {
