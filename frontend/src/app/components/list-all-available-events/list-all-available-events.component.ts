@@ -2,50 +2,60 @@ import { Component, OnInit } from '@angular/core';
 import { Evento } from '../../model/evento';
 import { Router } from '@angular/router';
 import { EventRestServiceService } from 'src/app/services/event-rest-service.service';
+import { AuthRestServiceService } from '../../services/auth-rest-service.service';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-list-all-available-events',
   templateUrl: './list-all-available-events.component.html',
-  styleUrls: ['./list-all-available-events.components.css'],
+  styleUrls: ['./list-all-available-events.component.css'],
 })
 export class ListAllAvailableEventsComponent implements OnInit {
-evento: Evento;
+  evento: Evento;
   eventos: Array<Evento> = [];
+  currentUser: User;
+  email: string;
 
-  constructor(private router: Router, private rest: EventRestServiceService) {
-  this.evento= new Evento;
+  constructor(
+    private router: Router,
+    private rest: EventRestServiceService,
+    private auth: AuthRestServiceService
+  ) {
+    this.evento = new Evento();
+    this.currentUser = new User();
+    this.email = '';
   }
 
   ngOnInit(): void {
-    this.getAllAvailableEvents();
+    this.getAllEvents();
+
+    var tempUser = localStorage.getItem('currentUser');
+    if (tempUser != null) {
+      this.email = JSON.parse(tempUser).email;
+      this.auth.getUser(this.email).subscribe((user: User) => {
+        if (user) {
+          this.currentUser = user;
+          console.log(this.currentUser);
+        } else {
+          alert('Erro no pedido do utilizador!');
+        }
+      });
+    }
   }
 
-  getAllAvailableEvents() {
+  getAllEvents() {
     this.rest.listAllAvailableEvento().subscribe((eventos: Array<Evento>) => {
       console.log(eventos);
       for (let i = 0; i < eventos.length; i++) {
-        if(typeof eventos[i].eventDate !== "undefined"){
-            let data1 =typeof eventos[i].eventDate;
-           
-            console.log(data1);
-       
-            let today = new Date();
-          
-        if (eventos[i]._id != null && typeof data1> typeof today) {
+        if (eventos[i]._id != null) {
           this.eventos.push(eventos[i]);
           console.log(eventos[i]);
-
         }
       }
-    }
-   
-      
     });
   }
-  verMais(){
-    this.rest.editEvento(this.evento)
-    .subscribe((evento: any) => {
-      
-    });
-}
+
+  verMais() {
+    this.rest.editEvento(this.evento).subscribe((evento: any) => {});
+  }
 }

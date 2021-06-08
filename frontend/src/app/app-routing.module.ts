@@ -6,7 +6,6 @@ import {UserDetailComponent} from './components/user-detail/user-detail.componen
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import {AddEventoComponent} from './components/add-evento/add-evento.component';
 import { ListEventoComponent} from './components/list-evento/list-evento.component';
-import { ListAllEventsComponent} from './components/list-all-events/list-all-events.component';
 import { ListAllAvailableEventsComponent} from './components/list-all-available-events/list-all-available-events.component';
 
 const routes: Routes = [
@@ -15,7 +14,6 @@ const routes: Routes = [
   {path :'list', component: UserDetailComponent, canActivate: [AuthGuardGuard] },
   {path : 'creatEvent', component: AddEventoComponent, canActivate: [AuthGuardGuard]},
   {path : 'listEvent/:id' , component:ListEventoComponent, canActivate: [AuthGuardGuard]},
-  {path : 'listAllEvent' , component:ListAllEventsComponent, canActivate: [AuthGuardGuard]},
   {path : 'listAllAvailableEvent' , component:ListAllAvailableEventsComponent, canActivate: [AuthGuardGuard]}
 ];
 

@@ -14,7 +14,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { AddEventoComponent } from './components/add-evento/add-evento.component';
 import { ListEventoComponent } from './components/list-evento/list-evento.component';
-import { ListAllEventsComponent } from './components/list-all-events/list-all-events.component';
 import { ListAllAvailableEventsComponent } from './components/list-all-available-events/list-all-available-events.component';
 import {MatListModule} from '@angular/material/list';
 
@@ -27,7 +26,6 @@ import {MatListModule} from '@angular/material/list';
     LoginComponent,
     AddEventoComponent,
     ListEventoComponent,
-    ListAllEventsComponent,
     ListAllAvailableEventsComponent
   ],
   imports: [
