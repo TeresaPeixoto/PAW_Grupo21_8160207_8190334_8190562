@@ -6,7 +6,7 @@ import {UserDetailComponent} from './components/user-detail/user-detail.componen
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import {AddEventoComponent} from './components/add-evento/add-evento.component';
 import { ListEventoComponent} from './components/list-evento/list-evento.component';
-import { ListAllAvailableEventsComponent} from './components/list-all-available-events/list-all-available-events.component';
+import { ListAllEventsComponent} from './components/list-all-events/list-all-events.component';
 import {BecomeAdminComponent} from './components/become-admin/become-admin.component';
 import {HomeAdminComponent} from './components/home-admin/home-admin.component';
 
@@ -16,7 +16,7 @@ const routes: Routes = [
   {path :'list', component: UserDetailComponent, canActivate: [AuthGuardGuard] },
   {path : 'creatEvent', component: AddEventoComponent, canActivate: [AuthGuardGuard]},
   {path : 'listEvent/:id' , component:ListEventoComponent, canActivate: [AuthGuardGuard]},
-  {path : 'listAllAvailableEvent' , component:ListAllAvailableEventsComponent, canActivate: [AuthGuardGuard]},
+  {path : 'home' , component:ListAllEventsComponent, canActivate: [AuthGuardGuard]},
   { path : 'adminSayWhat', component:BecomeAdminComponent},
   {path : 'homeAdmin', component:HomeAdminComponent}
 ];

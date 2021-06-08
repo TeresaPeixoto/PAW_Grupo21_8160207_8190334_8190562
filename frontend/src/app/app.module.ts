@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { AddEventoComponent } from './components/add-evento/add-evento.component';
 import { ListEventoComponent } from './components/list-evento/list-evento.component';
-import { ListAllAvailableEventsComponent } from './components/list-all-available-events/list-all-available-events.component';
+import { ListAllEventsComponent } from './components/list-all-events/list-all-events.component';
 import {MatListModule} from '@angular/material/list';
 import { BecomeAdminComponent } from './components/become-admin/become-admin.component';
 import { MatCardModule } from '@angular/material/card';
@@ -29,7 +29,7 @@ import { HomeAdminComponent } from './components/home-admin/home-admin.component
     LoginComponent,
     AddEventoComponent,
     ListEventoComponent,
-    ListAllAvailableEventsComponent,
+    ListAllEventsComponent,
     BecomeAdminComponent,
     HomeAdminComponent
   ],
