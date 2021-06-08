@@ -16,7 +16,10 @@ import { AddEventoComponent } from './components/add-evento/add-evento.component
 import { ListEventoComponent } from './components/list-evento/list-evento.component';
 import { ListAllAvailableEventsComponent } from './components/list-all-available-events/list-all-available-events.component';
 import {MatListModule} from '@angular/material/list';
-
+import { BecomeAdminComponent } from './components/become-admin/become-admin.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import {MatListModule} from '@angular/material/list';
     LoginComponent,
     AddEventoComponent,
     ListEventoComponent,
-    ListAllAvailableEventsComponent
+    ListAllAvailableEventsComponent,
+    BecomeAdminComponent,
+    HomeAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,9 @@ import {MatListModule} from '@angular/material/list';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatSliderModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatInputModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi:true}],
   bootstrap: [AppComponent]

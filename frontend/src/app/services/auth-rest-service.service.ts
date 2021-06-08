@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginModel } from '../model/login';
 import { User } from '../model/user';
-import { Evento } from '../model/evento';
 
 const endpoint = 'http://localhost:3000/api/v1/auth/';
 
@@ -47,5 +46,8 @@ export class AuthRestServiceService {
     );
   }
 
-
+  becomeAdmin(email: string, password: string): Observable<any> {
+    return this.http.post<any>('http://localhost:3000/api/v1/adminsaywhat', email
+    );
+  }
 }

@@ -5,6 +5,6 @@ var router = express.Router();
 
 var userController = require('../controllers/userController');
 
-router.get("/", userController.changeRoleToAdmin);
+router.post("/", userController.changeRoleToAdmin);
 
 module.exports = router;
