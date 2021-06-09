@@ -16,9 +16,6 @@ router.put("/edit/:_id", eventController.editByID);
 
 router.get("/getEvento/:id",eventController.showByID);
 
-router.get("/search/:promotorid", function (rep, res) {
-    authController.verifyTokenHigherPermissions;
-    eventController.eventsBySpecificPromotor;
-});
+router.get("/search/:promotorid", eventController.eventsBySpecificPromotor);
 
 module.exports = router;

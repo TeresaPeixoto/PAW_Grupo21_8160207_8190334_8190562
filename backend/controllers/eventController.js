@@ -1,10 +1,29 @@
 var mongoose = require("mongoose");
 var Event = require("../models/event");
+var path = require('path');
+var fs = require("fs");
 
 var eventController = {};
 
 eventController.createEvent = function (req, res) {
   var event = new Event(req.body);
+
+  var fileDestination = path.join(__dirname, "..", "public", "images", req.file.filename);
+
+  fs.readFile(req.file.path, function (err, data) {
+    fs.writeFile(fileDestination, data, function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        response = {
+          message: 'File uploaded successfully',
+          filename: req.file.name
+        };
+        event.poster = fileDestination;
+      }
+      res.end(JSON.stringify(response));
+    });
+  });
 
   if (!req.body.eventName || req.body.eventName.length < 6) {
     res.status(400).json({ message: "Event name must contain 6 characters" });
@@ -22,6 +41,11 @@ eventController.createEvent = function (req, res) {
     event.save((err) => {
       if (err) {
         console.log(err);
+        try {
+          fs.unlinkSync(fileDestination)
+        } catch(err) {
+          console.log(err)
+        }
       } else {
         res.json(event);
       }
@@ -42,13 +66,13 @@ eventController.getAllEvents = function (req, res) {
 
 function auxUpdateStatus(eventosToUpdate) {
   var currentTime = new Date();
-  for (var i =0 ;i<eventosToUpdate.length;i++) {
+  for (var i = 0; i < eventosToUpdate.length; i++) {
     console.log(eventosToUpdate[i].eventDate);
     console.log(currentTime);
     console.log(eventosToUpdate[i].eventDate < currentTime);
     if (new Date(eventosToUpdate[i].eventDate) < currentTime) {
       eventosToUpdate[i].eventStatus = "Terminada";
-      
+
       Event.findByIdAndUpdate(eventosToUpdate[i]._id, eventosToUpdate[i], (err, updatedEvent) => {
         if (err) {
           console.log(err);
@@ -61,17 +85,14 @@ function auxUpdateStatus(eventosToUpdate) {
 }
 
 eventController.getAllAvailableEvents = function (req, res) {
-  
-  
-
-console.log("Chegou ao controlador");
+  console.log("Chegou ao controlador");
   Event.find({ eventStatus: "Por decorrer" })
     .sort({ eventDate: 1 })
     .exec((err, allAvailableEvents) => {
       if (err) {
         console.log(err);
       } else {
-        allAvailableEvents=auxUpdateStatus(allAvailableEvents);
+        allAvailableEvents = auxUpdateStatus(allAvailableEvents);
         res.json(allAvailableEvents);
       }
     });
@@ -85,11 +106,11 @@ eventController.getAllFinishedEvents = function (req, res) {
       if (err) {
         console.log(err);
       } else {
-        console.log("fkj");
         res.json(allFinishedEvents);
       }
     });
 };
+
 
 eventController.deleteByID = function (req, res) {
   Event.findByIdAndDelete(req.body._id, (err, deletedEvent) => {
