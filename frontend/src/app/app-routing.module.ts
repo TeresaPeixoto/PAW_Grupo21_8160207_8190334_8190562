@@ -9,6 +9,7 @@ import { ListEventoComponent} from './components/list-evento/list-evento.compone
 import { ListAllEventsComponent} from './components/list-all-events/list-all-events.component';
 import {BecomeAdminComponent} from './components/become-admin/become-admin.component';
 import {HomeAdminComponent} from './components/home-admin/home-admin.component';
+import {ListAllEventsAdminComponent} from './components/list-all-events-admin/list-all-events-admin.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path : 'listEvent/:id' , component:ListEventoComponent, canActivate: [AuthGuardGuard]},
   {path : 'home' , component:ListAllEventsComponent, canActivate: [AuthGuardGuard]},
   { path : 'adminSayWhat', component:BecomeAdminComponent},
-  {path : 'homeAdmin', component:HomeAdminComponent}
+  {path : 'homeAdmin', component:HomeAdminComponent},
+  {path : 'listAllEventAdmin/:sla' , component:ListAllEventsAdminComponent}
 ];
 
 @NgModule({

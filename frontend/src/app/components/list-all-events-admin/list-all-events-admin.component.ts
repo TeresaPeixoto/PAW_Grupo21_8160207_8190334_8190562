@@ -6,11 +6,11 @@ import { AuthRestServiceService } from '../../services/auth-rest-service.service
 import { User } from 'src/app/model/user';
 
 @Component({
-  selector: 'app-list-all-events',
-  templateUrl: './list-all-events.component.html',
-  styleUrls: ['./list-all-events.component.css'],
+  selector: 'app-list-all-events-admin',
+  templateUrl: './list-all-events-admin.component.html',
+  styleUrls: ['./list-all-events-admin.component.css'],
 })
-export class ListAllEventsComponent implements OnInit {
+export class ListAllEventsAdminComponent implements OnInit {
   evento: Evento;
   eventos: Array<Evento> = [];
   currentUser: User;
@@ -28,9 +28,16 @@ export class ListAllEventsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-
-    
+    this.route.params.subscribe((params) => {
+      console.log(params);
+      if (params.sla == 1) {
+        this.getAllAvailableEvents();
+      } else if (params.sla == 2) {
+        this.getAllFinishedEvents();
+      } else {
+        console.log('Erro');
+      }
+    });
 
     var tempUser = localStorage.getItem('currentUser');
 
@@ -38,14 +45,17 @@ export class ListAllEventsComponent implements OnInit {
       this.email = JSON.parse(tempUser).email;
       this.currentUser = JSON.parse(tempUser);
     }
-    this.getAllAvailableEvents();
   }
 
   getAllAvailableEvents() {
     this.rest.listAllAvailableEvento().subscribe((eventos: Array<Evento>) => {
       console.log(eventos);
+      
       for (let i = 0; i < eventos.length; i++) {
-        if (eventos[i]._id != null && eventos[i].eventStatus=='Por decorrer') {
+        if (
+          eventos[i]._id != null &&
+          eventos[i].eventStatus == 'Por decorrer'
+        ) {
           this.eventos.push(eventos[i]);
           console.log(eventos[i]);
         }
@@ -53,6 +63,17 @@ export class ListAllEventsComponent implements OnInit {
     });
   }
 
+  getAllFinishedEvents() {
+    this.rest.listAllFinishedEvents().subscribe((eventos: Array<Evento>) => {
+      console.log(eventos);
+      for (let i = 0; i < eventos.length; i++) {
+        if (eventos[i]._id != null) {
+          this.eventos.push(eventos[i]);
+          console.log(eventos[i]);
+        }
+      }
+    });
+  }
 
   verMais() {
     this.rest.editEvento(this.evento).subscribe((evento: any) => {});

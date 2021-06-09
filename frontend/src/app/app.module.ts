@@ -20,6 +20,7 @@ import { BecomeAdminComponent } from './components/become-admin/become-admin.com
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
+import { ListAllEventsAdminComponent } from './components/list-all-events-admin/list-all-events-admin.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HomeAdminComponent } from './components/home-admin/home-admin.component
     ListEventoComponent,
     ListAllEventsComponent,
     BecomeAdminComponent,
-    HomeAdminComponent
+    HomeAdminComponent,
+    ListAllEventsAdminComponent
   ],
   imports: [
     BrowserModule,
