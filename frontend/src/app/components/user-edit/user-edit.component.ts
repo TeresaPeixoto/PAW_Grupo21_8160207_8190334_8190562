@@ -4,11 +4,11 @@ import { User } from 'src/app/model/user';
 import { AuthRestServiceService } from '../../services/auth-rest-service.service';
 
 @Component({
-  selector: 'app-user-detail',
-  templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.css'],
+  selector: 'app-user-edit',
+  templateUrl: './user-edit.component.html',
+  styleUrls: ['./user-edit.component.css'],
 })
-export class UserDetailComponent implements OnInit {
+export class UserEditComponent implements OnInit {
   password: string;
   email: string;
   passwordV: string;
@@ -41,5 +41,21 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
-  
+  updateUser(): void {
+    console.log(this.currentUser);
+
+    if (this.password != '' && this.passwordV != '') {
+      if (this.password == this.passwordV) {
+        this.currentUser.password=this.password;
+      }
+    }
+    this.rest.save(this.currentUser)
+    .subscribe((currentUser: any) => {
+      if (this.currentUser) {
+        this.router.navigate(['/list']);
+      } else {
+        alert('Erro no update!');
+      }
+    });
+  }
 }

@@ -55,140 +55,78 @@
       <div class="tab-content">
         <div class="tab-pane active" id="home">
           <hr />
-          <form
-            class="form"
-            action="##"
-            method="post"
-            id="Form"
-            (ngSubmit)="updateUser()"
-          >
+          <mat-list>
             <div class="form-group">
               <div class="col-xs-6">
-                <label for="userName"><h4>Nome</h4></label>
-                <input
-                  disabled
-                  type="text"
-                  class="form-control"
-                  name="userName"
-                  id="userName"
-                  placeholder="Nome do Utilizador"
-                  [(ngModel)]="currentUser.userName"
-                />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label for="email"><h4>Email</h4></label>
-                <input
-                  disabled
-                  type="email"
-                  class="form-control"
-                  name="email"
-                  id="email"
-                  placeholder="Email"
-                  [(ngModel)]="currentUser.email"
-                />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label for="cellphone"><h4>Telemovel</h4></label>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="cellphone"
-                  id="cellphone"
-                  placeholder="Telemovel"
-                  [(ngModel)]="currentUser.cellphone"
-                />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label for="nif"><h4>NIF</h4></label>
-                <input
-                  disabled
-                  type="number"
-                  class="form-control"
-                  name="nif"
-                  id="nif"
-                  placeholder="nif"
-                  [(ngModel)]="currentUser.nif"
-                />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label for="birthDate"><h4>Data de Aniversário</h4></label>
-                <input
-                  disabled
-                  type="Date"
-                  class="form-control"
-                  name="birthDate"
-                  id="birthDate"
-                  placeholder="Data de nascimento"
-                  [(ngModel)]="currentUser.birthDate"
-                />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-xs-12">
-                <label for="address"><h4>Morada</h4></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="address"
-                  id="address"
-                  placeholder="address"
-                  [(ngModel)]="currentUser.address"
-                />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label for="password"><h4>Password</h4></label>
-                <input
-                  type="password"
-                  class="form-control"
-                  name="password"
-                  id="password"
-                  placeholder="password"
-                  title="enter your password."
-                  [(ngModel)]="password"
-                />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label for="passwordV"><h4>Verify</h4></label>
-                <input
-                  type="password"
-                  class="form-control"
-                  name="passwordV"
-                  id="passwordV"
-                  placeholder="passwordV"
-                  title="enter your passwordV."
-                  [(ngModel)]="passwordV"
-                />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-xs-12">
-                <br />
-                <button
-                  id="btn1"
-                  class="btn btn-lg btn-success btn-block"
-                  type="submit"
+                <mat-list-item
+                  >Nome&nbsp;&nbsp;&nbsp;{{
+                    currentUser.userName
+                  }}</mat-list-item
                 >
-                  Salvar
-                </button>
-                <button class="btn btn-lg" routerLink="/">Cancelar</button>
               </div>
             </div>
-          </form>
+            <div class="form-group">
+              <div class="col-xs-6">
+                <mat-list-item>
+                  Email &nbsp;&nbsp;&nbsp;&nbsp;{{
+                    currentUser.email
+                  }}</mat-list-item
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-6">
+                <mat-list-item>
+                  Telemovel &nbsp;&nbsp;&nbsp;&nbsp;{{
+                    currentUser.cellphone
+                  }}</mat-list-item
+                >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-xs-6">
+                <mat-list-item
+                  ><br />
+                  <h4>NIF</h4>
+                  {{ currentUser.nif }}</mat-list-item
+                >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-xs-6">
+                <mat-list-item
+                  ><br />
+                  <h4>Data de Aniversário</h4>
+                  {{ currentUser.birthDate }}</mat-list-item
+                >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-xs-6">
+                <mat-list-item
+                  ><br />
+                  <h4>Morada</h4>
+                  {{ currentUser.address }}</mat-list-item
+                >
+              </div>
+            </div>
+          </mat-list>
+          <div class="form-group">
+            <div class="col-xs-12">
+              <br />
+              <button
+                id="btn1"
+                type="submit"
+                routerLink="/editProfile"
+              >
+                Editar
+              </button>
+              <button  routerLink="/home">Voltar para tras</button>
+            </div>
+          </div>
 
           <hr />
         </div>
