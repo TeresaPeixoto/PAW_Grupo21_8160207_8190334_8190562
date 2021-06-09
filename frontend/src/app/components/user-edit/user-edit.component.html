@@ -10,10 +10,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<hr />
 <div class="container bootstrap snippet">
   <div class="row">
-    <div class="col-sm-10"><h1>User name</h1></div>
+    <br><br>
+    <div class="col-sm-10"><h1>{{currentUser.userName}}</h1></div>
     <div class="col-sm-2">
       <a href="/users" class="pull-right"
         ><img
@@ -26,13 +26,11 @@
   <div class="row">
     <!--/col-3-->
     <div class="col-sm-9">
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab">Profile</a></li>
-      </ul>
+     <h1>Edit Profile</h1>
 
       <div class="tab-content">
         <div class="tab-pane active" id="home">
-          <hr />
+          
           <form
             class="form"
             action="##"
@@ -170,22 +168,17 @@
                 <button
                   id="btn1"
                   class="btn btn-lg btn-success btn-block"
-                  type="submit"
+                  type="button"
                   routerLink="/list"
-                >
-                  Salvar
+                  (click)= updateUser()
+                >Salvar
                 </button>
-                <button class="btn btn-lg" routerLink="/">Cancelar</button>
+                <button class="btn btn-lg" routerLink="/list">Cancelar</button>
               </div>
             </div>
           </form>
-
-          <hr />
         </div>
       </div>
-
-      <!--/col-9-->
     </div>
-    <!--/row-->
   </div>
 </div>

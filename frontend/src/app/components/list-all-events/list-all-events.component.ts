@@ -28,10 +28,6 @@ export class ListAllEventsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-
-    
-
     var tempUser = localStorage.getItem('currentUser');
 
     if (tempUser != null) {
@@ -45,7 +41,10 @@ export class ListAllEventsComponent implements OnInit {
     this.rest.listAllAvailableEvento().subscribe((eventos: Array<Evento>) => {
       console.log(eventos);
       for (let i = 0; i < eventos.length; i++) {
-        if (eventos[i]._id != null && eventos[i].eventStatus=='Por decorrer') {
+        if (
+          eventos[i]._id != null &&
+          eventos[i].eventStatus == 'Por decorrer'
+        ) {
           this.eventos.push(eventos[i]);
           console.log(eventos[i]);
         }
@@ -53,8 +52,12 @@ export class ListAllEventsComponent implements OnInit {
     });
   }
 
-
   verMais() {
     this.rest.editEvento(this.evento).subscribe((evento: any) => {});
+  }
+
+  logout(): void {
+    console.log('clicou no logout');
+    this.auth.logout();
   }
 }

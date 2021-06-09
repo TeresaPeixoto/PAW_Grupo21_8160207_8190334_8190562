@@ -34,6 +34,8 @@ export class UserEditComponent implements OnInit {
         if (user) {
           this.currentUser = user;
           console.log(this.currentUser);
+          
+          
         } else {
           alert('Erro no pedido do utilizador!');
         }
@@ -43,15 +45,16 @@ export class UserEditComponent implements OnInit {
 
   updateUser(): void {
     console.log(this.currentUser);
-
+console.log("oi");
     if (this.password != '' && this.passwordV != '') {
       if (this.password == this.passwordV) {
         this.currentUser.password=this.password;
       }
-    }
+    }console.log(this.currentUser.address);
     this.rest.save(this.currentUser)
     .subscribe((currentUser: any) => {
       if (this.currentUser) {
+        
         this.router.navigate(['/list']);
       } else {
         alert('Erro no update!');

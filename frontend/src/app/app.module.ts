@@ -23,6 +23,7 @@ import { HomeAdminComponent } from './components/home-admin/home-admin.component
 import { ListAllEventsAdminComponent } from './components/list-all-events-admin/list-all-events-admin.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

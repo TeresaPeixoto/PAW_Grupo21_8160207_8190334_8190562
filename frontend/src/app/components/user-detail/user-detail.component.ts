@@ -40,6 +40,9 @@ export class UserDetailComponent implements OnInit {
       });
     }
   }
-
+  logout(): void {
+    console.log('clicou no logout');
+    this.rest.logout();
+  }
   
 }
