@@ -33,24 +33,58 @@ eventController.getAllEvents = function (req, res) {
   Event.find({}, (err, allEvents) => {
     if (err) {
       console.log(err);
-    } 
-    
-    else {
-    console.log(allEvents)  ;
+    } else {
+      console.log(allEvents);
       res.json(allEvents);
-
     }
   });
 };
 
-eventController.getAllAvailableEvents = function (req, res) {
-  Event.find({eventStatus: "Por decorrer"}).sort({eventDate: 1}), ((err, allAvailableEvents) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(allAvailableEvents);
+function auxUpdateStatus(eventosToUpdate) {
+  var currentTime = new Date();
+  for (var i = 0; i < eventosToUpdate.length; i++) {
+    console.log(eventosToUpdate[i].eventDate);
+    console.log(currentTime);
+    console.log(eventosToUpdate[i].eventDate < currentTime);
+    if (new Date(eventosToUpdate[i].eventDate) < currentTime) {
+      eventosToUpdate[i].eventStatus = "Terminada";
+
+      Event.findByIdAndUpdate(eventosToUpdate[i]._id, eventosToUpdate[i], (err, updatedEvent) => {
+        if (err) {
+          console.log(err);
+        }
+      });
     }
-  });
+  }
+
+  return eventosToUpdate;
+}
+
+eventController.getAllAvailableEvents = function (req, res) {
+  console.log("Chegou ao controlador");
+  Event.find({ eventStatus: "Por decorrer" })
+    .sort({ eventDate: 1 })
+    .exec((err, allAvailableEvents) => {
+      if (err) {
+        console.log(err);
+      } else {
+        allAvailableEvents = auxUpdateStatus(allAvailableEvents);
+        res.json(allAvailableEvents);
+      }
+    });
+};
+
+eventController.getAllFinishedEvents = function (req, res) {
+  console.log("Chegou ao controlador");
+  Event.find({ eventStatus: "Terminada" })
+    .sort({ eventDate: 1 })
+    .exec((err, allFinishedEvents) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(allFinishedEvents);
+      }
+    });
 };
 
 
@@ -61,19 +95,19 @@ eventController.deleteByID = function (req, res) {
     } else {
       res.json(deletedEvent);
     }
-  })
-}
+  });
+};
 
 eventController.showByID = function (req, res) {
   Event.findById(req.params.id, (err, dbEvent) => {
     if (err) {
       console.log(err);
     } else {
-console.log(dbEvent);
+      console.log(dbEvent);
       res.json(dbEvent);
     }
-  })
-}
+  });
+};
 
 eventController.editByID = function (req, res) {
   Event.findByIdAndUpdate(req.body._id, req.body, (err, updatedEvent) => {
@@ -82,17 +116,17 @@ eventController.editByID = function (req, res) {
     } else {
       res.json(updatedEvent);
     }
-  })
-}
+  });
+};
 
-eventController.eventsBySpecificPromotor = function (req, res){
-  Event.find({ promotorID: req.body.promotorID}, (err, eventsByPromotor) => {
+eventController.eventsBySpecificPromotor = function (req, res) {
+  Event.find({ promotorID: req.body.promotorID }, (err, eventsByPromotor) => {
     if (err) {
       console.log(err);
     } else {
       res.json(eventsByPromotor);
     }
   });
-}
+};
 
 module.exports = eventController;

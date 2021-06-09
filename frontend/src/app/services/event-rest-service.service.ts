@@ -35,4 +35,8 @@ export class EventRestServiceService {
     return this.http.get<Evento[]>(endpoint + '/allAvailableEvents');
   }
 
+  listAllFinishedEvents():Observable<any>{
+    return this.http.get<Evento[]>(endpoint + '/allFinishedEvents');
+  }
+
 }
