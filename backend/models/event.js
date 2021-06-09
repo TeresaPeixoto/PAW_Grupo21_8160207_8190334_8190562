@@ -13,7 +13,8 @@ var EventSchema = new mongoose.Schema({
     eventStatus: {
         type: String,
         default: 'Por decorrer'
-    }
+    },
+    poster: String
 });
 
 module.exports = mongoose.model('Event', EventSchema);
