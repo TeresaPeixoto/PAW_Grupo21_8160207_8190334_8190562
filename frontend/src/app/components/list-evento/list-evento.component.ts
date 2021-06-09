@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Evento } from '../../model/evento';
-import { Router } from '@angular/router';
+import { Router , ActivatedRoute} from '@angular/router';
 import { EventRestServiceService } from 'src/app/services/event-rest-service.service';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-list-evento',
@@ -10,30 +10,31 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
   styleUrls: ['./list-evento.component.css'],
 })
 export class ListEventoComponent implements OnInit {
-  currentEvent: Evento;
+  currentEvent: Evento;  
 
-  constructor(private router: Router, private rest: EventRestServiceService) {
+  constructor(private router: Router, private route: ActivatedRoute, private rest: EventRestServiceService) {
     this.currentEvent = new Evento();
-  }
+    
+}
 
   ngOnInit(): void {
-    var tempEvent = localStorage.getItem('currentEvent');
-    if (tempEvent != null) {
-    }
-/*
+    console.log(this.currentEvent);
+    this.route.params.subscribe(params =>{
+      console.log(params);
+      this.rest.getEvento(params.id).subscribe((evento: any)=>{
+          this.currentEvent=evento;
 
-    this.rest.listAllEvento().subscribe((currentEvent: any) => {
-      console.log(currentEvent);
-      currentEvent[0].eventName="teste";
-      this.rest.editEvento(currentEvent[0]).subscribe((currentEvent2:any)=>{
-          console.log(currentEvent2);
-      });
-    });*/
+    });
+
+    })
+    
+
   }
 
   updateEvent(): void {
-    console.log(this.currentEvent);
-    this.rest.editEvento(this.currentEvent).subscribe((currentEvent: any) => {
+    console.log("chegou aqui");
+    this.rest.editEvento(this.currentEvent)
+    .subscribe((currentEvent: any) => {
       if (this.currentEvent) {
         this.router.navigate(['/']);
       } else {

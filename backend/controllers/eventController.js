@@ -33,8 +33,12 @@ eventController.getAllEvents = function (req, res) {
   Event.find({}, (err, allEvents) => {
     if (err) {
       console.log(err);
-    } else {
+    } 
+    
+    else {
+    console.log(allEvents)  ;
       res.json(allEvents);
+
     }
   });
 };
@@ -61,10 +65,11 @@ eventController.deleteByID = function (req, res) {
 }
 
 eventController.showByID = function (req, res) {
-  Event.findById(req.body._id, (err, dbEvent) => {
+  Event.findById(req.params.id, (err, dbEvent) => {
     if (err) {
       console.log(err);
     } else {
+console.log(dbEvent);
       res.json(dbEvent);
     }
   })

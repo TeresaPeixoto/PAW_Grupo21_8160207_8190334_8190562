@@ -11,12 +11,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule} from '@angular/material/card';  
-import { MatButtonModule} from '@angular/material/button';
+import { MatSliderModule } from '@angular/material/slider';
 import { AddEventoComponent } from './components/add-evento/add-evento.component';
 import { ListEventoComponent } from './components/list-evento/list-evento.component';
-
-
+import { ListAllAvailableEventsComponent } from './components/list-all-available-events/list-all-available-events.component';
+import {MatListModule} from '@angular/material/list';
+import { BecomeAdminComponent } from './components/become-admin/become-admin.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { ListEventoComponent } from './components/list-evento/list-evento.compon
     UserDetailComponent,
     LoginComponent,
     AddEventoComponent,
-    ListEventoComponent
+    ListEventoComponent,
+    ListAllAvailableEventsComponent,
+    BecomeAdminComponent,
+    HomeAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +40,10 @@ import { ListEventoComponent } from './components/list-evento/list-evento.compon
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    
+    MatSliderModule,
+    MatListModule,
     MatCardModule,
-    MatButtonModule
+    MatInputModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi:true}],
   bootstrap: [AppComponent]
