@@ -7,8 +7,14 @@
 <div class="container" style="margin-top: 30px">
   <br /><br />
   <h1><strong>Eventos</strong></h1>
-  <div align="end"><a id:link href="http://localhost:4200/list"><h3>{{currentUser.userName}}</h3> </a>
-  </div><div align="end" (click)=logout()><a id:link href="http://localhost:4200/login">Logout</a></div>
+  <div align="end">
+    <a id:link href="http://localhost:4200/list"
+      ><h3>{{ currentUser.userName }}</h3>
+    </a>
+  </div>
+  <div align="end" (click)="logout()">
+    <a id:link href="http://localhost:4200/login">Logout</a>
+  </div>
   <div *ngFor="let evento of eventos">
     <div>
       <div class="container" style="margin-top: 30px">
@@ -22,10 +28,25 @@
                     {{ evento.eventName }}
                   </mat-list-item>
 
-                  <mat-list-item><strong> Data do Evento :</strong>&nbsp;&nbsp;&nbsp;&nbsp;{{evento.eventDate}}</mat-list-item>
-                  <mat-list-item><strong> Preço :</strong> &nbsp;&nbsp;&nbsp;&nbsp;{{evento.price}}</mat-list-item>
-                </mat-list>&nbsp;&nbsp;
-                <button mat-raised-button routerLink="//listEvent/{{ evento._id }}" id="btn1">Ver mais -></button>
+                  <mat-list-item
+                    ><strong> Data do Evento :</strong
+                    >&nbsp;&nbsp;&nbsp;&nbsp;{{
+                      evento.eventDate
+                    }}</mat-list-item
+                  >
+                  <mat-list-item
+                    ><strong> Preço :</strong> &nbsp;&nbsp;&nbsp;&nbsp;{{
+                      evento.price
+                    }}</mat-list-item
+                  > </mat-list
+                >&nbsp;&nbsp;
+                <button
+                  mat-raised-button
+                  routerLink="//listEvent/{{ evento._id }}"
+                  id="btn1"
+                >
+                  Ver mais ->
+                </button>
               </div>
             </div>
           </div>

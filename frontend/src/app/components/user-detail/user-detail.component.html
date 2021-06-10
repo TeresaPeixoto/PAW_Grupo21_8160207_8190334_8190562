@@ -16,9 +16,10 @@
       <br /><br />
       <h1>{{ currentUser.userName }}</h1>
     </div>
-    <br><br>
-    <div align="end" (click)=logout()><a id:link href="http://localhost:4200/login">Logout</a></div>
-   
+    <br /><br />
+    <div align="end" (click)="logout()">
+      <a id:link href="http://localhost:4200/login">Logout</a>
+    </div>
   </div>
   <div class="row">
     <div class="col-sm-3">
@@ -94,10 +95,13 @@
                 Editar
               </button>
               <button id="btn1" routerLink="/home">Voltar para tras</button>
-            </div>
-          </div>
+              <ng-template *ngIf= currentUser.userStatus :cliente>
+                <button  id="btn1" routerLink="/home">Tornar promotor</button>
+            </ng-template>
+                    </div>
+          </div></div>
         </div>
       </div>
     </div>
-  </div>
+  
 </div>

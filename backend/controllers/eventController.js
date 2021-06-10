@@ -7,7 +7,7 @@ var eventController = {};
 
 eventController.createEvent = function (req, res) {
   var event = new Event(req.body);
-
+/*
   var fileDestination = path.join(__dirname, "..", "public", "images", req.file.filename);
 
   fs.readFile(req.file.path, function (err, data) {
@@ -23,7 +23,7 @@ eventController.createEvent = function (req, res) {
       }
       res.end(JSON.stringify(response));
     });
-  });
+  });*/
 
   if (!req.body.eventName || req.body.eventName.length < 6) {
     res.status(400).json({ message: "Event name must contain 6 characters" });
@@ -37,15 +37,16 @@ eventController.createEvent = function (req, res) {
       .json({ message: "You must identify your number of lugares" });
   } else if (!req.body.description) {
     res.status(400).json({ message: "You must identify your description" });
+    
   } else {
     event.save((err) => {
       if (err) {
         console.log(err);
-        try {
+       /* try {
           fs.unlinkSync(fileDestination)
         } catch(err) {
           console.log(err)
-        }
+        }*/
       } else {
         res.json(event);
       }

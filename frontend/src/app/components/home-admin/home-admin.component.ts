@@ -39,5 +39,8 @@ export class HomeAdminComponent implements OnInit {
       });
     }
   }
-
+  logout(): void {
+    console.log('clicou no logout');
+    this.auth.logout();
+  }
 }

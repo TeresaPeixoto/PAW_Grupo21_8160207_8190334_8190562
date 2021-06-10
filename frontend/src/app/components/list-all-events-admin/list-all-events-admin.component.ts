@@ -78,4 +78,9 @@ export class ListAllEventsAdminComponent implements OnInit {
   verMais() {
     this.rest.editEvento(this.evento).subscribe((evento: any) => {});
   }
+
+  logout(): void {
+    console.log('clicou no logout');
+    this.auth.logout();
+  }
 }

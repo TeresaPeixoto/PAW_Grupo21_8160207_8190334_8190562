@@ -18,7 +18,7 @@ mongoose.Promise = global.Promise
 
 mongoose.connect('mongodb+srv://admin:admin123@cluster0.wgdbt.mongodb.net/paw_db', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(()=> console.log(' connected to DB!'))
-  .catch(()=> console.log(' error connecting to DB!'))
+  .catch((error)=> console.log(' error connecting to DB!',error))
 
 var app = express();
 

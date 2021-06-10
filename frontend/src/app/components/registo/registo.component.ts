@@ -18,9 +18,9 @@ export class RegistoComponent implements OnInit {
     userName: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required]),
     birthDate: new FormControl(null, [Validators.required]),
-    cellphone: new FormControl(null, [ Validators.required]),
+    cellphone: new FormControl(null, [ Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
     address: new FormControl(null, [Validators.required]),
-    nif: new FormControl(null, Validators.required),
+    nif: new FormControl(null, [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
   });
 
   constructor(
