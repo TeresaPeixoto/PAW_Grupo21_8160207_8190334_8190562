@@ -22,9 +22,9 @@ export class BecomeAdminComponent implements OnInit {
   ngOnInit(): void {}
 
   becomeAdmin(): void {
-    this.auth.becomeAdmin(this.email, this.password).subscribe((user: any) => {
+    this.auth.becomeAdmin({"email":this.email, "pass":this.password}).subscribe((user: any) => {
       console.log(user);
-      if (user ) {
+      if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         
       } else {

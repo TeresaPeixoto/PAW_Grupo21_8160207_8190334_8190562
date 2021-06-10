@@ -22,6 +22,8 @@ import { MatInputModule } from '@angular/material/input';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { ListAllEventsAdminComponent } from './components/list-all-events-admin/list-all-events-admin.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { RequestPromotorComponent } from './components/request-promotor/request-promotor.component';
+import { AdminAcceptedPromComponent } from './components/admin-accepted-prom/admin-accepted-prom.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
     BecomeAdminComponent,
     HomeAdminComponent,
     ListAllEventsAdminComponent,
-    UserEditComponent
+    UserEditComponent,
+    RequestPromotorComponent,
+    AdminAcceptedPromComponent
   ],
   imports: [
     BrowserModule,

@@ -44,8 +44,12 @@ export class AuthRestServiceService {
     return this.http.get<any>('http://localhost:3000/api/v1/users/clientProfile/' + email);
   }
 
-  becomeAdmin(email: string, password: string): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/api/v1/adminsaywhat', email
+  becomeAdmin(tempUser: any): Observable<any> {
+    return this.http.post<any>('http://localhost:3000/api/v1/adminsaywhat', tempUser
+    );
+  }
+  becomePromotor(email: any): Observable<any> {
+    return this.http.post<any>('http://localhost:3000/api/v1/adminsaywhat/newPromot', email
     );
   }
 }

@@ -27,7 +27,8 @@ export class HomeAdminComponent implements OnInit {
       this.email = JSON.parse(tempUser).email;
       this.auth.getUser(this.email).subscribe((user: User) => {
         if (user) {
-          if(this.currentUser.userStatus=="Admin"){
+          console.log(user);
+          if(user.role=="admin"){
           this.currentUser = user;
           console.log(this.currentUser);
         }else{

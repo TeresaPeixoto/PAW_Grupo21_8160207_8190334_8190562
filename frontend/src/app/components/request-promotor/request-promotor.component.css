@@ -1,0 +1,15 @@
+#btn1 {
+    display: inline-block;
+    margin-right:20px;
+    height: 3em;
+    width: 10em;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  #form{
+    min-width : 100% !important;
+  }

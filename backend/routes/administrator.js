@@ -6,6 +6,6 @@ var router = express.Router();
 var userController = require('../controllers/userController');
 var authController = require('../controllers/authController');
 
-router.post("/", authController.verifyToken, userController.changeRoleToAdmin);
-
+router.post("/", userController.changeRoleToAdmin);
+router.post("/newPromot",userController.changeRoleToPromotor);
 module.exports = router;

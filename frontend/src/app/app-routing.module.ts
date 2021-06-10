@@ -11,7 +11,8 @@ import { ListAllEventsComponent} from './components/list-all-events/list-all-eve
 import {BecomeAdminComponent} from './components/become-admin/become-admin.component';
 import {HomeAdminComponent} from './components/home-admin/home-admin.component';
 import {ListAllEventsAdminComponent} from './components/list-all-events-admin/list-all-events-admin.component';
-
+import {RequestPromotorComponent} from './components/request-promotor/request-promotor.component';
+import{AdminAcceptedPromComponent} from './components/admin-accepted-prom/admin-accepted-prom.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -22,8 +23,10 @@ const routes: Routes = [
   {path : 'listEvent/:id' , component:ListEventoComponent, canActivate: [AuthGuardGuard]},
   {path : 'home' , component:ListAllEventsComponent, canActivate: [AuthGuardGuard]},
   { path : 'adminSayWhat', component:BecomeAdminComponent},
-  {path : 'homeAdmin', component:HomeAdminComponent},
-  {path : 'listAllEventAdmin/:sla' , component:ListAllEventsAdminComponent}
+  {path : 'homeAdmin', component:HomeAdminComponent , canActivate: [AuthGuardGuard]},
+  {path : 'listAllEventAdmin/:sla' , component:ListAllEventsAdminComponent, canActivate: [AuthGuardGuard]},
+  {path : 'createRequest', component :RequestPromotorComponent, canActivate: [AuthGuardGuard]},
+  {path : 'listRequests', component :AdminAcceptedPromComponent, canActivate: [AuthGuardGuard]}
 ];
 
 @NgModule({

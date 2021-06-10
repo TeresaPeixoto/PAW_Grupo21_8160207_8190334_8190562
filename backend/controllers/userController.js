@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var User = require("../models/user");
-const jwt = require('jsonwebtoken');
-var authconfig = require('../config/authconfig');
+const jwt = require("jsonwebtoken");
+var authconfig = require("../config/authconfig");
 const user = require("../models/user");
 
 var userController = {};
@@ -35,8 +35,8 @@ userController.showById = function (req, res) {
     } else {
       res.json(dbUser);
     }
-  })
-}
+  });
+};
 
 userController.showByEmail = function (req, res) {
   User.findOne({ email: req.params.email }).exec((err, dbUser) => {
@@ -45,8 +45,8 @@ userController.showByEmail = function (req, res) {
     } else {
       res.json(dbUser);
     }
-  })
-}
+  });
+};
 
 userController.editById = function (req, res) {
   User.findByIdAndUpdate(req.body._id, req.body, (err, editedUser) => {
@@ -55,8 +55,8 @@ userController.editById = function (req, res) {
     } else {
       res.json(editedUser);
     }
-  })
-}
+  });
+};
 
 userController.editByEmail = function (req, res) {
   User.findOneAndUpdate(req.body.email, req.body, (err, editedUser) => {
@@ -65,8 +65,8 @@ userController.editByEmail = function (req, res) {
     } else {
       res.json(editedUser);
     }
-  })
-}
+  });
+};
 
 userController.deleteById = function (req, res) {
   User.findByIdAndDelete(req.body._id, req.body, (err, deletedUser) => {
@@ -75,8 +75,8 @@ userController.deleteById = function (req, res) {
     } else {
       res.json(deletedUser);
     }
-  })
-}
+  });
+};
 
 userController.deleteByEmail = function (req, res) {
   User.remove({ email: req.params.email }).exec((err, deletedUser) => {
@@ -85,57 +85,83 @@ userController.deleteByEmail = function (req, res) {
     } else {
       res.json(deletedUser);
     }
-  })
-}
+  });
+};
 
 userController.suspendedUserById = function (req, res) {
-  User.findByIdAndUpdate(req.body._id, { userStatus: 'suspenso' }, (err, suspendedUser) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(suspendedUser);
+  User.findByIdAndUpdate(
+    req.body._id,
+    { userStatus: "suspenso" },
+    (err, suspendedUser) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(suspendedUser);
+      }
     }
-  })
-}
+  );
+};
 
 userController.suspendUserByEmail = function (req, res) {
-  User.findOneAndUpdate(req.body.email, { userStatus: 'suspenso' }, (err, suspendedUser) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(suspendedUser);
+  User.findOneAndUpdate(
+    req.body.email,
+    { userStatus: "suspenso" },
+    (err, suspendedUser) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(suspendedUser);
+      }
     }
-  })
-}
+  );
+};
 
 userController.changeRole = function (req, res) {
-  User.findOneAndUpdate(req.body.email, { role: req.body.role }, (err, editedUser) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(editedUser);
+  User.findOneAndUpdate(
+    req.body.email,
+    { role: req.body.role },
+    (err, editedUser) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(editedUser);
+      }
     }
-  })
-}
+  );
+};
 
 userController.changeRoleToPromotor = function (req, res) {
-  User.findOneAndUpdate(req.body.email, { role: 'promotor' }, (err, editedUser) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(editedUser);
+  console.log("chegou ao controlador");
+  console.log(req.body);
+  User.findOneAndUpdate(
+    { email: req.body.email },
+    { $set: { role: "promotor" } },
+    { new: true }
+  ).exec(function(err, editedUser) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(editedUser);
+        res.json(editedUser);
+      }
     }
-  })
-}
+  );
+};
 
 userController.changeRoleToAdmin = function (req, res) {
-  User.findOneAndUpdate(req.body.email, { role: 'admin' }, (err, editedUser) => {
+  console.log(req.body.email);
+  User.findOneAndUpdate(
+    { email: req.body.email },
+    { $set: { role: "admin" } },
+    { new: true }
+  ).exec(function(err, editedUser) {
     if (err) {
       console.log(err);
     } else {
+      console.log(editedUser);
       res.json(editedUser);
     }
-  })
-}
+  });
+};
 
 module.exports = userController;

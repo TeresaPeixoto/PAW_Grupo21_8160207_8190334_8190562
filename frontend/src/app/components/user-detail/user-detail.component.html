@@ -95,9 +95,9 @@
                 Editar
               </button>
               <button id="btn1" routerLink="/home">Voltar para tras</button>
-              <ng-template *ngIf= currentUser.userStatus :cliente>
-                <button  id="btn1" routerLink="/home">Tornar promotor</button>
-            </ng-template>
+             
+                <button  *ngIf= (!verify) id="btn1" routerLink="/createRequest">Tornar promotor</button>
+           
                     </div>
           </div></div>
         </div>
