@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Evento } from '../../model/evento';
 import { Router , ActivatedRoute} from '@angular/router';
 import { EventRestServiceService } from 'src/app/services/event-rest-service.service';
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-evento',
@@ -11,9 +11,11 @@ import { EventRestServiceService } from 'src/app/services/event-rest-service.ser
 })
 export class ListEventoComponent implements OnInit {
   currentEvent: Evento;  
+  dImage: any;
 
   constructor(private router: Router, private route: ActivatedRoute, private rest: EventRestServiceService) {
     this.currentEvent = new Evento();
+    
     
 }
 
@@ -23,6 +25,7 @@ export class ListEventoComponent implements OnInit {
       console.log(params);
       this.rest.getEvento(params.id).subscribe((evento: any)=>{
           this.currentEvent=evento;
+          this.dImage = this.currentEvent.eventPicture;
 
     });
 

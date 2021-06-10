@@ -4,7 +4,8 @@ export class Evento {
       public local?: string, public eventDate? : Date,
       public price?: number, public lugares?: number,
        public description?: string, 
-        public lotacao?:number, public eventStatus?: string) {
+        public lotacao?:number, public eventStatus?: string,
+        public eventPicture?: String) {
     }
     
   }

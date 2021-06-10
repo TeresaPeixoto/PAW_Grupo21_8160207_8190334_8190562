@@ -14,7 +14,7 @@ var EventSchema = new mongoose.Schema({
         type: String,
         default: 'Por decorrer'
     },
-    poster: String
+    eventPicture: String
 });
 
 module.exports = mongoose.model('Event', EventSchema);

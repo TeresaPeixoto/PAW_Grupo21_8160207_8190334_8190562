@@ -94,6 +94,12 @@
                     />
                   </h4>
                 </div>
+                <div> 
+                  <h4>
+                    <label for="form-imagem">Imagem do evento</label>
+                  <input #imageInput type="file" class="form-control" id="eventPicture" ng-model="vm.eventPicture"  (change)="onFileChange($event)"> 
+                  </h4>
+                </div>
                 <div class="registo-button">
                   <button
                     id="btn1"

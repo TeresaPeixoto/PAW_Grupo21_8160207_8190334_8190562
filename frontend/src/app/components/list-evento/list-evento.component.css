@@ -10,3 +10,9 @@
     font-size: 15px;
     border-radius: 10px;
   }
+
+  #imgpos {
+    position: absolute; 
+    right: 75px; 
+    top: 150px; 
+    }

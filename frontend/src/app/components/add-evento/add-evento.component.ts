@@ -14,6 +14,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 export class AddEventoComponent implements OnInit {
   evento: Evento = new Evento();
   error: any;
+  imageSrc: string | undefined;
 
   public formulario: FormGroup = new FormGroup({
     eventName: new FormControl(null, [Validators.required]),
@@ -23,6 +24,7 @@ export class AddEventoComponent implements OnInit {
     lugares: new FormControl(null, [Validators.required]),
     description: new FormControl(null, [Validators.required]),
     lotacao: new FormControl('', [Validators.required, Validators.max(90), Validators.min(20)]),
+    eventPicture: new FormControl(null, [Validators.required])
   });
 
   constructor(
@@ -47,6 +49,25 @@ export class AddEventoComponent implements OnInit {
             alert('Erro em adicionar evento');
           }
         });
+    }
+  }
+  onFileChange(event:any) {
+    const reader = new FileReader();
+    
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+    
+      reader.onload = () => {
+   
+        this.imageSrc = reader.result as string;
+     
+        this.formulario.patchValue({
+          eventPicture: reader.result
+        });
+   
+      };
+   
     }
   }
 }
