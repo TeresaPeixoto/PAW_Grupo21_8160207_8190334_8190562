@@ -8,7 +8,7 @@ var BilheteSchema = new mongoose.Schema({
         type: String,
         default: "Por utilizar"
     },
-    covidTest: String,
+    comprovativo: String,
     lugares: Number
 });
 

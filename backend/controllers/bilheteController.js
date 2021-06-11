@@ -9,27 +9,23 @@ var bilheteController = {};
 bilheteController.addBilhete = function (req, res) {
     var bilhete = new Bilhete(req.body);
 
-    bilhete.userID = req.userID;
+    bilhete.userID = req.params.userID;
     bilhete.eventID = req.params.id;
 
     bilhete.save((err) => {
         if (err) {
             console.log(err);
         } else {
+            Event.findById(bilhete.eventID, (err, evento) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    evento.bilhetesDisponiveis -= bilhete.lugares;
+
+                    evento.save();
+                }
+            });
             res.json(bilhete);
-        }
-    });
-
-    Event.findById(bilhete.eventID, (err, evento) => {
-        if (err) {
-            console.log(err);
-        } else {
-            evento.bilhetesDisponiveis -= bilhete.lugares;
-
-            evento.save();
-
-            console.log(evento);
-            res.json(evento);
         }
     });
 };

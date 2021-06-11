@@ -5,6 +5,8 @@ import { BilheteRestServiceService } from 'src/app/services/bilhete-rest-service
 import { Bilhete } from 'src/app/model/bilhete';
 import { EventRestServiceService } from 'src/app/services/event-rest-service.service';
 import { Evento } from '../../model/evento';
+import { User } from 'src/app/model/user';
+import { AuthRestServiceService } from '../../services/auth-rest-service.service';
 
 @Component({
   selector: 'app-adquirir-bilhetes',
@@ -16,6 +18,10 @@ export class AdquirirBilhetesComponent implements OnInit {
   cE: Evento;  
   error: any;
   comp: string | undefined;
+  currentUser: User;
+  email: string;
+  currentID: string;
+  currentUserID: string;
 
   public formulario: FormGroup = new FormGroup({  
     lugares: new FormControl(null, [Validators.required]),
@@ -26,26 +32,52 @@ export class AdquirirBilhetesComponent implements OnInit {
     private router: Router,
     private authServive: BilheteRestServiceService,
     private route: ActivatedRoute,
-    private rest: EventRestServiceService)
+    private rest: EventRestServiceService,
+    private auth: AuthRestServiceService)
     {
+      this.currentUser = new User();
+    this.email = '';
     this.cE = new Evento();
+    this.currentID= '';
+    this.currentUserID='';
     }
   
 
   ngOnInit(): void {
+    var tempUser = localStorage.getItem('currentUser');
+    
+    if (tempUser != null) {
+      
+      this.email = JSON.parse(tempUser).email;
+
+    this.auth.getUser(this.email).subscribe((user: any) => {
+      console.log(user);
+      this.currentUser = user;
+          console.log(this.currentUser);
+          console.log(user);
+          this.currentUserID=user._id;
+        })
+
     this.route.params.subscribe(params =>{
       console.log(params);
-      this.rest.getEvento(params.id).subscribe((currentEvent: any)=>{
+      this.rest.getEvento(params.id).subscribe((currentEvent: Evento)=>{
           this.cE=currentEvent;
+          this.currentID=params.id;
+          console.log(this.cE.eventName);
     });
   })
-}
+
+    }
+  }
 
 
   add_bilhete(): void {
     if (this.formulario.status === 'INVALID') {
       console.log('formulario invalido');
     } else {
+      this.formulario.value["eventID"]=this.currentID;
+      this.formulario.value["userID"]=this.currentUserID;
+      console.log(this.formulario.value);
       console.log('na funçao de adquirir evento');
       this.authServive
         .addBilhete(this.formulario.value)
@@ -78,6 +110,11 @@ export class AdquirirBilhetesComponent implements OnInit {
       };
    
     }
+  }
+
+  logout(): void {
+    console.log('clicou no logout');
+    this.auth.logout();
   }
 }
 
