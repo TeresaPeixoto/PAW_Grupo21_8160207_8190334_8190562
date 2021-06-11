@@ -15,6 +15,7 @@ var authRouter = require('./routes/auth');
 var adminRouter = require('./routes/administrator');
 var requestRouter = require('./routes/pedidos');
 var localRouter = require('./routes/local');
+var bilheteRouter = require('./routes/bilhete');
 
 mongoose.Promise = global.Promise
 
@@ -42,6 +43,7 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/adminsaywhat', adminRouter);
 app.use('/api/v1/requests', requestRouter)
 app.use('/api/v1/local', localRouter);
+app.use('/api/v1/bilhete', bilheteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
