@@ -12,7 +12,7 @@ router.get("/allEvents", eventController.getAllEvents);
 
 router.get("/allAvailableEvents", eventController.getAllAvailableEvents);
 router.get("/allFinishedEvents", eventController.getAllFinishedEvents);
-router.put("/edit/:_id", eventController.editByID);
+router.put("/edit/:id", eventController.editByID);
 
 router.get("/getEvento/:id",eventController.showByID);
 

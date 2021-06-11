@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var Event = require("../models/event");
+var Local = require("../models/local");
 var path = require('path');
 var fs = require("fs");
 
@@ -8,6 +9,15 @@ var eventController = {};
 
 eventController.createEvent = function (req, res) {
   var event = new Event(req.body);
+
+  Local.findById(event.localID), (err, local) => {
+    if (err) {
+      console.log(err);
+    } else {
+      event.bilhetesDisponiveis = local.currentLotacao;
+      res.json(local);
+    }
+  }
 
   if (!req.body.eventName || req.body.eventName.length < 6) {
     res.status(400).json({ message: "Event name must contain 6 characters" });
@@ -21,12 +31,12 @@ eventController.createEvent = function (req, res) {
       .json({ message: "You must identify your number of lugares" });
   } else if (!req.body.description) {
     res.status(400).json({ message: "You must identify your description" });
-    
+
   } else {
     event.save((err) => {
       if (err) {
         console.log(err);
-     
+
       } else {
         res.json(event);
       }
@@ -115,6 +125,7 @@ eventController.showByID = function (req, res) {
 };
 
 eventController.editByID = function (req, res) {
+  console.log("chegou ao edit");
   Event.findByIdAndUpdate(req.body._id, req.body, (err, updatedEvent) => {
     if (err) {
       console.log(err);

@@ -29,7 +29,7 @@ userController.createAccount = function (req, res) {
 };
 
 userController.showById = function (req, res) {
-  User.findById(req.body._id, req.body, (err, dbUser) => {
+  User.findById(req.params._id, req.body, (err, dbUser) => {
     if (err) {
       console.log(err);
     } else {
@@ -49,7 +49,7 @@ userController.showByEmail = function (req, res) {
 };
 
 userController.editById = function (req, res) {
-  User.findByIdAndUpdate(req.body._id, req.body, (err, editedUser) => {
+  User.findByIdAndUpdate(req.params._id, req.body, (err, editedUser) => {
     if (err) {
       console.log(err);
     } else {
@@ -59,7 +59,7 @@ userController.editById = function (req, res) {
 };
 
 userController.editByEmail = function (req, res) {
-  User.findOneAndUpdate(req.body.email, req.body, (err, editedUser) => {
+  User.findOneAndUpdate(req.params.email, req.body, (err, editedUser) => {
     if (err) {
       console.log(err);
     } else {
@@ -69,7 +69,7 @@ userController.editByEmail = function (req, res) {
 };
 
 userController.deleteById = function (req, res) {
-  User.findByIdAndDelete(req.body._id, req.body, (err, deletedUser) => {
+  User.findByIdAndDelete(req.params._id, req.body, (err, deletedUser) => {
     if (err) {
       console.log(err);
     } else {

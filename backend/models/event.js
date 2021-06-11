@@ -3,13 +3,12 @@ var mongoose = require('mongoose');
 
 var EventSchema = new mongoose.Schema({
     promotorID: ObjectID,
+    localID: ObjectID,
     eventName: String,
-    local: String,
     eventDate: { type: Date },
     price: Number,
-    lugares: Number,
     description: String,
-    lotacao: Number,
+    bilhetesDisponiveis: Number,
     eventStatus: {
         type: String,
         default: 'Por decorrer'

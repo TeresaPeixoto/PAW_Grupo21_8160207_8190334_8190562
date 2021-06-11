@@ -18,19 +18,19 @@ import {AdquirirBilhetesComponent} from './components/adquirir-bilhetes/adquirir
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'registo', component: RegistoComponent },
+  {path: 'login', component: LoginComponent },
+  {path: 'registo', component: RegistoComponent },
   {path :'list', component: UserDetailComponent, canActivate: [AuthGuardGuard] },
   {path : 'editProfile', component:UserEditComponent, canActivate: [AuthGuardGuard]},
   {path : 'creatEvent', component: AddEventoComponent, canActivate: [AuthGuardGuard]},
   {path : 'listEvent/:id' , component:ListEventoComponent},
   {path : 'home' , component:ListAllEventsComponent},
-  { path : 'adminSayWhat', component:BecomeAdminComponent},
+  {path : 'adminSayWhat', component:BecomeAdminComponent},
   {path : 'homeAdmin', component:HomeAdminComponent , canActivate: [AuthGuardGuard]},
   {path : 'listAllEventAdmin/:sla' , component:ListAllEventsAdminComponent, canActivate: [AuthGuardGuard]},
   {path : 'createRequest', component :RequestPromotorComponent, canActivate: [AuthGuardGuard]},
   {path : 'listRequests', component :AdminAcceptedPromComponent, canActivate: [AuthGuardGuard]}, 
-  {path : 'addBilhete', component : AdquirirBilhetesComponent, canActivate: [AuthGuardGuard]},
+  {path : 'addBilhete/:id', component : AdquirirBilhetesComponent, canActivate: [AuthGuardGuard]},
   {path : 'editEvent/:id', component :EditEventComponent, canActivate: [AuthGuardGuard]}
 ];
 

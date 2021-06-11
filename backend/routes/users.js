@@ -17,5 +17,4 @@ router.delete('/clientProfile/delete/:email', userController.deleteByEmail, auth
 
 router.put('/clientProfile/edit/:email', userController.editByEmail, authController.verifyToken);
 
-
 module.exports = router;
