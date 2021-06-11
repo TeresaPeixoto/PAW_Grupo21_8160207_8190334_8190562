@@ -1,10 +1,8 @@
 export class Evento {
     constructor(
-      public _id?: string, public eventName?: string, 
-      public local?: string, public eventDate? : Date,
-      public price?: number, public lugares?: number,
-       public description?: string, 
-        public lotacao?:number, public eventStatus?: string,
+      public _id?: string, public eventName?: string, public eventDate? : Date,
+      public price?: number, public promotorID?: string, public localID?:string,
+       public description?: string,  public eventStatus?: string, public bilhetesDisponiveis?: number,
         public eventPicture?: String) {
     }
     
