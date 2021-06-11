@@ -40,36 +40,10 @@
               (ngSubmit)="updateEvent()"
             >
               <mat-list>
-                <mat-list-item>
-                  Nome do Evento : &nbsp;&nbsp;&nbsp;{{
-                    currentEvent.eventName
-                  }}</mat-list-item
-                >
-                <mat-list-item>
-                  Local : &nbsp;&nbsp;&nbsp;&nbsp;{{
-                    currentEvent.local
-                  }}</mat-list-item
-                >
-                <mat-list-item>
-                  Data do Evento : &nbsp;&nbsp;&nbsp;&nbsp;{{
-                    currentEvent.eventDate
-                  }}</mat-list-item
-                >
-                <mat-list-item>
-                  Preço : &nbsp;&nbsp;&nbsp;&nbsp;{{
-                    currentEvent.price
-                  }}</mat-list-item
-                >
-                <mat-list-item>
-                  Lugares disponíveis :
-                  {{ currentEvent.lugares }}</mat-list-item
-                >
-                <mat-list-item>
-                  Descrição : {{ currentEvent.description }}</mat-list-item
-                >
-                <mat-list-item>
-                  Lotação : {{ currentEvent.lotacao }}</mat-list-item
-                >
+                <mat-list-item>Nome do Evento : &nbsp;&nbsp;&nbsp;{{currentEvent.eventName}}</mat-list-item>
+                <mat-list-item> Data do Evento : &nbsp;&nbsp;&nbsp;&nbsp;{{ currentEvent.eventDate }}</mat-list-item>
+                <mat-list-item>Preço : &nbsp;&nbsp;&nbsp;&nbsp;{{currentEvent.price}}</mat-list-item>
+                <mat-list-item> Descrição : {{ currentEvent.description }}</mat-list-item>
               </mat-list>
               <body>
                 <img [src]="dImage" alt="Image" id ="imgpos" width="300px" height="200px">

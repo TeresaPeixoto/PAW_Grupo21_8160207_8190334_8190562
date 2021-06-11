@@ -13,6 +13,8 @@ import {HomeAdminComponent} from './components/home-admin/home-admin.component';
 import {ListAllEventsAdminComponent} from './components/list-all-events-admin/list-all-events-admin.component';
 import {RequestPromotorComponent} from './components/request-promotor/request-promotor.component';
 import{AdminAcceptedPromComponent} from './components/admin-accepted-prom/admin-accepted-prom.component';
+import { EditEventComponent } from './components/edit-event/edit-event.component';
+import {AdquirirBilhetesComponent} from './components/adquirir-bilhetes/adquirir-bilhetes.component';
 
 
 const routes: Routes = [
@@ -27,8 +29,9 @@ const routes: Routes = [
   {path : 'homeAdmin', component:HomeAdminComponent , canActivate: [AuthGuardGuard]},
   {path : 'listAllEventAdmin/:sla' , component:ListAllEventsAdminComponent, canActivate: [AuthGuardGuard]},
   {path : 'createRequest', component :RequestPromotorComponent, canActivate: [AuthGuardGuard]},
-  {path : 'listRequests', component :AdminAcceptedPromComponent, canActivate: [AuthGuardGuard]},
-  
+  {path : 'listRequests', component :AdminAcceptedPromComponent, canActivate: [AuthGuardGuard]}, 
+  {path : 'addBilhete', component : AdquirirBilhetesComponent, canActivate: [AuthGuardGuard]},
+  {path : 'editEvent/:id', component :EditEventComponent, canActivate: [AuthGuardGuard]}
 ];
 
 @NgModule({

@@ -115,6 +115,7 @@ eventController.showByID = function (req, res) {
 };
 
 eventController.editByID = function (req, res) {
+  console.log("chegou ao edit");
   Event.findByIdAndUpdate(req.body._id, req.body, (err, updatedEvent) => {
     if (err) {
       console.log(err);

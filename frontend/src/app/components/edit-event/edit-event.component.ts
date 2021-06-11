@@ -1,22 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Evento } from '../../model/evento';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EventRestServiceService } from 'src/app/services/event-rest-service.service';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { User } from 'src/app/model/user';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthRestServiceService } from '../../services/auth-rest-service.service';
 
 @Component({
-  selector: 'app-add-evento',
-  templateUrl: './add-evento.component.html',
-  styleUrls: ['./add-evento.component.css'],
+  selector: 'app-edit-event',
+  templateUrl: './edit-event.component.html',
+  styleUrls: ['./edit-event.component.css'],
 })
-export class AddEventoComponent implements OnInit {
+export class EditEventComponent implements OnInit {
   evento: Evento = new Evento();
   error: any;
   imageSrc: string | undefined;
   currentUser: User;
   email: string;
+  currentEvent: Evento;
+  dImage: any;
 
   public formulario: FormGroup = new FormGroup({
     eventName: new FormControl(null, [Validators.required]),
@@ -33,60 +35,42 @@ export class AddEventoComponent implements OnInit {
     eventPicture: new FormControl(null, [Validators.required]),
   });
 
-  //locais: Array<Local> = [];
-
   constructor(
     private auth: AuthRestServiceService,
     private router: Router,
-    private authServive: EventRestServiceService
+    private route: ActivatedRoute,
+    private rest: EventRestServiceService
   ) {
     this.currentUser = new User();
     this.email = '';
+    this.currentEvent = new Evento();
   }
 
   ngOnInit(): void {
+    console.log(this.currentEvent);
+    this.route.params.subscribe((params) => {
+      console.log(params);
+      this.rest.getEvento(params.id).subscribe((evento: any) => {
+        this.currentEvent = evento;
+        this.dImage = this.currentEvent.eventPicture;
+      });
+    });
     var tempUser = localStorage.getItem('currentUser');
-    
+
     if (tempUser != null) {
-      
       this.email = JSON.parse(tempUser).email;
 
-    this.auth.getUser(this.email).subscribe((user: User) => {
-      console.log(user);
-      if (user) {
-        if (user.role == 'promotor') {
-          this.currentUser = user;
-          console.log(this.currentUser);
-        } else {
-          this.router.navigate(['/home']);
-
-          /*
-    for (let i = 0; i < locais.length; i++) {
-      if (
-        locais[i]._id != null) {
-        this.locais.push(locais[i]);
-        console.log(locais[i]);
-      }
-    }*/
-        }
-      }
-    });}
-  }
-  add_evento(): void {
-    if (this.formulario.status === 'INVALID') {
-      console.log('formulario invalido');
-    } else {
-      console.log('na funçao de adicionar evento');
-      this.authServive
-        .addEvento(this.formulario.value)
-        .subscribe((evento: any) => {
-          console.log(evento);
-          if (evento) {
-            this.router.navigate(['/']);
+      this.auth.getUser(this.email).subscribe((user: User) => {
+        console.log(user);
+        if (user) {
+          if (user.role == 'promotor') {
+            this.currentUser = user;
+            console.log(this.currentUser);
           } else {
-            alert('Erro em adicionar evento');
+            this.router.navigate(['/home']);
           }
-        });
+        }
+      });
     }
   }
 
@@ -94,6 +78,7 @@ export class AddEventoComponent implements OnInit {
     console.log('clicou no logout');
     this.auth.logout();
   }
+
   onFileChange(event: any) {
     const reader = new FileReader();
 
@@ -109,5 +94,17 @@ export class AddEventoComponent implements OnInit {
         });
       };
     }
+  }
+
+  updateEvent(): void {
+    console.log('chegou aqui');
+    console.log(this.currentEvent);
+    this.rest.editEvento(this.currentEvent).subscribe((currentEvent: any) => {
+      if (currentEvent) {
+        console.log(currentEvent);
+      } else {
+        alert('Erro no update!');
+      }
+    });
   }
 }
