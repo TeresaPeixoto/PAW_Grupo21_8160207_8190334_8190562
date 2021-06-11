@@ -16,15 +16,9 @@ export class AdquirirBilhetesComponent implements OnInit {
   cE: Evento;  
   error: any;
   comp: string | undefined;
-  eName: string | undefined;
-  ePrice: number | undefined;
 
-  public formulario: FormGroup = new FormGroup({
-    eventName: new FormControl(null, [Validators.required]),
-    nome: new FormControl(null, [Validators.required]),
-    cc: new FormControl(null, [Validators.required]),
-    hora: new FormControl(null, [Validators.required]),
-    price: new FormControl(null, [Validators.required]),
+  public formulario: FormGroup = new FormGroup({  
+    lugares: new FormControl(null, [Validators.required]),
     comprovativo: new FormControl(null, [Validators.required])
   });
 
@@ -32,7 +26,8 @@ export class AdquirirBilhetesComponent implements OnInit {
     private router: Router,
     private authServive: BilheteRestServiceService,
     private route: ActivatedRoute,
-    private rest: EventRestServiceService) {
+    private rest: EventRestServiceService)
+    {
     this.cE = new Evento();
     }
   
@@ -42,8 +37,6 @@ export class AdquirirBilhetesComponent implements OnInit {
       console.log(params);
       this.rest.getEvento(params.id).subscribe((currentEvent: any)=>{
           this.cE=currentEvent;
-          this.eName=this.cE.eventName;
-          this.ePrice=this.cE.price;
     });
   })
 }
