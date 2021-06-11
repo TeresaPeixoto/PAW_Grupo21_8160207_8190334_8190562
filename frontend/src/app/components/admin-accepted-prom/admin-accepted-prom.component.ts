@@ -59,7 +59,7 @@ export class AdminAcceptedPromComponent implements OnInit {
           console.log(tempPromot);
           
         }else{
-          console.log("ardeu");
+          console.log("Erro");
         }
       })
     } else {
@@ -71,6 +71,7 @@ export class AdminAcceptedPromComponent implements OnInit {
     console.log(id);
     this.rest.deleteRequest(id).subscribe((temPedido: PedidoModel) => {
       if (id) {
+        this.load();
         this.router.navigate(['/listRequests']);
       } else {
         alert('Erro!');
