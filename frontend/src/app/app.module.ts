@@ -24,6 +24,7 @@ import { ListAllEventsAdminComponent } from './components/list-all-events-admin/
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { RequestPromotorComponent } from './components/request-promotor/request-promotor.component';
 import { AdminAcceptedPromComponent } from './components/admin-accepted-prom/admin-accepted-prom.component';
+import { AdquirirBilhetesComponent } from './components/adquirir-bilhetes/adquirir-bilhetes.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { AdminAcceptedPromComponent } from './components/admin-accepted-prom/adm
     ListAllEventsAdminComponent,
     UserEditComponent,
     RequestPromotorComponent,
-    AdminAcceptedPromComponent
+    AdminAcceptedPromComponent,
+    AdquirirBilhetesComponent
   ],
   imports: [
     BrowserModule,
