@@ -15,7 +15,6 @@ pedidoPromotorController.createRequest = function (req, res) {
       console.log(err);
     console.log("er");
     } else {
-      
       res.json(request);
     }
   });
