@@ -28,6 +28,7 @@ import { AdquirirBilhetesComponent } from './components/adquirir-bilhetes/adquir
 import { EditEventComponent } from './components/edit-event/edit-event.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

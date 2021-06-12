@@ -22,7 +22,11 @@ export class BilheteRestServiceService {
   addBilhete(bilhete: Bilhete): Observable<any> {
     console.log(bilhete);
     console.log(bilhete.eventID);
-    return this.http.post<Bilhete>(endpoint + '/' + bilhete.eventID , bilhete);
+    return this.http.post<Bilhete>(endpoint + '/' + bilhete.eventID, bilhete);
+  }
+
+  listAllBilhetes(): Observable<any> {
+    return this.http.get<Bilhete[]>(endpoint + '/allBilhetes');
   }
 
 }

@@ -9,8 +9,10 @@ var bilheteController = {};
 bilheteController.addBilhete = function (req, res) {
     var bilhete = new Bilhete(req.body);
 
-    bilhete.userID = req.params.userID;
+    bilhete.userID = req.body.userID;
     bilhete.eventID = req.params.id;
+    console.log(req.body);
+
 
     bilhete.save((err) => {
         if (err) {
