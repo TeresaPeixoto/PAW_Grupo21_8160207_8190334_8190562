@@ -11,8 +11,12 @@ router.post("/create", eventController.createEvent);
 router.get("/allEvents", eventController.getAllEvents);
 
 router.get("/allAvailableEvents", eventController.getAllAvailableEvents);
+
 router.get("/allFinishedEvents", eventController.getAllFinishedEvents);
+
 router.put("/edit/:id", eventController.editByID);
+
+router.put("/editlocal/:id", eventController.changeLocal);
 
 router.get("/getEvento/:id",eventController.showByID);
 
