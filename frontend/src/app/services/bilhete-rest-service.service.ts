@@ -29,4 +29,13 @@ export class BilheteRestServiceService {
     return this.http.get<Bilhete[]>(endpoint + '/allBilhetes');
   }
 
+  getBilhete(bilheteId:string){
+    return this.http.get<Bilhete>(endpoint + '/getBilhete/' + bilheteId);
+ 
+  }
+  editBilhete(bilhete:Bilhete){
+    return this.http.put<Bilhete>(endpoint + '/editBilhete/' + bilhete._id, bilhete);
+ 
+  }
+
 }

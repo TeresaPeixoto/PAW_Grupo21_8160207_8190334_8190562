@@ -26,6 +26,13 @@ import { RequestPromotorComponent } from './components/request-promotor/request-
 import { AdminAcceptedPromComponent } from './components/admin-accepted-prom/admin-accepted-prom.component';
 import { AdquirirBilhetesComponent } from './components/adquirir-bilhetes/adquirir-bilhetes.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
+import { CreateLocalComponent } from './components/create-local/create-local.component';
+import { EditeLocalComponent } from './components/edite-local/edite-local.component';
+import { HomeLocalComponent } from './components/home-local/home-local.component';
+import { ListAllLocalsComponent } from './components/list-all-locals/list-all-locals.component';
+import { ListClientsComponent } from './components/list-clients/list-clients.component';
+import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar-bilhete.component';
+
 
 
 
@@ -45,7 +52,14 @@ import { EditEventComponent } from './components/edit-event/edit-event.component
     RequestPromotorComponent,
     AdminAcceptedPromComponent,
     AdquirirBilhetesComponent,
-    EditEventComponent
+    EditEventComponent,
+    CreateLocalComponent,
+    EditeLocalComponent,
+    HomeLocalComponent,
+    ListAllLocalsComponent,
+    ListClientsComponent,
+    CancelarBilheteComponent
+    
   ],
   imports: [
     BrowserModule,

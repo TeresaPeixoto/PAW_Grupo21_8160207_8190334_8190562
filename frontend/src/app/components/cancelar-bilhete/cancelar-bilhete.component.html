@@ -1,0 +1,55 @@
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  
+  <div class="container bootstrap snippet">
+    <div class="row">
+      <br /><br />
+      <div align="end">
+        <a id:link href="http://localhost:4200/list"
+          ><h3>{{ currentUser.userName }}</h3></a
+        >
+      </div>
+      <div align="end" (click)="logout()">
+        <a id:link href="http://localhost:4200/login">Logout</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9">
+        <h1>Cancelar Bilhete</h1>
+  
+        <div class="tab-content">
+          <div class="tab-pane active" id="home">
+            <div>
+                <h4>Deseja confirmar cancelamento?</h4>
+            </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <br />
+                  <button
+                    id="btn1"
+                    class="btn btn-lg btn-success btn-block"
+                    type="button"
+                    
+                    (click)=updateBilhete()
+                  >
+                    Confirmar
+                  </button>
+                  <button id="btn1" class="btn btn-lg" routerLink="/">Cancelar</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  
+  

@@ -20,7 +20,7 @@ export class CreateLocalComponent implements OnInit {
       Validators.required,
       Validators.max(90),
       Validators.min(20),
-    ]),
+    ])
   });
 
   local: Local = new Local();

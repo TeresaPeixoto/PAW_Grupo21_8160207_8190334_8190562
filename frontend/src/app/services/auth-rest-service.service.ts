@@ -52,4 +52,8 @@ export class AuthRestServiceService {
     return this.http.post<any>('http://localhost:3000/api/v1/adminsaywhat/newPromot', email
     );
   }
+
+  getAllUsers():Observable<any>{
+    return this.http.get<User[]>(endpoint + '/allUsers');
+  }
 }
