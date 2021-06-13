@@ -39,6 +39,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { ListEventPromComponent } from './components/list-event-prom/list-event-prom.component';
 import { PromAcceptBilheteComponent } from './components/prom-accept-bilhete/prom-accept-bilhete.component';
 import { AceitarBilheteComponent } from './components/aceitar-bilhete/aceitar-bilhete.component';
+import { HomeEventComponent } from './components/home-event/home-event.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { AceitarBilheteComponent } from './components/aceitar-bilhete/aceitar-bi
     ListbilheteComponent,
     ListEventPromComponent,
     PromAcceptBilheteComponent,
-    AceitarBilheteComponent
+    AceitarBilheteComponent,
+    HomeEventComponent
     
     
   ],

@@ -49,6 +49,20 @@ userController.showByEmail = function (req, res) {
   });
 };
 
+userController.getAllUsers = function (req, res) {
+  console.log("Chegou ao controlador de todos os users");
+  User.find()
+    .exec((err, users) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(users);
+        res.json(users);
+      }
+    });
+   
+};
+
 userController.editById = function (req, res) {
   User.findByIdAndUpdate(req.params._id, req.body, (err, editedUser) => {
     if (err) {
@@ -96,7 +110,22 @@ userController.suspendUserByEmail = function (req, res) {
       if (err) {
         console.log(err);
       } else {
+        console.log("controller do suspende");
         res.json(suspendedUser);
+      }
+    }
+    );
+};
+
+userController.activeUserByEmail = function (req, res) {
+  User.findOneAndUpdate({ email: req.params.email },
+    { $set: { userStatus: "ativo" } },
+    { new: true }).exec(function (err, activeUser) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("controller do ativo");
+        res.json(activeUser);
       }
     }
     );

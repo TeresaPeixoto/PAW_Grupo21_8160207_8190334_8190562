@@ -6,7 +6,7 @@
 
 <div class="container" style="margin-top: 30px">
   <br /><br />
-  <h1><strong>Locais</strong></h1>
+  <h1><strong>Clientes</strong></h1>
   <div align="end">
     <a id:link href="http://localhost:4200/list"
       ><h3>{{ currentUser.userName }}</h3>
@@ -40,16 +40,16 @@
                     }}</mat-list-item
                   >
                  
-                  <button mat-raised-button *ngIf= (verify) routerLink="/" id="btn1">
+                  <button mat-raised-button *ngIf= "user.userStatus=='ativo'" routerLink="/homeAdmin" (click)= suspend(user.email) id="btn1">
                     Suspender cliente
                   </button>
                   
-                    <button mat-raised-button  *ngIf= (!verify) routerLink="/" id="btn1">
+                    <button mat-raised-button  *ngIf= "user.userStatus!='ativo'" routerLink="/homeAdmin" (click)= active(user.email) id="btn1">
                       Ativar cliente
                     </button>
                 </mat-list>
                 <div style="text-align: right">
-                  <button mat-raised-button routerLink="/" id="btn1">
+                  <button mat-raised-button routerLink="/homeAdmin" id="btn1">
                     Voltar para trás
                   </button>
                 </div>
