@@ -152,7 +152,7 @@ userController.changeRoleToAdmin = function (req, res) {
 
 userController.demotePromotor = function (req, res) {
   User.findOneAndUpdate(
-    { email: req.body.email },
+    { email: req.params.email },
     { $set: { role: "cliente" } },
     { new: true }
   ).exec(function (err, editedUser) {

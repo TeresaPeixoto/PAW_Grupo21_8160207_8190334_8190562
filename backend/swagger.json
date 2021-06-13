@@ -1,16 +1,44 @@
 {
     "swagger": "2.0",
     "info": {
-        "version" : "1.0.0",
-        "title": "Plataforma de Eventos Culturais", 
+        "version": "1.0.0",
+        "title": "Plataforma de Eventos Culturais",
         "description": "REST API para Eventos Culturais"
     },
     "host": "localhost:3000",
     "basePath": "/api/v1",
     "tags": [
         {
-            "name": "Eventos Culturais",
-            "description": "API para criação e manutenção de Eventos Culturais"
+            "name": "Local",
+            "description": "Operações de gestão de espaçõs onde se podem realizar eventos"
+        },
+        {
+            "name": "Event",
+            "description": "Operações de gestão de eventos culturais"
+        },
+        {
+            "name": "Registo",
+            "description": "Operações de registo de utilizador"
+        },
+        {
+            "name": "Users",
+            "description": "Operações de gestão de utilizadores da plataforma"
+        },
+        {
+            "name": "Administracao",
+            "description": "Operações de promoção de utilizadores"
+        },
+        {
+            "name": "Autentificacao",
+            "description": "Operações de gestão de entradas e saidas da plataforma"
+        },
+        {
+            "name": "Bilhete",
+            "description": "Operações de gestão dos bilhetes para os eventos culturais"
+        },
+        {
+            "name": "Pedidos",
+            "description": "Operações de gestão de pedidos de promoção de utilizadores"
         }
     ],
     "schemes": [
@@ -74,7 +102,24 @@
                     "Local"
                 ],
                 "description": "Editar um local de evento especificado atraves da sua ID"
-            }
+            },
+            "parameters": [
+                {
+                    "in": "id",
+                    "name": "path",
+                    "description": "ID de local que queremos editar",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "local",
+                    "in": "body",
+                    "description": "Dados atualizados de local",
+                    "schema": {
+                        "$ref": "#/definitions/Local"
+                    }
+                }
+            ]
         },
         "/local/delete/{id}": {
             "delete": {
@@ -89,10 +134,20 @@
                 "tags": [
                     "Event"
                 ],
-                "description": "Criar um novo evento"
+                "description": "Criar um novo evento",
+                "parameters": [
+                    {
+                        "name": "event",
+                        "in": "body",
+                        "description": "Evento que queremos criar",
+                        "schema": {
+                            "$ref": "#/definitions/Event"
+                        }
+                    }
+                ]
             }
         },
-        "/event/allEvents":{
+        "/event/allEvents": {
             "get": {
                 "tags": [
                     "Event"
@@ -122,7 +177,24 @@
                     "Event"
                 ],
                 "description": "Editar um evento especificado atraves do seu ID"
-            }
+            },
+            "parameters": [
+                {
+                    "in": "id",
+                    "name": "path",
+                    "description": "ID de evento que queremos editar",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "event",
+                    "in": "body",
+                    "description": "Dados atualizados de evento",
+                    "schema": {
+                        "$ref": "#/definitions/Event"
+                    }
+                }
+            ]
         },
         "/event/editlocal/{id}": {
             "put": {
@@ -130,7 +202,22 @@
                     "Event"
                 ],
                 "description": "Modar o local de um evento especificado atraves do seu ID"
-            }
+            },
+            "parameters": [
+                {
+                    "in": "id",
+                    "name": "path",
+                    "description": "ID de evento cujo local queremos editar",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "localID",
+                    "in": "body",
+                    "description": "ID do local atualizado para o evento",
+                    "type": "string"
+                }
+            ]
         },
         "/event/getEvento/{id}": {
             "get": {
@@ -148,12 +235,22 @@
                 "description": "Mostrar eventos que foram introduzidos por um promotor especifico"
             }
         },
-        "/register/":{
+        "/register/": {
             "post": {
                 "tags": [
                     "Registo"
                 ],
-                "description": "Registar um novo utilizador na plataforma"
+                "description": "Registar um novo utilizador na plataforma",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "User que queremos registar",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ]
             }
         },
         "/users/clientProfile/{email}": {
@@ -170,7 +267,16 @@
                     "Users"
                 ],
                 "description": "Suspender a conta de um utilizador especificado atraves do seu endereço de email"
-            }
+            },
+            "parameters": [
+                {
+                    "in": "email",
+                    "name": "path",
+                    "description": "Email do utilizador que queremos suspender",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
         },
         "/users/clientProfile/edit/{email}": {
             "put": {
@@ -178,7 +284,24 @@
                     "Users"
                 ],
                 "description": "Editar um utilizador especificado atraves do seu endereço de email"
-            }
+            },
+            "parameters": [
+                {
+                    "in": "email",
+                    "name": "path",
+                    "description": "Email do utilizador cujos dados queremos editar",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "user",
+                    "in": "body",
+                    "description": "Dados de utilizador atualizados",
+                    "schema": {
+                        "$ref": "#/definitions/User"
+                    }
+                }
+            ]
         },
         "/users/clientProfile/delete/{email}": {
             "delete": {
@@ -193,15 +316,24 @@
                 "tags": [
                     "Users"
                 ],
-                "description": "Editar um utilizador especificado atraves do seu endereço de email"
-            }
+                "description": "Despromover um promotor especificado atraves do seu endereço de email para o estado de utilizador normal"
+            },
+            "parameters": [
+                {
+                    "in": "email",
+                    "name": "path",
+                    "description": "Email do utilizador que queremos suspender",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
         },
         "/users/clientProfile/banuser/{id}": {
             "put": {
                 "tags": [
                     "Users"
                 ],
-                "description": "Editar um utilizador especificado atraves do seu endereço de email"
+                "description": "Banir um utilizador especificado atraves do seu id que tenha mais do que 5 bilhetes cancelados num mês"
             }
         },
         "/adminsaywhat/": {
@@ -210,7 +342,17 @@
                     "Administracao"
                 ],
                 "description": "Tornar um utilizador em admin"
-            }
+            },
+            "parameters": [
+                {
+                    "name": "user",
+                    "in": "body",
+                    "description": "User que queremos promover a administrador",
+                    "schema": {
+                        "$ref": "#/definitions/User"
+                    }
+                }
+            ]
         },
         "/adminsaywhat/newPromot": {
             "post": {
@@ -218,7 +360,17 @@
                     "Administracao"
                 ],
                 "description": "Tornar um utilizador em promotor"
-            }
+            },
+            "parameters": [
+                {
+                    "name": "user",
+                    "in": "body",
+                    "description": "User que queremos promover a promotor",
+                    "schema": {
+                        "$ref": "#/definitions/User"
+                    }
+                }
+            ]
         },
         "/auth/login": {
             "post": {
@@ -226,7 +378,17 @@
                     "Autentificacao"
                 ],
                 "description": "Autentificar o login de um utilizador"
-            }
+            },
+            "parameters": [
+                {
+                    "name": "user",
+                    "in": "body",
+                    "description": "Utilizador que se quer usar para entrar na plataforma",
+                    "schema": {
+                        "$ref": "#/definitions/User"
+                    }
+                }
+            ]
         },
         "/auth/logout": {
             "post": {
@@ -234,7 +396,17 @@
                     "Autentificacao"
                 ],
                 "description": "Sair da conta de utilizador"
-            }
+            },
+            "parameters": [
+                {
+                    "name": "user",
+                    "in": "body",
+                    "description": "Utilizador cuja sessão queremos terminar",
+                    "schema": {
+                        "$ref": "#/definitions/User"
+                    }
+                }
+            ]
         },
         "/bilhete/{id}": {
             "post": {
@@ -242,7 +414,17 @@
                     "Bilhete"
                 ],
                 "description": "Novo bilhete para um evento especificado pelo id é adquirido pelo utilizador"
-            }
+            },
+            "parameters": [
+                {
+                    "name": "bilhete",
+                    "in": "body",
+                    "description": "Bilhete para um evento que queremos criar em associação com o utilizador",
+                    "schema": {
+                        "$ref": "#/definitions/Bilhete"
+                    }
+                }
+            ]
         },
         "/bilhete/edit/{id}": {
             "put": {
@@ -250,7 +432,24 @@
                     "Bilhete"
                 ],
                 "description": "Editar um bilhete especificado pelo id"
-            }
+            },
+            "parameters": [
+                {
+                    "in": "id",
+                    "name": "path",
+                    "description": "ID do bilhete cujos dados queremos editar",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "bilhete",
+                    "in": "body",
+                    "description": "Dados de bilhete atualizados",
+                    "schema": {
+                        "$ref": "#/definitions/Bilhete"
+                    }
+                }
+            ]
         },
         "/bilhete/view/{id}": {
             "get": {
@@ -273,42 +472,57 @@
                 "tags": [
                     "Bilhete"
                 ],
-                "description": "Sair da conta de utilizador"
+                "description": "Cancelar um bilhete especificado pelo seu id"
             }
         },
         "/bilhete/delete/{id}": {
             "delete": {
                 "tags": [
                     "Bilhete"
-                ]
+                ],
+                "description": "Eliminar um bilhete especificado pelo seu id"
             }
         },
         "/requests/createRequest": {
             "post": {
                 "tags": [
                     "Pedidos"
-                ]
-            }
+                ],
+                "description": "Criar um pedido de promoção para promotor"
+            },
+            "parameters": [
+                {
+                    "name": "request",
+                    "in": "body",
+                    "description": "Pedido de promoção de utilizador para promotor que queremos criar",
+                    "schema": {
+                        "$ref": "#/definitions/Bilhete"
+                    }
+                }
+            ]
         },
         "/requests/deleteRequest/{id}": {
             "delete": {
                 "tags": [
                     "Pedidos"
-                ]
+                ],
+                "description": "Eliminar um pedido de promoção especificado pelo seu id"
             }
         },
         "/requests/allRequest": {
             "get": {
                 "tags": [
                     "Pedidos"
-                ]
+                ],
+                "description": "Mostrar todos os pedidos de promoção existentes"
             }
         },
         "/requests/getRequestByEmail/{email}": {
             "get": {
                 "tags": [
                     "Pedidos"
-                ]
+                ],
+                "description": "Mostrar um pedido de promoção de um utilizador especificado pelo seu email"
             }
         }
     }
