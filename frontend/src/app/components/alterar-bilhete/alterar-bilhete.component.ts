@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Evento } from '../../model/evento';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EventRestServiceService } from 'src/app/services/event-rest-service.service';
 import { User } from 'src/app/model/user';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthRestServiceService } from '../../services/auth-rest-service.service';
@@ -9,11 +7,11 @@ import { BilheteRestServiceService } from 'src/app/services/bilhete-rest-service
 import { Bilhete } from 'src/app/model/bilhete';
 
 @Component({
-  selector: 'app-cancelar-bilhete',
-  templateUrl: './cancelar-bilhete.component.html',
-  styleUrls: ['./cancelar-bilhete.component.css'],
+  selector: 'app-alterar-bilhete',
+  templateUrl: './alterar-bilhete.component.html',
+  styleUrls: ['./alterar-bilhete.component.css']
 })
-export class CancelarBilheteComponent implements OnInit {
+export class AlterarBilheteComponent implements OnInit {
   bilhete: Bilhete = new Bilhete();
   error: any;
   currentUser: User;
@@ -52,13 +50,12 @@ export class CancelarBilheteComponent implements OnInit {
       this.auth.getUser(this.email).subscribe((user: User) => {
         console.log(user);
         if (user) {
-          if (user.role != 'Cancelado'){
             this.currentUser = user;
             console.log(this.currentUser);
           } else {
             this.router.navigate(['/home']);
           }
-        }
+        
       });
     }
   }
@@ -73,7 +70,6 @@ export class CancelarBilheteComponent implements OnInit {
   updateBilhete(): void {
     console.log('chegou aqui');
     console.log(this.currentBilhete);
-    this.currentBilhete.ticketStatus="Cancelado";
     this.rest.editBilhete(this.currentBilhete).subscribe((currentBilhete: any) => {
       if (currentBilhete) {
         console.log(currentBilhete);

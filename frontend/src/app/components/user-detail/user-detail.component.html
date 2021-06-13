@@ -38,6 +38,12 @@
           37
         </li>
         <li class="list-group-item text-right">
+          <a id:link href="http://localhost:4200/list">
+          <span class="pull-left"><strong>Bilhetes adquiridos</strong></span>
+          </a>
+        0
+        </li>
+        <li class="list-group-item text-right">
           <span class="pull-left"><strong>Estatisticas</strong></span> 78
         </li>
       </ul>
@@ -97,6 +103,8 @@
               <button id="btn1" routerLink="/home">Voltar para tras</button>
              
                 <button  *ngIf= (!verify) id="btn1" routerLink="/createRequest">Tornar promotor</button>
+
+                <button  *ngIf= (!verify) id="btn1" routerLink="/listarBilhetes">Ver meus bilhetes</button>
            
                     </div>
           </div></div>

@@ -32,6 +32,8 @@ import { HomeLocalComponent } from './components/home-local/home-local.component
 import { ListAllLocalsComponent } from './components/list-all-locals/list-all-locals.component';
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar-bilhete.component';
+import { AlterarBilheteComponent} from './components/alterar-bilhete/alterar-bilhete.component';
+//import { RemoveBilheteComponent } from './components/remove-bilhete/remove-bilhete.component';
 
 
 
@@ -58,7 +60,9 @@ import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar
     HomeLocalComponent,
     ListAllLocalsComponent,
     ListClientsComponent,
-    CancelarBilheteComponent
+    CancelarBilheteComponent,
+    AlterarBilheteComponent,
+    //RemoveBilheteComponent
     
   ],
   imports: [
