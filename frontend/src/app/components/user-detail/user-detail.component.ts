@@ -4,17 +4,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { AuthRestServiceService } from '../../services/auth-rest-service.service';
 import { RequestRestServiceService} from '../../services/requests-rest-service.service';
+
+
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css'],
 })
+
 export class UserDetailComponent implements OnInit {
   password: string;
   email: string;
   passwordV: string;
   currentUser: User;
-  verify : boolean
+  verify : boolean;
 
   constructor(
     private router: Router,

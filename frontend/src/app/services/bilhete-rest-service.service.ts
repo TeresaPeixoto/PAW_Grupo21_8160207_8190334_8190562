@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Bilhete } from '../model/bilhete';
-import { Evento } from '../model/evento';
+import { User } from '../model/user';
 
 const endpoint = 'http://localhost:3000/api/v1/bilhete';
 
@@ -25,8 +25,8 @@ export class BilheteRestServiceService {
     return this.http.post<Bilhete>(endpoint + '/' + bilhete.eventID, bilhete);
   }
 
-  listAllBilhetes(): Observable<any> {
-    return this.http.get<Bilhete[]>(endpoint + '/allBilhetes');
+  listAllBilhetes(id: string): Observable<any> {
+    return this.http.get<Bilhete[]>(endpoint + '/viewtickets/' + id);
   }
 
   getBilhete(bilheteId:string){

@@ -21,7 +21,7 @@ import { ListAllLocalsComponent } from './components/list-all-locals/list-all-lo
 import { EditeLocalComponent } from './components/edite-local/edite-local.component';
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar-bilhete.component';
-//import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bilhetes.component';
+import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bilhetes.component';
 
 
 
@@ -43,7 +43,7 @@ const routes: Routes = [
   {path : 'createLocal', component : CreateLocalComponent, canActivate:[AuthGuardGuard]},
   {path : 'homeLocal', component : HomeLocalComponent, canActivate:[AuthGuardGuard]},
   {path : 'listAllLocals', component : ListAllLocalsComponent, canActivate:[AuthGuardGuard]},
- // {path: 'listTickets' , component: ListarBilhetesComponent, canActivate:[AuthGuardGuard]},
+  {path: 'listTickets' , component: ListarBilhetesComponent, canActivate:[AuthGuardGuard]},
  {path: 'cancelarBilhete', component: CancelarBilheteComponent, canActivate:[AuthGuardGuard]}
 ];
 

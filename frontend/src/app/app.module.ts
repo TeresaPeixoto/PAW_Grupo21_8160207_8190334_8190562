@@ -32,7 +32,7 @@ import { HomeLocalComponent } from './components/home-local/home-local.component
 import { ListAllLocalsComponent } from './components/list-all-locals/list-all-locals.component';
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar-bilhete.component';
-
+import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bilhetes.component';
 
 
 
@@ -58,8 +58,8 @@ import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar
     HomeLocalComponent,
     ListAllLocalsComponent,
     ListClientsComponent,
-    CancelarBilheteComponent
-    
+    CancelarBilheteComponent,
+    ListarBilhetesComponent
   ],
   imports: [
     BrowserModule,
