@@ -1,0 +1,291 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version" : "1.0.0",
+        "title": "Plataforma de Eventos Culturais", 
+        "description": "REST API para Eventos Culturais"
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1",
+    "tags": [
+        {
+            "name": "Eventos Culturais",
+            "description": "API para criação e manutenção de Eventos Culturais"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/local/create": {
+            "post": {
+                "tags": [
+                    "Local"
+                ],
+                "description": "Criar um novo local de evento",
+                "parameters": [
+                    {
+                        "name": "local",
+                        "in": "body",
+                        "description": "Local que queremos criar",
+                        "schema": {
+                            "$ref": "#/definitions/Local"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Novo local foi criado",
+                        "schema": {
+                            "$ref": "#/definitions/Local"
+                        }
+                    }
+                }
+            }
+        },
+        "/local/showAllLocal": {
+            "get": {
+                "tags": [
+                    "Local"
+                ],
+                "description": "Mostrar todos os locais de eventos"
+            }
+        },
+        "/local/showLocal/{id}": {
+            "get": {
+                "tags": [
+                    "Local"
+                ],
+                "description": "Mostrar um local de evento especifico atraves da sua ID"
+            }
+        },
+        "/local/edit/{id}": {
+            "put": {
+                "tags": [
+                    "Local"
+                ],
+                "description": "Editar um local de evento especifico atraves da sua ID"
+            }
+        },
+        "/local/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Local"
+                ],
+                "description": "Eliminar um local de evento especifico atraves da sua ID"
+            }
+        },
+        "/event/create": {
+            "post": {
+                "tags": [
+                    "Event"
+                ],
+                "description": "Criar um novo evento"
+            }
+        },
+        "/event/allEvents":{
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "description": "Mostrar todos os eventos guardados"
+            }
+        },
+        "/event/allAvailableEvents": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "description": "Mostrar todos os eventos em que se pode ingressar atualmente"
+            }
+        },
+        "/event/allFinishedEvents": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "description": "Mostrar todos os eventos dados como concluidos"
+            }
+        },
+        "/event/edit/{id}": {
+            "put": {
+                "tags": [
+                    "Event"
+                ],
+                "description": "Editar um evento especifico atraves do seu ID"
+            }
+        },
+        "/event/getEvento/{id}": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "description": "Mostrar um evento especifico atraves do seu ID"
+            }
+        },
+        "/event/search/{promotorid}": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "description": "Mostrar eventos que foram introduzidos por um promotor especifico"
+            }
+        },
+        "/register/":{
+            "post": {
+                "tags": [
+                    "Registo"
+                ],
+                "description": "Registar um novo utilizador na plataforma"
+            }
+        },
+        "/users/clientProfile/{email}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Mostrar um utilizador especifico atraves do seu endereço de email"
+            }
+        },
+        "/users/clientProfile/suspend/{email}": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Suspender a conta de um utilizador especifico atraves do seu endereço de email"
+            }
+        },
+        "/users/clientProfile/edit/{email}": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Editar um utilizador especifico atraves do seu endereço de email"
+            }
+        },
+        "/users/clientProfile/delete/{email}": {
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Eliminar um utilizador especifico atraves do seu endereço de email"
+            }
+        },
+        "/adminsaywhat/": {
+            "post": {
+                "tags": [
+                    "Administracao"
+                ],
+                "description": "Tornar um utilizador em admin"
+            }
+        },
+        "/adminsaywhat/newPromot": {
+            "post": {
+                "tags": [
+                    "Administracao"
+                ],
+                "description": "Tornar um utilizador em promotor"
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Autentificacao"
+                ],
+                "description": "Autentificar o login de um utilizador"
+            }
+        },
+        "/auth/logout": {
+            "post": {
+                "tags": [
+                    "Autentificacao"
+                ],
+                "description": "Sair da conta de utilizador"
+            }
+        },
+        "/bilhete/{id}": {
+            "post": {
+                "tags": [
+                    "Bilhete"
+                ],
+                "description": "Novo bilhete para um evento especificado pelo id é adquirido pelo utilizador"
+            }
+        },
+        "/bilhete/edit/{id}": {
+            "put": {
+                "tags": [
+                    "Bilhete"
+                ],
+                "description": "Editar um bilhete especificado pelo id"
+            }
+        },
+        "/bilhete/view/{id}": {
+            "get": {
+                "tags": [
+                    "Bilhete"
+                ],
+                "description": "Mostrar um bilhete especificado pelo id"
+            }
+        },
+        "/bilhete/viewtickets/{userID}": {
+            "get": {
+                "tags": [
+                    "Bilhete"
+                ],
+                "description": "Mostrar todos os bilhetes associados a um utilizador especificado em userID"
+            }
+        },
+        "/bilhete/cancelticket/{id}": {
+            "put": {
+                "tags": [
+                    "Bilhete"
+                ],
+                "description": "Sair da conta de utilizador"
+            }
+        },
+        "/bilhete/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Bilhete"
+                ]
+            }
+        },
+        "/requests/createRequest": {
+            "post": {
+                "tags": [
+                    "Pedidos"
+                ]
+            }
+        },
+        "/requests/deleteRequest/{id}": {
+            "delete": {
+                "tags": [
+                    "Pedidos"
+                ]
+            }
+        },
+        "/requests/allRequest": {
+            "get": {
+                "tags": [
+                    "Pedidos"
+                ]
+            }
+        },
+        "/requests/getRequestByEmail/{email}": {
+            "get": {
+                "tags": [
+                    "Pedidos"
+                ]
+            }
+        }
+    }
+}

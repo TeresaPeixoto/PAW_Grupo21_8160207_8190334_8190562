@@ -88,32 +88,17 @@ userController.deleteByEmail = function (req, res) {
   });
 };
 
-userController.suspendedUserById = function (req, res) {
-  User.findByIdAndUpdate(
-    req.body._id,
-    { userStatus: "suspenso" },
-    (err, suspendedUser) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.json(suspendedUser);
-      }
-    }
-  );
-};
-
 userController.suspendUserByEmail = function (req, res) {
-  User.findOneAndUpdate(
-    req.body.email,
-    { userStatus: "suspenso" },
-    (err, suspendedUser) => {
+  User.findOneAndUpdate({ email: req.params.email },
+    { $set: { userStatus: "suspenso" } },
+    { new: true }).exec(function (err, suspendedUser) {
       if (err) {
         console.log(err);
       } else {
         res.json(suspendedUser);
       }
     }
-  );
+    );
 };
 
 userController.changeRole = function (req, res) {
@@ -137,14 +122,14 @@ userController.changeRoleToPromotor = function (req, res) {
     { email: req.body.email },
     { $set: { role: "promotor" } },
     { new: true }
-  ).exec(function(err, editedUser) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(editedUser);
-        res.json(editedUser);
-      }
+  ).exec(function (err, editedUser) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(editedUser);
+      res.json(editedUser);
     }
+  }
   );
 };
 
@@ -154,7 +139,7 @@ userController.changeRoleToAdmin = function (req, res) {
     { email: req.body.email },
     { $set: { role: "admin" } },
     { new: true }
-  ).exec(function(err, editedUser) {
+  ).exec(function (err, editedUser) {
     if (err) {
       console.log(err);
     } else {

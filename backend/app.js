@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var swaggerUi = require('swagger-ui-express');
+var swaggerDocument = require('./swagger.json');
 const cors = require('cors');
 
 var mongoose = require('mongoose');
@@ -44,6 +46,7 @@ app.use('/api/v1/adminsaywhat', adminRouter);
 app.use('/api/v1/requests', requestRouter)
 app.use('/api/v1/local', localRouter);
 app.use('/api/v1/bilhete', bilheteRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
