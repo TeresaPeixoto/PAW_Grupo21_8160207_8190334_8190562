@@ -149,4 +149,19 @@ userController.changeRoleToAdmin = function (req, res) {
   });
 };
 
+userController.demotePromotor = function (req, res) {
+  User.findOneAndUpdate(
+    { email: req.body.email },
+    { $set: { role: "cliente" } },
+    { new: true }
+  ).exec(function (err, editedUser) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(editedUser);
+      res.json(editedUser);
+    }
+  });
+}
+
 module.exports = userController;

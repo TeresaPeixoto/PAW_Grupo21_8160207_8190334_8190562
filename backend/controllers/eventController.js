@@ -145,4 +145,19 @@ eventController.eventsBySpecificPromotor = function (req, res) {
   });
 };
 
+eventController.changeLocal = function (req, res) {
+  Event.findOneAndUpdate(
+    { _id: req.params.id },
+    { $set: { localID: req.body.localID } },
+    { new: true }
+  ).exec(function (err, editedEvent) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(editedEvent);
+      res.json(editedEvent);
+    }
+  });
+}
+
 module.exports = eventController;

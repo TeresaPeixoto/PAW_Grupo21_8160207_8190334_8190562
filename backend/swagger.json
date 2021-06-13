@@ -65,7 +65,7 @@
                 "tags": [
                     "Local"
                 ],
-                "description": "Mostrar um local de evento especifico atraves da sua ID"
+                "description": "Mostrar um local de evento especificado atraves da sua ID"
             }
         },
         "/local/edit/{id}": {
@@ -73,7 +73,7 @@
                 "tags": [
                     "Local"
                 ],
-                "description": "Editar um local de evento especifico atraves da sua ID"
+                "description": "Editar um local de evento especificado atraves da sua ID"
             }
         },
         "/local/delete/{id}": {
@@ -81,7 +81,7 @@
                 "tags": [
                     "Local"
                 ],
-                "description": "Eliminar um local de evento especifico atraves da sua ID"
+                "description": "Eliminar um local de evento especificado atraves da sua ID"
             }
         },
         "/event/create": {
@@ -121,7 +121,15 @@
                 "tags": [
                     "Event"
                 ],
-                "description": "Editar um evento especifico atraves do seu ID"
+                "description": "Editar um evento especificado atraves do seu ID"
+            }
+        },
+        "/event/editlocal/{id}": {
+            "put": {
+                "tags": [
+                    "Event"
+                ],
+                "description": "Modar o local de um evento especificado atraves do seu ID"
             }
         },
         "/event/getEvento/{id}": {
@@ -129,7 +137,7 @@
                 "tags": [
                     "Event"
                 ],
-                "description": "Mostrar um evento especifico atraves do seu ID"
+                "description": "Mostrar um evento especificado atraves do seu ID"
             }
         },
         "/event/search/{promotorid}": {
@@ -153,7 +161,7 @@
                 "tags": [
                     "Users"
                 ],
-                "description": "Mostrar um utilizador especifico atraves do seu endereço de email"
+                "description": "Mostrar um utilizador especificado atraves do seu endereço de email"
             }
         },
         "/users/clientProfile/suspend/{email}": {
@@ -161,7 +169,7 @@
                 "tags": [
                     "Users"
                 ],
-                "description": "Suspender a conta de um utilizador especifico atraves do seu endereço de email"
+                "description": "Suspender a conta de um utilizador especificado atraves do seu endereço de email"
             }
         },
         "/users/clientProfile/edit/{email}": {
@@ -169,7 +177,7 @@
                 "tags": [
                     "Users"
                 ],
-                "description": "Editar um utilizador especifico atraves do seu endereço de email"
+                "description": "Editar um utilizador especificado atraves do seu endereço de email"
             }
         },
         "/users/clientProfile/delete/{email}": {
@@ -177,7 +185,7 @@
                 "tags": [
                     "Users"
                 ],
-                "description": "Eliminar um utilizador especifico atraves do seu endereço de email"
+                "description": "Eliminar um utilizador especificado atraves do seu endereço de email"
             }
         },
         "/adminsaywhat/": {
