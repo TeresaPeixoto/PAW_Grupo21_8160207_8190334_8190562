@@ -33,7 +33,7 @@ import { ListAllLocalsComponent } from './components/list-all-locals/list-all-lo
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar-bilhete.component';
 import { AlterarBilheteComponent} from './components/alterar-bilhete/alterar-bilhete.component';
-//import { RemoveBilheteComponent } from './components/remove-bilhete/remove-bilhete.component';
+import { RemoveBilheteComponent } from './components/remove-bilhete/remove-bilhete.component';
 
 
 
@@ -62,7 +62,7 @@ import { AlterarBilheteComponent} from './components/alterar-bilhete/alterar-bil
     ListClientsComponent,
     CancelarBilheteComponent,
     AlterarBilheteComponent,
-    //RemoveBilheteComponent
+    RemoveBilheteComponent
     
   ],
   imports: [

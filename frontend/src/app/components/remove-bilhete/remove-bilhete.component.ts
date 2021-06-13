@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BilheteRestServiceService } from 'src/app/services/bilhete-rest-service.service';
 import { Bilhete } from 'src/app/model/bilhete';
-import { EventRestServiceService } from 'src/app/services/event-rest-service.service';
-import { Evento } from '../../model/evento';
 import { User } from 'src/app/model/user';
 import { AuthRestServiceService } from '../../services/auth-rest-service.service';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router , ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -39,18 +36,41 @@ export class RemoveBilheteComponent implements OnInit {
         this.currentBilhete = bilhete;
       });
     });
-      var tempUser = localStorage.getItem('currentUser');
-      
-      if (tempUser != null) {
+    var tempUser = localStorage.getItem('currentUser');
+
+    if (tempUser != null) {
+      this.email = JSON.parse(tempUser).email;
+
+      this.auth.getUser(this.email).subscribe((user: User) => {
+        console.log(user);
+        if (user) {
+          if(user.role=="admin"){
+            this.currentUser = user;
+            console.log(this.currentUser);
+          } else {
+            this.router.navigate(['/list']);
+          }
+        }
         
-        this.email = JSON.parse(tempUser).email;
-  
-     
+      });
     }
   }
 
-    removeBilhete(){
+    deleteBilhete(){
+      console.log('chegou aqui');
+      console.log(this.currentBilhete);
+      this.rest.deleteBilhete(this.currentBilhete).subscribe((currentBilhete: any) => {
+        if (currentBilhete) {
+          console.log(currentBilhete);
+        } else {
+          alert('Erro na remoção!');
+        }
+      });
+    }
 
+    logout(): void {
+      console.log('clicou no logout');
+      this.auth.logout();
     }
 
 }

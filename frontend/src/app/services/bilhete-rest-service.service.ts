@@ -37,5 +37,9 @@ export class BilheteRestServiceService {
     return this.http.put<Bilhete>(endpoint + '/editBilhete/' + bilhete._id, bilhete);
  
   }
+  deleteBilhete(bilhete: Bilhete){
+    return this.http.get<Bilhete>(endpoint + '/deleteBilhete/' + bilhete._id);
+ 
+  }
 
 }

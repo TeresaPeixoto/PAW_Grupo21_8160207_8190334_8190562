@@ -5,7 +5,8 @@ export class Bilhete {
       public lugares?: number, 
         public comprovativo?: String,
         public ticketStatus?: String,
-        public userID?:string) {
+        public userID?:string,
+        public dataCompra?:Date) {
     }
     
   }

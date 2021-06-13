@@ -23,6 +23,7 @@ import { ListClientsComponent } from './components/list-clients/list-clients.com
 import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar-bilhete.component';
 //import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bilhetes.component';
 import { AlterarBilheteComponent } from './components/alterar-bilhete/alterar-bilhete.component';
+import { RemoveBilheteComponent } from './components/remove-bilhete/remove-bilhete.component';
 
 
 
@@ -46,7 +47,8 @@ const routes: Routes = [
   {path : 'listAllLocals', component : ListAllLocalsComponent, canActivate:[AuthGuardGuard]},
  // {path: 'listTickets' , component: ListarBilhetesComponent, canActivate:[AuthGuardGuard]},
  {path: 'cancelarBilhete', component: CancelarBilheteComponent, canActivate:[AuthGuardGuard]},
- {path: 'alterarBilhete', component: AlterarBilheteComponent, canActivate:[AuthGuardGuard]}
+ {path: 'alterarBilhete', component: AlterarBilheteComponent, canActivate:[AuthGuardGuard]},
+ {path: 'deleteBilhete', component: RemoveBilheteComponent, canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({
