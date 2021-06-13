@@ -22,6 +22,7 @@ import { EditeLocalComponent } from './components/edite-local/edite-local.compon
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar-bilhete.component';
 //import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bilhetes.component';
+import { AlterarBilheteComponent } from './components/alterar-bilhete/alterar-bilhete.component';
 
 
 
@@ -44,7 +45,8 @@ const routes: Routes = [
   {path : 'homeLocal', component : HomeLocalComponent, canActivate:[AuthGuardGuard]},
   {path : 'listAllLocals', component : ListAllLocalsComponent, canActivate:[AuthGuardGuard]},
  // {path: 'listTickets' , component: ListarBilhetesComponent, canActivate:[AuthGuardGuard]},
- {path: 'cancelarBilhete', component: CancelarBilheteComponent, canActivate:[AuthGuardGuard]}
+ {path: 'cancelarBilhete', component: CancelarBilheteComponent, canActivate:[AuthGuardGuard]},
+ {path: 'alterarBilhete', component: AlterarBilheteComponent, canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({
