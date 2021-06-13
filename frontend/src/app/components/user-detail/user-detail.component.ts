@@ -18,6 +18,7 @@ export class UserDetailComponent implements OnInit {
   passwordV: string;
   currentUser: User;
   verify : boolean;
+  verify2 : boolean;
 
   constructor(
     private router: Router,
@@ -29,6 +30,7 @@ export class UserDetailComponent implements OnInit {
     this.password = '';
     this.passwordV = '';
  this.verify= true;
+ this.verify2= true;
     this.currentUser = new User();
   }
 
@@ -45,6 +47,8 @@ export class UserDetailComponent implements OnInit {
                 this.verify=false;
               }
             })
+          }else{
+this.verify2=false;
           }
           this.currentUser = user;
           console.log(this.currentUser);

@@ -40,24 +40,37 @@
               (ngSubmit)="updateEvent()"
             >
               <mat-list>
-                <mat-list-item
-                  >Nome do Evento : &nbsp;&nbsp;&nbsp;{{
+                <mat-list-item> <strong>
+                  Nome do Evento :</strong> &nbsp;&nbsp;&nbsp;{{
                     currentEvent.eventName
                   }}</mat-list-item
                 >
-                <mat-list-item>
-                  Data do Evento : &nbsp;&nbsp;&nbsp;&nbsp;{{
+                <mat-list-item><strong>
+                  Data do Evento : </strong>&nbsp;&nbsp;&nbsp;&nbsp;{{
                     currentEvent.eventDate
                   }}</mat-list-item
                 >
                 <mat-list-item
-                  >Preço : &nbsp;&nbsp;&nbsp;&nbsp;{{
+                  ><strong>Preço :</strong> &nbsp;&nbsp;&nbsp;&nbsp;{{
                     currentEvent.price
                   }}</mat-list-item
                 >
-                <mat-list-item>
-                  Descrição : {{ currentEvent.description }}</mat-list-item
+                <mat-list-item><strong>
+                  Descrição :</strong> {{ currentEvent.description }}</mat-list-item
                 >
+                <mat-list-item
+                ><strong> Morada :</strong> &nbsp;&nbsp;&nbsp;&nbsp;{{
+                  currentEvent.morada
+                }}</mat-list-item
+              ><mat-list-item
+              ><strong> Lotaçao maxima :</strong> &nbsp;&nbsp;&nbsp;&nbsp;{{
+                currentEvent.maxLotacao
+              }}</mat-list-item
+            ><mat-list-item
+            ><strong> Bilhetes disponiveis :</strong> &nbsp;&nbsp;&nbsp;&nbsp;{{
+              currentEvent.currentLotacao
+            }}</mat-list-item
+          >
               </mat-list>
               <body>
                 <img

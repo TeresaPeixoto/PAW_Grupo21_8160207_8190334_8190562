@@ -66,7 +66,7 @@ localController.showAllLocals = function (req, res){
         if(err){
             console.log(err);
         } else {
-            console.log(allLocals);
+            //console.log(allLocals);
             res.json(allLocals);
         }
     });

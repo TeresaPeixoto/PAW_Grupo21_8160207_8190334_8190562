@@ -32,11 +32,16 @@ export class EventRestServiceService {
   }
   
   listAllAvailableEvento(): Observable<any> {
+    console.log("oi");
     return this.http.get<Evento[]>(endpoint + '/allAvailableEvents');
   }
 
   listAllFinishedEvents():Observable<any>{
     return this.http.get<Evento[]>(endpoint + '/allFinishedEvents');
+  }
+
+  listEventBySpecificPromotor(promotorID:string):Observable<any>{
+    return this.http.get<Evento[]>(endpoint + '/search/'+promotorID);
   }
 
 }

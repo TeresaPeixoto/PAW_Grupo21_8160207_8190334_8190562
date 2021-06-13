@@ -33,14 +33,19 @@
                     />
                   </h4>
                 </div>
-               <!-- <div class="form-group">
-                  <h4>
-                    <label for="form-local">Local</label>
-                    <select *ngFor="let local from locais">
-                    <option value="local"></option>
-                    />
-                  </h4>
-                </div>-->
+                <div class="form-group">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Local</mat-label>
+                    <mat-select formControlName="localID" class="form-control">
+                      <mat-option
+                        *ngFor="let local of locais"
+                        [value]="local._id"
+                      >
+                        {{ local.morada }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
                 <div class="form-group">
                   <h4>
                     <label for="form-eventDate">Data do Evento</label>

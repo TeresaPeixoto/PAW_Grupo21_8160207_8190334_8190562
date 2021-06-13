@@ -35,7 +35,8 @@ import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar
 import { AlterarBilheteComponent} from './components/alterar-bilhete/alterar-bilhete.component';
 //import { RemoveBilheteComponent } from './components/remove-bilhete/remove-bilhete.component';
 import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bilhetes.component';
-
+import {MatSelectModule} from '@angular/material/select';
+import { ListEventPromComponent } from './components/list-event-prom/list-event-prom.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,9 @@ import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bil
     CancelarBilheteComponent,
     AlterarBilheteComponent,
     //RemoveBilheteComponent,
-    ListarBilhetesComponent
+    ListarBilhetesComponent,
+    ListEventPromComponent
+    
     
   ],
   imports: [
@@ -75,7 +78,8 @@ import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bil
     MatSliderModule,
     MatListModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi:true}],
   bootstrap: [AppComponent]
