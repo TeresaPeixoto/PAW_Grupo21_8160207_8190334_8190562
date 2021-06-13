@@ -11,4 +11,8 @@ router.put('/clientProfile/edit/:email', userController.editByEmail);
 
 router.delete('/clientProfile/delete/:email', userController.deleteByEmail);
 
+router.put('/clientProfile/demotepromotor/:email', userController.demotePromotor);
+
+router.put('/clientProfile/banuser/:id', userController.banUser);
+
 module.exports = router;

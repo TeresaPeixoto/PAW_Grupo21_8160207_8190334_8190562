@@ -11,8 +11,8 @@ bilheteController.addBilhete = function (req, res) {
 
     bilhete.userID = req.body.userID;
     bilhete.eventID = req.params.id;
+    bilhete.dataDeCompra = new Date();
     console.log(req.body);
-
 
     bilhete.save((err) => {
         if (err) {
