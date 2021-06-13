@@ -188,6 +188,22 @@
                 "description": "Eliminar um utilizador especificado atraves do seu endereço de email"
             }
         },
+        "/users/clientProfile/demotepromotor/{email}": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Editar um utilizador especificado atraves do seu endereço de email"
+            }
+        },
+        "/users/clientProfile/banuser/{id}": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Editar um utilizador especificado atraves do seu endereço de email"
+            }
+        },
         "/adminsaywhat/": {
             "post": {
                 "tags": [

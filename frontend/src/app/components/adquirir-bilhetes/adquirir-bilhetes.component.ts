@@ -20,7 +20,7 @@ export class AdquirirBilhetesComponent implements OnInit {
   comp: string | undefined;
   currentUser: User;
   email: string;
-  currentID: string;
+  currentEventID: string;
   currentUserID: string;
 
   public formulario: FormGroup = new FormGroup({  
@@ -38,7 +38,7 @@ export class AdquirirBilhetesComponent implements OnInit {
       this.currentUser = new User();
     this.email = '';
     this.cE = new Evento();
-    this.currentID= '';
+    this.currentEventID= '';
     this.currentUserID='';
     }
   
@@ -61,8 +61,8 @@ export class AdquirirBilhetesComponent implements OnInit {
     this.route.params.subscribe(params =>{
       console.log(params);
       this.rest.getEvento(params.id).subscribe((currentEvent: Evento)=>{
-          this.cE=currentEvent;
-          this.currentID=params.id;
+            this.currentEventID=params.id;this.cE=currentEvent;
+        
           console.log(this.cE.eventName);
     });
   })
@@ -75,7 +75,7 @@ export class AdquirirBilhetesComponent implements OnInit {
     if (this.formulario.status === 'INVALID') {
       console.log('formulario invalido');
     } else {
-      this.formulario.value["eventID"]=this.currentID;
+      this.formulario.value["eventID"]=this.currentEventID;
       this.formulario.value["userID"]=this.currentUserID;
       console.log(this.formulario.value);
       console.log('na funçao de adquirir evento');

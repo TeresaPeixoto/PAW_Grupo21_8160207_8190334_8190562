@@ -38,10 +38,18 @@
             >
               <div class="form-group">
                 <div class="col-xs-12">
-                  <label for="eventName"><h4>ID do bilhete</h4></label>
-                  {{ bilhete._id
-                }}
+                    <label for="eventName"><h4>ID do bilhete</h4></label>
+                    <input
+                    disabled
+                    type="string"
+                    class="form-control"
+                    name="_id"
+                    id="_id"
+                    placeholder="currentBilhete._id"
+                    [(ngModel)]="currentBilhete._id"
+                  />
                 </div>
+                <br>
               </div>
               <br>
               <div class="form-group">
@@ -53,7 +61,7 @@
                     name="lugares"
                     id="lugares"
                     placeholder="lugares"
-                    [(ngModel)]="bilhete.lugares"
+                    [(ngModel)]="currentBilhete.lugares"
                   />
                 </div>
               </div>
@@ -64,7 +72,6 @@
                     id="btn1"
                     class="btn btn-lg btn-success btn-block"
                     type="button"
-                    routerLink="//listarBilhetes"
                     (click)=updateBilhete()
                   >
                     Salvar

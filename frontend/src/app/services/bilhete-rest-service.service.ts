@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Bilhete } from '../model/bilhete';
-import { Evento } from '../model/evento';
+import { User } from '../model/user';
 
 const endpoint = 'http://localhost:3000/api/v1/bilhete';
 
@@ -25,21 +25,25 @@ export class BilheteRestServiceService {
     return this.http.post<Bilhete>(endpoint + '/' + bilhete.eventID, bilhete);
   }
 
-  listAllBilhetes(): Observable<any> {
-    return this.http.get<Bilhete[]>(endpoint + '/allBilhetes');
+  listAllBilhetes(id: string): Observable<any> {
+    return this.http.get<Bilhete[]>(endpoint + '/viewtickets/' + id);
   }
 
   getBilhete(bilheteId:string){
-    return this.http.get<Bilhete>(endpoint + '/getBilhete/' + bilheteId);
+    return this.http.get<Bilhete>(endpoint + '/view/' + bilheteId);
  
   }
-  editBilhete(bilhete:Bilhete){
-    return this.http.put<Bilhete>(endpoint + '/editBilhete/' + bilhete._id, bilhete);
+  editBilheteByID(bilhete:Bilhete){
+    return this.http.put<Bilhete>(endpoint + '/edit/' + bilhete._id, bilhete);
  
   }
   deleteBilhete(bilhete: Bilhete){
-    return this.http.get<Bilhete>(endpoint + '/deleteBilhete/' + bilhete._id);
+    return this.http.delete<Bilhete>(endpoint + '/delete/' + bilhete._id);
  
+  }
+
+  cancelarBilhete(bilhete:Bilhete){
+    return this.http.put<Bilhete>(endpoint + '/cancelticket/' + bilhete._id, bilhete);
   }
 
 }

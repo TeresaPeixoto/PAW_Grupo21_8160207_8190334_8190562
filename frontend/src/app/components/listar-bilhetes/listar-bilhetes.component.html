@@ -15,7 +15,7 @@
   <div align="end" (click)="logout()">
     <a id:link href="http://localhost:4200/login">Logout</a>
   </div>
-  <div *ngFor="let bilhete of Bilhetes">
+  <div *ngFor="let bilhete of bilhetes">
     <div>
       <div class="container" style="margin-top: 30px">
         <div class="col-md-4">
@@ -27,7 +27,7 @@
                     ><strong> Nome do Evento :</strong>&nbsp;&nbsp;&nbsp;&nbsp;
                     {{
                      
-                        bilhete.eventID.eventName
+                        bilhete.name
                         }}
                     </mat-list-item>
     
@@ -44,8 +44,8 @@
                     >&nbsp;&nbsp;
                 </mat-list>
                 <button
-                mat-raised-button
-                routerLink="//listbilheteUnico/{{ bilhete._id }}"
+                mat-raised-button              
+                routerLink="/listBilhete/{{ bilhete._id }}"
                 id="btn1"
               >
                 Ver mais ->

@@ -21,9 +21,10 @@ import { ListAllLocalsComponent } from './components/list-all-locals/list-all-lo
 import { EditeLocalComponent } from './components/edite-local/edite-local.component';
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar-bilhete.component';
-//import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bilhetes.component';
+import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bilhetes.component';
 import { AlterarBilheteComponent } from './components/alterar-bilhete/alterar-bilhete.component';
 import { RemoveBilheteComponent } from './components/remove-bilhete/remove-bilhete.component';
+import { ListbilheteComponent } from './components/list-bilhete/list-bilhete.component';
 
 
 
@@ -45,10 +46,11 @@ const routes: Routes = [
   {path : 'createLocal', component : CreateLocalComponent, canActivate:[AuthGuardGuard]},
   {path : 'homeLocal', component : HomeLocalComponent, canActivate:[AuthGuardGuard]},
   {path : 'listAllLocals', component : ListAllLocalsComponent, canActivate:[AuthGuardGuard]},
- // {path: 'listTickets' , component: ListarBilhetesComponent, canActivate:[AuthGuardGuard]},
- {path: 'cancelarBilhete', component: CancelarBilheteComponent, canActivate:[AuthGuardGuard]},
- {path: 'alterarBilhete', component: AlterarBilheteComponent, canActivate:[AuthGuardGuard]},
- {path: 'deleteBilhete', component: RemoveBilheteComponent, canActivate:[AuthGuardGuard]}
+  {path: 'listTickets' , component: ListarBilhetesComponent, canActivate:[AuthGuardGuard]},
+ {path: 'cancelarBilhete/:id', component: CancelarBilheteComponent, canActivate:[AuthGuardGuard]},
+ {path: 'alterarBilhete/:id', component: AlterarBilheteComponent, canActivate:[AuthGuardGuard]},
+ {path: 'deleteBilhete/:id', component: RemoveBilheteComponent, canActivate:[AuthGuardGuard]},
+ {path : 'listBilhete/:id' , component: ListbilheteComponent, canActivate:[AuthGuardGuard]},
 ];
 
 @NgModule({

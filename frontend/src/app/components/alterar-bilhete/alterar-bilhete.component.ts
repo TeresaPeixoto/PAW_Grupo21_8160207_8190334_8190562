@@ -17,6 +17,7 @@ export class AlterarBilheteComponent implements OnInit {
   currentUser: User;
   email: string;
   currentBilhete: Bilhete;
+  bilhetes: Array<any> = [];
 
   public formulario: FormGroup = new FormGroup({
     lugares: new FormControl(null, [Validators.required]),
@@ -70,7 +71,7 @@ export class AlterarBilheteComponent implements OnInit {
   updateBilhete(): void {
     console.log('chegou aqui');
     console.log(this.currentBilhete);
-    this.rest.editBilhete(this.currentBilhete).subscribe((currentBilhete: any) => {
+    this.rest.editBilheteByID(this.currentBilhete).subscribe((currentBilhete: any) => {
       if (currentBilhete) {
         console.log(currentBilhete);
       } else {

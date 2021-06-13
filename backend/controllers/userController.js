@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var User = require("../models/user");
+var Bilhete = require("../models/bilhete");
 const jwt = require("jsonwebtoken");
 var authconfig = require("../config/authconfig");
 const user = require("../models/user");
@@ -162,6 +163,52 @@ userController.demotePromotor = function (req, res) {
       res.json(editedUser);
     }
   });
+}
+
+userController.banUser = function (req, res) {
+  if (5 < auxUpdateCancelledTickets(req.params.id)) {
+    console.log("Can't ban user that hasn't cancelled less than 5 tickets")
+  } else {
+    User.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: { userStatus: "banido" } },
+      { new: true }).exec(function (err, bannedUser) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(bannedUser);
+          res.json(bannedUser);
+        }
+      });
+  };
+};
+
+function auxUpdateCancelledTickets(userIDTemp) {
+  var counter = 0;
+  var currentTime = new Date();
+  var firstDay = new Date(currentTime.getFullYear(), currentTime.getMonth, 1);
+
+  Bilhete.find({ userID: userIDTemp, ticketStatus: "Cancelado" }, (err, cancelledBilhetes) => {
+    if (err) {
+      console.log(err);
+    } else {
+      for (var i = 0; i < cancelledBilhetes.length; i++) {
+        if (new Date(cancelledBilhetes[i].dataDeCompra) < firstDay) {
+          Bilhete.findByIdAndDelete(cancelledBilhetes[i]._id, (err, deletedBilhete) => {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log(deletedBilhete);
+            }
+          });
+        } else {
+          counter++;
+        }
+      }
+    }
+  });
+
+  return counter;
 }
 
 module.exports = userController;

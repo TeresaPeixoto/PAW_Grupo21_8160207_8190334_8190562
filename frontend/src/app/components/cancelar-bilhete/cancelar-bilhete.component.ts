@@ -70,15 +70,14 @@ export class CancelarBilheteComponent implements OnInit {
 
  
 
-  updateBilhete(): void {
+  cancelarBilhete(): void {
     console.log('chegou aqui');
     console.log(this.currentBilhete);
-    this.currentBilhete.ticketStatus="Cancelado";
-    this.rest.editBilhete(this.currentBilhete).subscribe((currentBilhete: any) => {
+    this.rest.cancelarBilhete(this.currentBilhete).subscribe((currentBilhete: any) => {
       if (currentBilhete) {
         console.log(currentBilhete);
       } else {
-        alert('Erro no update!');
+        alert('Erro no Cancelar!');
       }
     });
   }

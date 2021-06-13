@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistoComponent} from './components/registo/registo.component';
@@ -34,8 +33,8 @@ import { ListClientsComponent } from './components/list-clients/list-clients.com
 import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar-bilhete.component';
 import { AlterarBilheteComponent} from './components/alterar-bilhete/alterar-bilhete.component';
 import { RemoveBilheteComponent } from './components/remove-bilhete/remove-bilhete.component';
-
-
+import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bilhetes.component';
+import { ListbilheteComponent } from './components/list-bilhete/list-bilhete.component';
 
 
 @NgModule({
@@ -62,7 +61,9 @@ import { RemoveBilheteComponent } from './components/remove-bilhete/remove-bilhe
     ListClientsComponent,
     CancelarBilheteComponent,
     AlterarBilheteComponent,
-    RemoveBilheteComponent
+    RemoveBilheteComponent,
+    ListarBilhetesComponent,
+    ListbilheteComponent
     
   ],
   imports: [
