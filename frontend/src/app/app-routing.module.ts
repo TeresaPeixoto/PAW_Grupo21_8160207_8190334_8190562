@@ -25,8 +25,8 @@ import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bil
 import { AlterarBilheteComponent } from './components/alterar-bilhete/alterar-bilhete.component';
 import { RemoveBilheteComponent } from './components/remove-bilhete/remove-bilhete.component';
 import { ListbilheteComponent } from './components/list-bilhete/list-bilhete.component';
-
-
+import { PromAcceptBilheteComponent } from './components/prom-accept-bilhete/prom-accept-bilhete.component';
+import { AceitarBilheteComponent } from './components/aceitar-bilhete/aceitar-bilhete.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent },
@@ -51,6 +51,9 @@ const routes: Routes = [
  {path: 'alterarBilhete/:id', component: AlterarBilheteComponent, canActivate:[AuthGuardGuard]},
  {path: 'deleteBilhete/:id', component: RemoveBilheteComponent, canActivate:[AuthGuardGuard]},
  {path : 'listBilhete/:id' , component: ListbilheteComponent, canActivate:[AuthGuardGuard]},
+  {path: 'promAcceptBilhete', component: PromAcceptBilheteComponent, canActivate:[AuthGuardGuard]},
+  {path: 'aceitarBilhete/:id', component: AceitarBilheteComponent, canActivate:[AuthGuardGuard]}
+
 ];
 
 @NgModule({

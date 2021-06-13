@@ -5,6 +5,8 @@ import { EventRestServiceService } from 'src/app/services/event-rest-service.ser
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthRestServiceService } from '../../services/auth-rest-service.service';
 import { User } from 'src/app/model/user';
+import { Local } from 'src/app/model/local';
+import { LocalRestServiceService } from 'src/app/services/local-rest-service.service';
 
 @Component({
   selector: 'app-list-evento',
@@ -12,7 +14,7 @@ import { User } from 'src/app/model/user';
   styleUrls: ['./list-evento.component.css'],
 })
 export class ListEventoComponent implements OnInit {
-  currentEvent: Evento;
+  currentEvent: any;
   dImage: any;
   currentUser: User;
 
@@ -20,9 +22,9 @@ export class ListEventoComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private rest: EventRestServiceService,
-    private auth: AuthRestServiceService
+    private auth: AuthRestServiceService,
+    private localService: LocalRestServiceService
   ) {
-    this.currentEvent = new Evento();
 
     this.currentUser = new User();
   }
@@ -40,6 +42,16 @@ export class ListEventoComponent implements OnInit {
       this.rest.getEvento(params.id).subscribe((evento: any) => {
         this.currentEvent = evento;
         this.dImage = this.currentEvent.eventPicture;
+        this.localService.getLocal(evento.localID).subscribe((local: any) => {
+          console.log(local);
+
+          if (local._id != null) {
+            this.currentEvent['morada'] = local.morada;
+            this.currentEvent['maxLotacao'] = local.maxLotacao;
+            this.currentEvent['currentLotacao'] = local.currentLotacao;
+
+          }
+        });
       });
     });
   }

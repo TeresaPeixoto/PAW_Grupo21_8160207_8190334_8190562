@@ -46,4 +46,11 @@ export class BilheteRestServiceService {
     return this.http.put<Bilhete>(endpoint + '/cancelticket/' + bilhete._id, bilhete);
   }
 
+  aceitarBilhete(bilhete:Bilhete){
+    return this.http.put<Bilhete>(endpoint + '/aceitarticket/' + bilhete._id, bilhete);
+  }
+  listAllBilhetesUser():Observable<any>{
+    return this.http.get<Bilhete[]>(endpoint + '/allbilhetes');
+  }
+
 }

@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EventRestServiceService } from 'src/app/services/event-rest-service.service';
 import { AuthRestServiceService } from '../../services/auth-rest-service.service';
 import { User } from 'src/app/model/user';
+import { Local } from 'src/app/model/local';
+import { LocalRestServiceService } from 'src/app/services/local-rest-service.service';
 
 @Component({
   selector: 'app-list-all-events',
@@ -12,7 +14,7 @@ import { User } from 'src/app/model/user';
 })
 export class ListAllEventsComponent implements OnInit {
   evento: Evento;
-  eventos: Array<Evento> = [];
+  eventos: Array<any> = [];
   currentUser: User;
   email: string;
 
@@ -20,7 +22,8 @@ export class ListAllEventsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private rest: EventRestServiceService,
-    private auth: AuthRestServiceService
+    private auth: AuthRestServiceService,
+    private localService: LocalRestServiceService
   ) {
     this.evento = new Evento();
     this.currentUser = new User();
@@ -38,15 +41,26 @@ export class ListAllEventsComponent implements OnInit {
   }
 
   getAllAvailableEvents() {
-    this.rest.listAllAvailableEvento().subscribe((eventos: Array<Evento>) => {
+    this.rest.listAllAvailableEvento().subscribe((eventos: Array<any>) => {
       console.log(eventos);
       for (let i = 0; i < eventos.length; i++) {
         if (
           eventos[i]._id != null &&
           eventos[i].eventStatus == 'Por decorrer'
         ) {
-          this.eventos.push(eventos[i]);
-          console.log(eventos[i]);
+          this.localService.getAllLocals().subscribe((local: any) => {
+            console.log(local);
+            for (let j = 0; j < local.length; j++) {
+              if (local[j]._id != eventos[i].localID) {
+                eventos[i]['morada'] = local[j].morada;
+                eventos[i]['maxLotacao'] = local[j].maxLotacao;
+                eventos[i]['currentLotacao'] = local[j].currentLotacao;
+
+                this.eventos.push(eventos[i]);
+                console.log(eventos[i]);
+              }
+            }
+          });
         }
       }
     });

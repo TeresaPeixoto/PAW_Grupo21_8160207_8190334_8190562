@@ -15,6 +15,10 @@ router.get('/viewtickets/:userID', bilheteController.showAllBilhetesByUserID);
 
 router.put('/cancelticket/:id', bilheteController.cancelBilhete);
 
+router.put('/aceitarticket/:id', bilheteController.aceitarBilhete);
+
 router.delete('/delete/:id', bilheteController.deleteBilhete);
+
+router.get('/allbilhetes', bilheteController.getAllBilhetes);
 
 module.exports = router;

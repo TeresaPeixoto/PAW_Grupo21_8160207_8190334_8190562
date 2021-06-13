@@ -77,6 +77,19 @@ bilheteController.cancelBilhete = function (req, res) {
         });
 };
 
+bilheteController.aceitarBilhete = function (req, res) {
+    Bilhete.findByIdAndUpdate({ _id: req.params.id },
+        { $set: { ticketStatus: "aceite" } },
+        { new: true }).exec(function (err, acceptedBilhete) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(acceptedBilhete);
+                res.json(acceptedBilhete);
+            }
+        });
+};
+
 bilheteController.deleteBilhete = function (req, res) {
     Bilhete.findByIdAndRemove({ _id: req.params.id }, (err, deletedBilhete) => {
         if (err) {
@@ -86,5 +99,21 @@ bilheteController.deleteBilhete = function (req, res) {
         }
     });
 };
+
+bilheteController.getAllBilhetes = function (req, res) {
+    console.log("Chegou ao controlador");
+    Bilhete.find({ ticketStatus: "Por utilizar" })
+      .sort({ dataDeCompra: 1 })
+      .exec((err, allbilhetes) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.json(allbilhetes);
+        }
+      });
+  };
+
+
+
 
 module.exports = bilheteController;

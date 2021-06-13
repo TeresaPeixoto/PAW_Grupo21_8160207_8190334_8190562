@@ -1,47 +1,38 @@
 var mongoose = require("mongoose");
 var Event = require("../models/event");
 var Local = require("../models/local");
-var path = require('path');
+var path = require("path");
 var fs = require("fs");
-
 
 var eventController = {};
 
 eventController.createEvent = function (req, res) {
-  var event = new Event(req.body);
-
-  Local.findById(event.localID), (err, local) => {
-    if (err) {
-      console.log(err);
-    } else {
-      event.bilhetesDisponiveis = local.currentLotacao;
-      res.json(local);
-    }
-  }
-
-  if (!req.body.eventName || req.body.eventName.length < 6) {
-    res.status(400).json({ message: "Event name must contain 6 characters" });
-  } else if (!req.body.local) {
-    res.status(400).json({ message: "You must identify your local" });
-  } else if (!req.body.price) {
-    res.status(400).json({ message: "You must identify your price" });
-  } else if (!req.body.lugares) {
-    res
-      .status(400)
-      .json({ message: "You must identify your number of lugares" });
-  } else if (!req.body.description) {
-    res.status(400).json({ message: "You must identify your description" });
-
-  } else {
-    event.save((err) => {
+  //console.log(req.body);
+  console.log(req.body.localID);
+  Local.findById(req.body.localID,
+    (err, local) => {console.log("local");
       if (err) {
         console.log(err);
-
       } else {
-        res.json(event);
+        
+        console.log(local);
+        console.log("aqui dentro");
+        req.body.bilhetesDisponiveis = local.currentLotacao;
+        var event = new Event(req.body);
+
+        
+          console.log(event);
+          event.save((err) => {
+            if (err) {
+              console.log(err);
+            } else {
+              res.json(event);
+            }
+          });
+        
+        //res.json(local);
       }
     });
-  }
 };
 
 eventController.getAllEvents = function (req, res) {
@@ -64,11 +55,15 @@ function auxUpdateStatus(eventosToUpdate) {
     if (new Date(eventosToUpdate[i].eventDate) < currentTime) {
       eventosToUpdate[i].eventStatus = "Terminada";
 
-      Event.findByIdAndUpdate(eventosToUpdate[i]._id, eventosToUpdate[i], (err, updatedEvent) => {
-        if (err) {
-          console.log(err);
+      Event.findByIdAndUpdate(
+        eventosToUpdate[i]._id,
+        eventosToUpdate[i],
+        (err, updatedEvent) => {
+          if (err) {
+            console.log(err);
+          }
         }
-      });
+      );
     }
   }
 
@@ -101,7 +96,6 @@ eventController.getAllFinishedEvents = function (req, res) {
       }
     });
 };
-
 
 eventController.deleteByID = function (req, res) {
   Event.findByIdAndDelete(req.body._id, (err, deletedEvent) => {
@@ -136,7 +130,7 @@ eventController.editByID = function (req, res) {
 };
 
 eventController.eventsBySpecificPromotor = function (req, res) {
-  Event.find({ promotorID: req.body.promotorID }, (err, eventsByPromotor) => {
+  Event.find({ promotorID: req.params.promotorid }, (err, eventsByPromotor) => {
     if (err) {
       console.log(err);
     } else {
@@ -158,6 +152,6 @@ eventController.changeLocal = function (req, res) {
       res.json(editedEvent);
     }
   });
-}
+};
 
 module.exports = eventController;
