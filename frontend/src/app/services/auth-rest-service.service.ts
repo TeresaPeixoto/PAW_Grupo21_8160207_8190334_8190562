@@ -44,6 +44,10 @@ export class AuthRestServiceService {
     return this.http.get<any>('http://localhost:3000/api/v1/users/clientProfile/' + email);
   }
 
+  getAllUsers():Observable<any>{
+    return this.http.get<User[]>('http://localhost:3000/api/v1/users/allUsers');
+  }
+
   becomeAdmin(tempUser: any): Observable<any> {
     return this.http.post<any>('http://localhost:3000/api/v1/adminsaywhat', tempUser
     );
@@ -53,7 +57,13 @@ export class AuthRestServiceService {
     );
   }
 
-  getAllUsers():Observable<any>{
-    return this.http.get<User[]>(endpoint + '/allUsers');
+  suspendUser(email: any): Observable<any> {
+    return this.http.put<any>('http://localhost:3000/api/v1/users/clientProfile/suspend/'+ email, email
+    );
+  }
+
+  activeUser(email: any): Observable<any> {
+    return this.http.put<any>('http://localhost:3000/api/v1/users/clientProfile/active/'+ email, email
+    );
   }
 }

@@ -37,6 +37,7 @@ import { AlterarBilheteComponent} from './components/alterar-bilhete/alterar-bil
 import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bilhetes.component';
 import {MatSelectModule} from '@angular/material/select';
 import { ListEventPromComponent } from './components/list-event-prom/list-event-prom.component';
+import { HomeEventComponent } from './components/home-event/home-event.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { ListEventPromComponent } from './components/list-event-prom/list-event-
     AlterarBilheteComponent,
     //RemoveBilheteComponent,
     ListarBilhetesComponent,
-    ListEventPromComponent
+    ListEventPromComponent,
+    HomeEventComponent
     
     
   ],

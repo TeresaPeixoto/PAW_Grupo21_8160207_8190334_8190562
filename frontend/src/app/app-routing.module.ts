@@ -24,7 +24,7 @@ import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar
 import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bilhetes.component';
 import { AlterarBilheteComponent } from './components/alterar-bilhete/alterar-bilhete.component';
 import { ListEventPromComponent } from './components/list-event-prom/list-event-prom.component';
-
+import { HomeEventComponent } from './components/home-event/home-event.component';
 
 
 const routes: Routes = [
@@ -48,7 +48,11 @@ const routes: Routes = [
   {path: 'listTickets' , component: ListarBilhetesComponent, canActivate:[AuthGuardGuard]},
   {path: 'cancelarBilhete', component: CancelarBilheteComponent, canActivate:[AuthGuardGuard]},
   {path: 'alterarBilhete', component: AlterarBilheteComponent, canActivate:[AuthGuardGuard]},
-  {path: 'listEventByProm', component: ListEventPromComponent, canActivate:[AuthGuardGuard]}
+  {path: 'listEventByProm', component: ListEventPromComponent, canActivate:[AuthGuardGuard]},
+  {path: 'editeLocal/:id', component: EditeLocalComponent, canActivate:[AuthGuardGuard]},
+  {path : 'homeEvento', component : HomeEventComponent, canActivate:[AuthGuardGuard]},
+  {path : 'listAllClients', component : ListClientsComponent, canActivate:[AuthGuardGuard]}
+
 
 ];
 

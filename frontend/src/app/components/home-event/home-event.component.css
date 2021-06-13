@@ -1,12 +1,12 @@
-
 #btn1 {
-    display: inline-block;
-    margin-right:20px;
+    margin-right: 20px;
     height: 4em;
-    width: 10em;
+    width: 13em;
     padding: 10px 10px;
     text-align: center;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 15px;
     border-radius: 10px;
+    font-weight: bold;
   }
+  
