@@ -9,7 +9,8 @@ var BilheteSchema = new mongoose.Schema({
         default: "Por utilizar"
     },
     comprovativo: String,
-    lugares: Number
+    lugares: Number,
+    dataDeCompra: { type: Date }
 });
 
 module.exports = mongoose.model('Bilhete', BilheteSchema);
