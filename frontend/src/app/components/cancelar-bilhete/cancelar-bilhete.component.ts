@@ -76,6 +76,15 @@ export class CancelarBilheteComponent implements OnInit {
     this.rest.cancelarBilhete(this.currentBilhete).subscribe((currentBilhete: any) => {
       if (currentBilhete) {
         console.log(currentBilhete);
+        this.rest.checkBilhetesCancelados(this.currentBilhete.userID).subscribe((userBanned:any)=>{
+          if(userBanned){
+            console.log(userBanned);
+            //this.logout();
+            console.log(userBanned);
+          }else{
+            alert("erro ao banir utilizador");
+          }
+        })
       } else {
         alert('Erro no Cancelar!');
       }

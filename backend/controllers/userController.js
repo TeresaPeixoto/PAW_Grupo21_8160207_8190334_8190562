@@ -195,7 +195,9 @@ userController.demotePromotor = function (req, res) {
 }
 
 userController.banUser = function (req, res) {
-  if (5 < auxUpdateCancelledTickets(req.params.id)) {
+  console.log("qualquercoisa banir");
+  console.log(auxUpdateCancelledTickets(req.params.id));
+  if ( auxUpdateCancelledTickets(req.params.id) < 5 ) {
     console.log("Can't ban user that hasn't cancelled less than 5 tickets")
   } else {
     User.findOneAndUpdate(
@@ -222,7 +224,7 @@ function auxUpdateCancelledTickets(userIDTemp) {
       console.log(err);
     } else {
       for (var i = 0; i < cancelledBilhetes.length; i++) {
-        if (new Date(cancelledBilhetes[i].dataDeCompra) < firstDay) {
+        if (new Date(cancelledBilhetes[i].dataDeCompra) == firstDay) {
           Bilhete.findByIdAndDelete(cancelledBilhetes[i]._id, (err, deletedBilhete) => {
             if (err) {
               console.log(err);
