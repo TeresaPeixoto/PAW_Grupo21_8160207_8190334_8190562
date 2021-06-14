@@ -30,12 +30,27 @@ export class BilheteRestServiceService {
   }
 
   getBilhete(bilheteId:string){
-    return this.http.get<Bilhete>(endpoint + '/getBilhete/' + bilheteId);
+    return this.http.get<Bilhete>(endpoint + '/view/' + bilheteId);
  
   }
-  editBilhete(bilhete:Bilhete){
-    return this.http.put<Bilhete>(endpoint + '/editBilhete/' + bilhete._id, bilhete);
+  editBilheteByID(bilhete:Bilhete){
+    return this.http.put<Bilhete>(endpoint + '/edit/' + bilhete._id, bilhete);
  
+  }
+  deleteBilhete(bilhete: Bilhete){
+    return this.http.delete<Bilhete>(endpoint + '/delete/' + bilhete._id);
+ 
+  }
+
+  cancelarBilhete(bilhete:Bilhete){
+    return this.http.put<Bilhete>(endpoint + '/cancelticket/' + bilhete._id, bilhete);
+  }
+
+  aceitarBilhete(bilhete:Bilhete){
+    return this.http.put<Bilhete>(endpoint + '/aceitarticket/' + bilhete._id, bilhete);
+  }
+  listAllBilhetesUser():Observable<any>{
+    return this.http.get<Bilhete[]>(endpoint + '/allbilhetes');
   }
 
 }

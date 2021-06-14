@@ -24,12 +24,12 @@
     </div>
     <div class="row">
       <div class="col-sm-9">
-        <h1>Remover Bilhete</h1>
+        <h1>Cancelar Bilhete</h1>
   
         <div class="tab-content">
           <div class="tab-pane active" id="home">
             <div>
-                <h4>Deseja confirmar remoção?</h4>
+                <h4>Deseja confirmar aceitação?</h4>
             </div>
               <div class="form-group">
                 <div class="col-xs-12">
@@ -38,8 +38,8 @@
                     id="btn1"
                     class="btn btn-lg btn-success btn-block"
                     type="button"
-                    
-                    (click)=deleteBilhete()
+                    routerLink="/promAcceptBilhete"
+                    (click)=aceitarBilhete()
                   >
                     Confirmar
                   </button>

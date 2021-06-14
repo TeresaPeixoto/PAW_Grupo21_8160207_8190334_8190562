@@ -7,16 +7,17 @@ import { User } from 'src/app/model/user';
 import { EventRestServiceService } from 'src/app/services/event-rest-service.service';
 
 @Component({
-  selector: 'app-listar-bilhetes',
-  templateUrl: './listar-bilhetes.component.html',
-  styleUrls: ['./listar-bilhetes.component.css'],
+  selector: 'app-prom-accept-bilhete',
+  templateUrl: './prom-accept-bilhete.component.html',
+  styleUrls: ['./prom-accept-bilhete.component.css']
 })
-export class ListarBilhetesComponent implements OnInit {
+export class PromAcceptBilheteComponent implements OnInit {
   currentUser: User;
   email: string;
   bilhete: Bilhete;
   bilhetes: Array<any> = [];
   userId: string;
+  comp:any;
 
   constructor(
     private router: Router,
@@ -44,8 +45,10 @@ export class ListarBilhetesComponent implements OnInit {
       if (user) {
         this.currentUser = user;
         console.log(this.currentUser);
-        this.userId = user._id;
-        this.getAllBilhetes();
+        if(this.currentUser.role=="promotor"){
+          this.userId = user._id;
+          this.getAllBilhetes();
+        }    
       } else {
         alert('Erro no pedido do utilizador!');
       }
@@ -54,20 +57,23 @@ export class ListarBilhetesComponent implements OnInit {
 
   getAllBilhetes() {
     this.rest
-      .listAllBilhetes(this.userId)
+      .listAllBilhetesUser()
       .subscribe((bilhetes: Array<any>) => {
         console.log(bilhetes);
         for (let i = 0; i < bilhetes.length; i++) {
           if (bilhetes[i]._id != null) {
             console.log(bilhetes[i].eventID);
-           
             console.log(bilhetes[i]);
 
             this.eventService.getEvento(bilhetes[i].eventID).subscribe((evento: any) => {
               //como é apenas para listar
+             // console.log(evento.eventName);
+             console.log("dentro da funcao get evento")
+             console.log(evento);
               bilhetes[i].name= evento.eventName; 
-              
               this.bilhetes.push(bilhetes[i]);
+              console.log(this.bilhetes);
+             // console.log(bilhetes[i].name);
             });
 
           }
@@ -80,3 +86,6 @@ export class ListarBilhetesComponent implements OnInit {
     this.auth.logout();
   }
 }
+
+
+

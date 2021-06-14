@@ -41,19 +41,27 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;{{
                       bilhete.ticketStatus
                     }}</mat-list-item>
-                    >&nbsp;&nbsp;
+                    &nbsp;&nbsp;
                 </mat-list>
+                <body>
+                    <img
+                      [src]="bilhete.comprovativo"
+                      alt="file"
+                      id="imgpos"
+                      width="100px"
+                      height="50px"
+                    />
+                  </body>
+
                 <button
                 mat-raised-button              
-                routerLink="/listBilhete/{{ bilhete._id }}"
-                id="btn1"
-              >
-                Ver mais ->
+                routerLink="/cancelarBilhete/{{ bilhete._id }}"
+                id="btn1" >
+                Cancelar Bilhete
               </button>
-
                 <div style="text-align: right">
-                  <button mat-raised-button routerLink="/list" id="btn1">
-                    Voltar para trás
+                  <button mat-raised-button routerLink="/aceitarBilhete/{{ bilhete._id}}" id="btn1">
+                    Aceitar bilhete
                   </button>
                 </div>
               </div>

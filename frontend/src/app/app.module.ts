@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistoComponent} from './components/registo/registo.component';
@@ -33,10 +32,13 @@ import { ListAllLocalsComponent } from './components/list-all-locals/list-all-lo
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 import { CancelarBilheteComponent } from './components/cancelar-bilhete/cancelar-bilhete.component';
 import { AlterarBilheteComponent} from './components/alterar-bilhete/alterar-bilhete.component';
-//import { RemoveBilheteComponent } from './components/remove-bilhete/remove-bilhete.component';
+import { RemoveBilheteComponent } from './components/remove-bilhete/remove-bilhete.component';
 import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bilhetes.component';
+import { ListbilheteComponent } from './components/list-bilhete/list-bilhete.component';
 import {MatSelectModule} from '@angular/material/select';
 import { ListEventPromComponent } from './components/list-event-prom/list-event-prom.component';
+import { PromAcceptBilheteComponent } from './components/prom-accept-bilhete/prom-accept-bilhete.component';
+import { AceitarBilheteComponent } from './components/aceitar-bilhete/aceitar-bilhete.component';
 import { HomeEventComponent } from './components/home-event/home-event.component';
 import { ListPromComponent } from './components/list-prom/list-prom.component';
 import { ChoseOneLocalComponent } from './components/chose-one-local/chose-one-local.component';
@@ -67,14 +69,17 @@ import { HomeEventPromComponent } from './components/home-event-prom/home-event-
     ListClientsComponent,
     CancelarBilheteComponent,
     AlterarBilheteComponent,
-    //RemoveBilheteComponent,
+    RemoveBilheteComponent,
     ListarBilhetesComponent,
+    ListbilheteComponent,
     ListEventPromComponent,
     HomeEventComponent,
     ListPromComponent,
     ChoseOneLocalComponent,
     HomePromComponent,
-    HomeEventPromComponent
+    HomeEventPromComponent,
+    PromAcceptBilheteComponent,
+    AceitarBilheteComponent
     
     
   ],

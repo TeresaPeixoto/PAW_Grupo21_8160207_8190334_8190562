@@ -9,11 +9,11 @@ import { BilheteRestServiceService } from 'src/app/services/bilhete-rest-service
 import { Bilhete } from 'src/app/model/bilhete';
 
 @Component({
-  selector: 'app-cancelar-bilhete',
-  templateUrl: './cancelar-bilhete.component.html',
-  styleUrls: ['./cancelar-bilhete.component.css'],
+  selector: 'app-aceitar-bilhete',
+  templateUrl: './aceitar-bilhete.component.html',
+  styleUrls: ['./aceitar-bilhete.component.css']
 })
-export class CancelarBilheteComponent implements OnInit {
+export class AceitarBilheteComponent implements OnInit {
   bilhete: Bilhete = new Bilhete();
   error: any;
   currentUser: User;
@@ -52,7 +52,7 @@ export class CancelarBilheteComponent implements OnInit {
       this.auth.getUser(this.email).subscribe((user: User) => {
         console.log(user);
         if (user) {
-          if (user.role != 'Cancelado'){
+          if (user.role != 'Aceitado'){
             this.currentUser = user;
             console.log(this.currentUser);
           } else {
@@ -70,15 +70,18 @@ export class CancelarBilheteComponent implements OnInit {
 
  
 
-  cancelarBilhete(): void {
+  aceitarBilhete(): void {
     console.log('chegou aqui');
     console.log(this.currentBilhete);
-    this.rest.cancelarBilhete(this.currentBilhete).subscribe((currentBilhete: any) => {
+    this.rest.aceitarBilhete(this.currentBilhete).subscribe((currentBilhete: any) => {
       if (currentBilhete) {
         console.log(currentBilhete);
       } else {
-        alert('Erro no Cancelar!');
+        alert('Erro no Aceitar!');
       }
     });
   }
 }
+
+
+
