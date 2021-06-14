@@ -15,6 +15,12 @@
   <div align="end" (click)="logout()">
     <a id:link href="http://localhost:4200/login">Logout</a>
   </div>
+  <div align="end" *ngIf = "currentUser.role == 'admin'"  >
+    <a id:link href="http://localhost:4200/homeAdmin">Pagina Admin</a>
+  </div>
+  <div align="end" *ngIf = "currentUser.role == 'promotor'">
+    <a id:link href="http://localhost:4200/homeProm">Pagina Promotor</a>
+  </div>
   <div *ngFor="let evento of eventos">
     <div>
       <div class="container" style="margin-top: 30px">

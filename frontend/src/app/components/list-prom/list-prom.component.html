@@ -1,0 +1,60 @@
+<link
+  href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+
+<div class="container" style="margin-top: 30px">
+  <br /><br />
+  <h1><strong>Clientes</strong></h1>
+  <div align="end">
+    <a id:link href="http://localhost:4200/list"
+      ><h3>{{ currentUser.userName }}</h3>
+    </a>
+  </div>
+  <div align="end" (click)="logout()">
+    <a id:link href="http://localhost:4200/login">Logout</a>
+  </div>
+  <div *ngFor="let user of users">
+    <div>
+      <div class="container" style="margin-top: 30px">
+        <div class="col-md-4">
+          <div class="modal-dialog" style="margin-bottom: 0">
+            <div class="modal-content">
+              <div class="panel panel-default">
+                <mat-list>
+                  <mat-list-item
+                    ><strong>Nome :</strong> &nbsp;&nbsp;&nbsp;{{
+                      user.userName
+                    }}</mat-list-item
+                  >
+                  <mat-list-item
+                    ><strong> Email :</strong>&nbsp;&nbsp;&nbsp;&nbsp;{{
+                        user.email
+                    }}</mat-list-item
+                  >
+                  <mat-list-item
+                    ><strong> Telemóvel :</strong>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{{
+                        user.cellphone
+                    }}</mat-list-item
+                  >
+                 
+                  <button mat-raised-button *ngIf= "user.userStatus=='ativo'" routerLink="/homeAdmin" (click)= removeProm(user.email) id="btn1">
+                    Despromover promotor
+                  </button>
+                  
+                </mat-list>
+                <div style="text-align: right">
+                  <button mat-raised-button routerLink="/homeAdmin" id="btn1">
+                    Voltar para trás
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

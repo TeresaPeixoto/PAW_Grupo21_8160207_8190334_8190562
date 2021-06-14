@@ -40,6 +40,10 @@ import { ListEventPromComponent } from './components/list-event-prom/list-event-
 import { PromAcceptBilheteComponent } from './components/prom-accept-bilhete/prom-accept-bilhete.component';
 import { AceitarBilheteComponent } from './components/aceitar-bilhete/aceitar-bilhete.component';
 import { HomeEventComponent } from './components/home-event/home-event.component';
+import { ListPromComponent } from './components/list-prom/list-prom.component';
+import { ChoseOneLocalComponent } from './components/chose-one-local/chose-one-local.component';
+import { HomePromComponent } from './components/home-prom/home-prom.component';
+import { HomeEventPromComponent } from './components/home-event-prom/home-event-prom.component';
 
 @NgModule({
   declarations: [
@@ -69,9 +73,13 @@ import { HomeEventComponent } from './components/home-event/home-event.component
     ListarBilhetesComponent,
     ListbilheteComponent,
     ListEventPromComponent,
+    HomeEventComponent,
+    ListPromComponent,
+    ChoseOneLocalComponent,
+    HomePromComponent,
+    HomeEventPromComponent,
     PromAcceptBilheteComponent,
-    AceitarBilheteComponent,
-    HomeEventComponent
+    AceitarBilheteComponent
     
     
   ],

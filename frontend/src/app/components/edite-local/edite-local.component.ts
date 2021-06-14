@@ -56,7 +56,7 @@ export class EditeLocalComponent implements OnInit {
     this.route.params.subscribe((params) => {
       console.log(params); 
       this.rest.getLocal(params.id).subscribe((local: any) => {
-        
+        console.log(local)
         if (local) {
           this.currentLocal = local;
          console.log("oi");

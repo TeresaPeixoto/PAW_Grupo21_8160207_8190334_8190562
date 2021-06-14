@@ -29,7 +29,10 @@ import { PromAcceptBilheteComponent } from './components/prom-accept-bilhete/pro
 import { AceitarBilheteComponent } from './components/aceitar-bilhete/aceitar-bilhete.component';
 import { ListEventPromComponent } from './components/list-event-prom/list-event-prom.component';
 import { HomeEventComponent } from './components/home-event/home-event.component';
-
+import { ListPromComponent } from './components/list-prom/list-prom.component';
+import { ChoseOneLocalComponent } from './components/chose-one-local/chose-one-local.component';
+import { HomePromComponent } from './components/home-prom/home-prom.component';
+import { HomeEventPromComponent } from './components/home-event-prom/home-event-prom.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent },
@@ -52,20 +55,18 @@ const routes: Routes = [
   {path: 'listTickets' , component: ListarBilhetesComponent, canActivate:[AuthGuardGuard]},
  {path: 'cancelarBilhete/:id', component: CancelarBilheteComponent, canActivate:[AuthGuardGuard]},
  {path: 'alterarBilhete/:id', component: AlterarBilheteComponent, canActivate:[AuthGuardGuard]},
+  {path: 'promAcceptBilhete', component: PromAcceptBilheteComponent, canActivate:[AuthGuardGuard]},
  {path: 'deleteBilhete/:id', component: RemoveBilheteComponent, canActivate:[AuthGuardGuard]},
  {path : 'listBilhete/:id' , component: ListbilheteComponent, canActivate:[AuthGuardGuard]},
-  {path: 'promAcceptBilhete', component: PromAcceptBilheteComponent, canActivate:[AuthGuardGuard]},
-  {path: 'aceitarBilhete/:id', component: AceitarBilheteComponent, canActivate:[AuthGuardGuard]},
-{path: 'cancelarBilhete/:id', component: CancelarBilheteComponent, canActivate:[AuthGuardGuard]},
- {path: 'alterarBilhete/:id', component: AlterarBilheteComponent, canActivate:[AuthGuardGuard]},
- {path: 'deleteBilhete/:id', component: RemoveBilheteComponent, canActivate:[AuthGuardGuard]},
- {path : 'listBilhete/:id' , component: ListbilheteComponent, canActivate:[AuthGuardGuard]},
-  {path: 'promAcceptBilhete', component: PromAcceptBilheteComponent, canActivate:[AuthGuardGuard]},
   {path: 'aceitarBilhete/:id', component: AceitarBilheteComponent, canActivate:[AuthGuardGuard]},
   {path: 'listEventByProm', component: ListEventPromComponent, canActivate:[AuthGuardGuard]},
   {path: 'editeLocal/:id', component: EditeLocalComponent, canActivate:[AuthGuardGuard]},
   {path : 'homeEvento', component : HomeEventComponent, canActivate:[AuthGuardGuard]},
-  {path : 'listAllClients', component : ListClientsComponent, canActivate:[AuthGuardGuard]}
+  {path : 'listAllClients', component : ListClientsComponent, canActivate:[AuthGuardGuard]},
+  {path : 'listProm' , component : ListPromComponent, canActivate:[AuthGuardGuard]},
+  {path : 'choseOneLocal', component : ChoseOneLocalComponent, canActivate:[AuthGuardGuard]},
+  {path : 'homeProm', component : HomePromComponent, canActivate:[AuthGuardGuard]},
+  {path : 'homeEventProm', component:HomeEventPromComponent, canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({
