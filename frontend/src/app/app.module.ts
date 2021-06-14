@@ -38,6 +38,10 @@ import { ListarBilhetesComponent } from './components/listar-bilhetes/listar-bil
 import {MatSelectModule} from '@angular/material/select';
 import { ListEventPromComponent } from './components/list-event-prom/list-event-prom.component';
 import { HomeEventComponent } from './components/home-event/home-event.component';
+import { ListPromComponent } from './components/list-prom/list-prom.component';
+import { ChoseOneLocalComponent } from './components/chose-one-local/chose-one-local.component';
+import { HomePromComponent } from './components/home-prom/home-prom.component';
+import { HomeEventPromComponent } from './components/home-event-prom/home-event-prom.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +70,11 @@ import { HomeEventComponent } from './components/home-event/home-event.component
     //RemoveBilheteComponent,
     ListarBilhetesComponent,
     ListEventPromComponent,
-    HomeEventComponent
+    HomeEventComponent,
+    ListPromComponent,
+    ChoseOneLocalComponent,
+    HomePromComponent,
+    HomeEventPromComponent
     
     
   ],

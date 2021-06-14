@@ -28,6 +28,7 @@ export class ListAllEventsComponent implements OnInit {
     this.evento = new Evento();
     this.currentUser = new User();
     this.email = '';
+    
   }
 
   ngOnInit(): void {
@@ -36,7 +37,17 @@ export class ListAllEventsComponent implements OnInit {
     if (tempUser != null) {
       this.email = JSON.parse(tempUser).email;
       this.currentUser = JSON.parse(tempUser);
+      
+      this.auth.getUser(this.email).subscribe((user: User) => {
+        if (user) {
+          console.log(user);
+          this.currentUser=user;
+        } 
+      });
     }
+
+
+
     this.getAllAvailableEvents();
   }
 

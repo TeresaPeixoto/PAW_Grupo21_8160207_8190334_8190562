@@ -61,9 +61,9 @@ export class ListEventPromComponent implements OnInit {
         for (let i = 0; i < eventos.length; i++) {
           if (eventos[i]._id != eventos[i].localID) {
             this.localService.getAllLocals().subscribe((local: any) => {
-              console.log(local);
+              console.log(eventos[i]._id);
               for (let j = 0; j < local.length; j++) {
-                if (local[j]._id != null) {
+                if (local[j]._id !=eventos[i].localID) {
                   eventos[i]['morada'] = local[j].morada;
                   eventos[i]['maxLotacao'] = local[j].maxLotacao;
                   eventos[i]['currentLotacao'] = local[j].currentLotacao;

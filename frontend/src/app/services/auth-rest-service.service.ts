@@ -66,4 +66,9 @@ export class AuthRestServiceService {
     return this.http.put<any>('http://localhost:3000/api/v1/users/clientProfile/active/'+ email, email
     );
   }
+
+  removeProm(email: any): Observable<any> {
+    return this.http.put<any>('http://localhost:3000/api/v1/users/clientProfile/demotepromotor/'+ email, email
+    );
+  }
 }

@@ -25,19 +25,23 @@ localController.createLocal = function (req, res) {
 localController.editByID = function (req, res) {
     Local.findById(req.params._id, (err, local) => {
         if (err) {
-            console.log(err);
+          console.log(err);
         } else {
             local=req.body;
 
             var lotPerBelowOne = local.lotacaoPercent / 100;
             local.currentLotacao = Math.round(local.maxLotacao * lotPerBelowOne);
+                console.log(local);
 
-            local.save();
+            Local.findByIdAndUpdate(local._id,local,(err) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.json(local);
+                }
+            });}
+      });
 
-            console.log(local);
-            res.json(local);
-        }
-    });
 };
 
 localController.deleteByID = function (req, res) {
@@ -66,7 +70,6 @@ localController.showAllLocals = function (req, res){
         if(err){
             console.log(err);
         } else {
-            //console.log(allLocals);
             res.json(allLocals);
         }
     });

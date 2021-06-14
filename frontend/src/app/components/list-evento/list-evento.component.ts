@@ -59,13 +59,15 @@ export class ListEventoComponent implements OnInit {
   updateEvent(): void {
     console.log('chegou aqui');
     this.rest.editEvento(this.currentEvent).subscribe((currentEvent: any) => {
-      if (this.currentEvent) {
+      if (currentEvent) {
         this.router.navigate(['/']);
       } else {
         alert('Erro no update!');
       }
     });
   }
+
+  
 
   logout(): void {
     console.log('clicou no logout');

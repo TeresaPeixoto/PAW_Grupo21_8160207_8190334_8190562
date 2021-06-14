@@ -4,11 +4,11 @@ import { AuthRestServiceService } from '../../services/auth-rest-service.service
 import { User } from 'src/app/model/user';
 
 @Component({
-  selector: 'app-list-clients',
-  templateUrl: './list-clients.component.html',
-  styleUrls: ['./list-clients.component.css'],
+  selector: 'app-list-prom',
+  templateUrl: './list-prom.component.html',
+  styleUrls: ['./list-prom.component.css'],
 })
-export class ListClientsComponent implements OnInit {
+export class ListPromComponent implements OnInit {
   currentUser: User;
   users: Array<User> = [];
   verify: boolean;
@@ -32,11 +32,9 @@ export class ListClientsComponent implements OnInit {
     this.auth.getAllUsers().subscribe((users: Array<User>) => {
       console.log(users);
       for (let i = 0; i < users.length; i++) {
-        if (users[i] != null && users[i].role == 'cliente') {
-          
-            this.users.push(users[i]);
-            console.log(users[i]);
-          
+        if (users[i] != null && users[i].role == 'promotor') {
+          this.users.push(users[i]);
+          console.log(users[i]);
         }
       }
     });
@@ -46,26 +44,15 @@ export class ListClientsComponent implements OnInit {
     location.reload();
   }
 
-  suspend(email:any): void {
-    this.auth.suspendUser(email).subscribe((user:any)=>{
-      if(user){
+  removeProm(email: any): void {
+    this.auth.removeProm(email).subscribe((user: any) => {
+      if (user) {
         console.log(user);
-      }else{
+      } else {
         alert('Erro!');
       }
-    })
+    });
   }
-  
-
-  active(email:any): void {
-    this.auth.activeUser(email).subscribe((user:any)=>{
-    if(user){
-      console.log(user);
-    }else{
-      alert('Erro!');
-    }
-  })}
-
 
   logout(): void {
     console.log('clicou no logout');
