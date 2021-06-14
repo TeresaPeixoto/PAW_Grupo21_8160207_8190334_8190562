@@ -64,7 +64,7 @@ export class PromAcceptBilheteComponent implements OnInit {
           if (bilhetes[i]._id != null) {
             console.log(bilhetes[i].eventID);
             console.log(bilhetes[i]);
-
+            
             this.eventService.getEvento(bilhetes[i].eventID).subscribe((evento: any) => {
               //como é apenas para listar
              // console.log(evento.eventName);

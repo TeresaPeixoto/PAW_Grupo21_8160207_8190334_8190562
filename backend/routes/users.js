@@ -15,7 +15,7 @@ router.delete('/clientProfile/delete/:email', userController.deleteByEmail);
 
 router.put('/clientProfile/demotepromotor/:email', userController.demotePromotor);
 
-router.put('/clientProfile/banuser/:id', userController.banUser);
+router.get('/clientProfile/banuser/:id', userController.banUser);
 
 router.get('/allUsers', userController.getAllUsers);
 

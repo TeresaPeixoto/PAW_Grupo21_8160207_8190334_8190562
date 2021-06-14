@@ -22,6 +22,8 @@ bilheteController.addBilhete = function (req, res) {
                 if (err) {
                     console.log(err);
                 } else {
+                    console.log(bilhete.lugares);
+                    console.log(evento.bilhetesDisponiveis);
                     evento.bilhetesDisponiveis -= bilhete.lugares;
 
                     evento.save();
@@ -65,14 +67,30 @@ bilheteController.showAllBilhetesByUserID = function (req, res) {
 }
 
 bilheteController.cancelBilhete = function (req, res) {
+    var bilhete = new Bilhete(req.body);
+
     Bilhete.findByIdAndUpdate({ _id: req.params.id },
         { $set: { ticketStatus: "Cancelado" } },
         { new: true }).exec(function (err, cancelledBilhete) {
             if (err) {
                 console.log(err);
             } else {
-                console.log(cancelledBilhete);
-                res.json(cancelledBilhete);
+                Event.findById(cancelledBilhete.eventID, (err, updatedEvent) => {
+                    if (err) {
+                      console.log(err);
+                    } else {        
+                        updatedEvent.bilhetesDisponiveis+=cancelledBilhete.lugares;
+                        Event.findByIdAndUpdate(updatedEvent._id, updatedEvent, (err, updatedEvent2) => {
+                            if (err) {
+                              console.log(err);
+                            } else {
+                              res.json(cancelledBilhete);
+                            }
+                          });
+                    }
+                  });
+                
+                
             }
         });
 };

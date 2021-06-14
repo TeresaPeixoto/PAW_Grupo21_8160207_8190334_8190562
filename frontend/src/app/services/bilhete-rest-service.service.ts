@@ -52,5 +52,8 @@ export class BilheteRestServiceService {
   listAllBilhetesUser():Observable<any>{
     return this.http.get<Bilhete[]>(endpoint + '/allbilhetes');
   }
+  checkBilhetesCancelados(userID:any):Observable<any>{
+    return this.http.get<any>('http://localhost:3000/api/v1/users/clientProfile/banuser/'+userID);
 
+  }
 }
